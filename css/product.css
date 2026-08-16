@@ -1,0 +1,95 @@
+/* Стили только для карточек товара (products/*.html). Требует tokens.css, base.css,
+   components.css, подключённых раньше. */
+
+/* ============ Хлебные крошки ============ */
+.breadcrumbs {
+  padding-block: var(--space-5) var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.breadcrumbs__link {
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.breadcrumbs__link:hover {
+  color: var(--color-signal-amber-700);
+}
+
+.breadcrumbs__sep {
+  margin-inline: var(--space-2);
+  opacity: 0.5;
+}
+
+.breadcrumbs__current {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ============ Визуал + описание товара ============ */
+.product-hero {
+  padding-block: var(--space-6) var(--space-9);
+}
+
+.product-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.product-hero__title {
+  font-size: var(--fs-h1);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-4);
+}
+
+.product-hero__code {
+  font-family: var(--font-mono);
+  font-size: 0.5em;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.product-hero__replaces {
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.product-hero__replaces-text {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.product-hero__desc {
+  font-size: var(--fs-lead);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.product-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+@media (max-width: 900px) {
+  .product-hero__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ Характеристики ============ */
+.product-specs {
+  padding-block: var(--space-9);
+  background: var(--color-surface);
+}
+
+.product-specs__title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-6);
+}

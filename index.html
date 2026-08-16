@@ -1,412 +1,419 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<title>Донпромэнерго Электроника</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-		<link rel="stylesheet" href="css/pre-style.css">
-		<meta charset="UTF-8">
-		<link rel="shortcut icon" href="img/site_logo.ico">
-	</head>
-	
-	<body>
-		<!--Оболочка всей страницы-->
-		<!-- Затемнение -->
-		<div class="overlay" id="overlay"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ПП ДЗВА — аналоги оборудования вакуумных выключателей и релейной защиты</title>
+  <meta
+    name="description"
+    content="Производственное Предприятие ДЗВА — pin-to-pin аналоги электронных блоков вакуумных выключателей и релейной защиты, снятых с производства или ушедших с рынка. Производство в России."
+  />
 
-		<!-- Попап -->
-		<div class="popup" id="popup">
-			<!-- Твоя картинка котика -->		
-			<h2>Мы не собираем персональные данные</h2>
-			<p class="popup__about">Мы честно пытались прочитать ФЗ-152, но уснули на второй странице. Чтобы не злить Роскомнадзор и крепко спать, мы просто не собираем ваши данные.</p>
-			<p class="popup__about popup__letsDoIt"><strong>Напишите или позвоните нам</strong></p>
-			<div class="contacts">
-				<div class="footer-center-phone contacts__phone">
-					<a href="tel:+79119688528" class="footer-center-phone">+7 (911) 968-85-28</a>
-				</div>
-				
-				<div class="footer-center-mail">
-					<a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="footer-center-mail">MANAGER@PPDZVA.RU</a>
-				</div>
-			</div>
-			<button class="btn-close" onclick="closePopup()">Хорошо</button>
-			<img src="img/FZ152-4.png" alt="Котик" class="cat-image">
-		</div>
-		<!--Используется как флекс-контейнер, чтобы разнести футер и контент-->
-		<div class="wrapper">
-			<main class="page">
-				<!--Подключаем хедер обязательно в коментарии-->
-<header class="header" id="main">
-	<div class="_container">
-		<div class="header__row">
-			<!--
-			<div class="header__logo">
-				<a href="index.html"><img src="img/logo.svg" alt="logo"></a>
-			</div>
-			-->
-			<nav class="header__menu menu">
-				<!--Под бургер меню-->
-				<div class="menu__icon icon-menu">
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-				<div class="menu__body">
-					<ul class="menu__list">
-						<li><a href="index.html" class="menu__link menu__link-active">ГЛАВНАЯ</a></li>
-						<li><a href="#about" class="menu__link">О КОМПАНИИ</a></li>
-						<li><a href="#product" class="menu__link">ПРОДУКЦИЯ</a></li>
-						<li><a href="#advantages" class="menu__link">ПРЕИМУЩЕСТВА</a></li>
-						<li><a href="#contacts" class="menu__link">КОНТАКТЫ</a></li>
-					</ul>
-				</div>
-			</nav>
-			<div class="header__menu-orderBtn orderBtn">
-				<a href="#" class="orderBtn__text">ОСТАВИТЬ ЗАЯВКУ</a>
-			</div>
-		</div>	
-	</div>
-</header>
-				<!--ГЛАВНЫЙ БЛОК-->
-				<section class="main-screen">
-					<div class="main-screen__bg ibg">
-						<img src="img/donpromE_background_new.jpg" alt="">
-					</div>
-						<div class="_container _container-main">
-							<div class="main-screen-content">
-								<div class="main-screen-content__logo">
-									<!-- <img src="img/site_logo_big_dzva.png" alt=""> -->
-								<img src="img/site_logo_big.svg" alt="">
-									<div class="main-screen-content__logo-first-line">
-										<img src="img/main_line_big.svg" alt="">
-									</div>
-								</div>
-								<div class="main-screen-content__company company">
-									<h1 class="company__name">ДОНПРОМЭНЕРГО</h1>
-									<h2 class="company__name-sec">Электроника</h2>
-									<p class="company__disk">Это подразделение компании, которое специализируется на разработке и производстве электронных устройств в энергетической сфере</p>
-									<div class="main-screen-content__logo-second-line">
-										<img src="img/main_line_lit.svg" alt="">
-									</div>
-								</div>
-								<div class="main-screen-content__img">
-									<img src="img/IMG_0687.png" alt="" class="main-screen-content__img-img">
-								</div>
-							</div>
-						</div>
-				</section>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ПП ДЗВА" />
+  <meta property="og:title" content="ПП ДЗВА — аналоги оборудования вакуумных выключателей и релейной защиты" />
+  <meta
+    property="og:description"
+    content="Pin-to-pin аналоги электронных блоков, снятых с производства или ушедших с рынка. Производство в России."
+  />
+  <!-- TODO: заменить на абсолютный URL после публикации сайта (домен ещё не определён) -->
+  <meta property="og:image" content="img/hero/product-lineup.png" />
 
-				<!--БЛОК О ФПГ-->
-				<section class="about-fpg" id="about">
-					<div class="smallWidth__title">О КОМПАНИИ ДОНПРОМЭНЕРГО</div>
-					<div class="mobileWidth">
-						<div class="mobileWidth__titleBlock">
-							<div class="mobileWidth__titleBlock-bg">
-								<p class="mobileWidth__titleBlock-text">О КОМПАНИИ ДОНПРОМЭНЕРГО</p>
-								<img src="img/about-fpg.jpg" alt="">
-								
-							</div>
-						</div>
-					</div>
-					<div class="_container-about">
-						<div class="about-fpg-left">
-							<div class="about-fpg-left__bg">
-								<img src="img/about-fpg.jpg" alt="">
-							</div>
-							<p class="about-fpg-left__text">О КОМПАНИИ ДОНПРОМЭНЕРГО</p>
-						</div>
-						<div class="about-fpg-center">
-							<!--<img src="img/Group 3 small_width.svg" alt=""> -->
-							<div class="about-fpg-center-top-romb"></div>
-							<div class="about-fpg-center-line"></div>
-							<div class="about-fpg-center-bot-romb"></div>
+  <link rel="icon" href="img/icons/favicon.ico" />
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <!-- Затемнение и попап заявки — общие на все страницы, поведение см. js/components/popup.js -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <button class="popup__close" type="button" data-popup-close aria-label="Закрыть">&times;</button>
+    <img src="img/icons/fz152-cat.png" alt="" class="popup__image" />
+    <h2 id="popup-title" class="popup__title">Мы не собираем персональные данные</h2>
+    <p class="popup__text">
+      Мы честно пытались прочитать ФЗ-152, но уснули на второй странице. Чтобы не злить Роскомнадзор и крепко спать,
+      мы просто не собираем ваши данные.
+    </p>
+    <p class="popup__text popup__text--strong">Напишите или позвоните нам</p>
+    <div class="popup__contacts">
+      <a href="tel:+79119688528" class="popup__phone">+7 (911) 968-85-28</a>
+      <a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="popup__mail">MANAGER@PPDZVA.RU</a>
+    </div>
+    <button class="btn btn--outline popup__ok" type="button" data-popup-close>Хорошо</button>
+  </div>
 
-							
-							
-						</div>
-						<div class="about-fpg-right right">
-							<div class="right-main">
-								<div class="right-main-top">
-									<div class="right-main-one">СОЗДАЛИ СОБСТВЕННОЕ ПРОИЗВОДСТВО ЭЛЕКТРОНИКИ ИЗ-ЗА ДЕФИЦИТА КАЧЕСТВЕННЫХ РЕШЕНИЙ</div>
-									<div class="right-main-two">ПОДРАЗДЕЛЕНИЕ <span>«ДОНПРОМЭНЕРГО ЭЛЕКТРОНИКА»</span>  ВЫХОДИТ НА РЫНОК С НОВОЙ ЭКСКЛЮЗИВНОЙ ПРОДУКЦИЕЙ</div>
-								</div>
-								<div class="right-main-middle">
-									<div class="right-main-grafic grafic">
-									<!--<img src="img/Group 1.svg" alt="" class="grafic-main-line">-->
-									<img src="img/Group 1 for 1182px.svg" alt="" class="grafic-main-line">
-									
-									</div>
-								</div>
-								<div class="right-main-bottom">
-									<div class="right-main-three">КОМПАНИЯ С 2014 ГОДА ЗАНИМАЕТСЯ ЭНЕРГЕТИЧЕСКИМИ ПРОЕКТАМИ</div>
-									<div class="right-main-four">РАЗРАБОТАЛИ УНИКАЛЬНЫЕ ТЕХНОЛОГИИ ПРОИЗВОДСТВА И ПОЛУЧИЛИ СЕРТИФИКАТЫ КАЧЕСТВА</div>
-								</div>
-							</div>
-							
-						</div>
-						<div class="about-fpg-right-smallWidth smallWidth">
-							<div class="smallWidth-main">
-								<div class="smallWidth-main-one">
-									КОМПАНИЯ С 2014 ГОДА ЗАНИМАЕТСЯ ЭНЕРГЕТИЧЕСКИМИ ПРОЕКТАМИ
-								</div>
-								<div class="smallWidth-block">
-									<div class="smallWidth-block-romb-left smallWidth-romb"></div>
-									<div class="smallWidth-main-one-line smallWidth-line"></div>
-									<div class="smallWidth-block-romb-right smallWidth-romb"></div>
-								</div>
-								<div class="smallWidth-main-two">
-									СОЗДАЛИ СОБСТВЕННОЕ ПРОИЗВОДСТВО ЭЛЕКТРОНИКИ ИЗ-ЗА ДЕФИЦИТА КАЧЕСТВЕННЫХ РЕШЕНИЙ
-								</div>
-								<div class="smallWidth-block">
-									<div class="smallWidth-block-romb-left smallWidth-romb"></div>
-									<div class="smallWidth-main-two-line smallWidth-line"></div>
-									<div class="smallWidth-block-romb-right smallWidth-romb"></div>
-								</div>
-								<div class="smallWidth-main-three">
-									РАЗРАБОТАЛИ УНИКАЛЬНЫЕ ТЕХНОЛОГИИ ПРОИЗВОДСТВА И ПОЛУЧИЛИ СЕРТИФИКАТЫ КАЧЕСТВА
-								</div>
-								<div class="smallWidth-block">
-									<div class="smallWidth-block-romb-left smallWidth-romb"></div>
-									<div class="smallWidth-main-three-line smallWidth-line"></div>
-									<div class="smallWidth-block-romb-right smallWidth-romb"></div>
-								</div>
-								<div class="smallWidth-main-four">
-									ПОДРАЗДЕЛЕНИЕ <span>«ДОНПРОМЭНЕРГО ЭЛЕКТРОНИКА»</span>  ВЫХОДИТ НА РЫНОК С НОВОЙ ЭКСКЛЮЗИВНОЙ ПРОДУКЦИЕЙ
-								</div>
-								<div class="smallWidth-block smallWidth-block-last">
-									<div class="smallWidth-block-romb-left smallWidth-romb"></div>
-									<div class="smallWidth-main-three-line smallWidth-line"></div>
-									<div class="smallWidth-block-romb-right smallWidth-romb"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="smallWidth__hidden"></div>
-				</section>
+  <!-- Общая шапка — переносится без изменений на все страницы (products/*.html, analogs.html) -->
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a href="index.html" class="site-header__logo">
+        <img src="img/icons/logo-dzva.png" alt="ПП ДЗВА" class="site-header__logo-img" />
+      </a>
+      <nav class="site-nav">
+        <button class="site-nav__burger" type="button" aria-expanded="false" aria-controls="site-nav-list" aria-label="Открыть меню">
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="index.html#hero" class="site-nav__link site-nav__link--active">Главная</a></li>
+          <li><a href="index.html#products" class="site-nav__link">Продукция</a></li>
+          <li><a href="index.html#about" class="site-nav__link">О компании</a></li>
+          <li><a href="analogs.html" class="site-nav__link">Аналоги</a></li>
+          <li><a href="index.html#advantages" class="site-nav__link">Преимущества</a></li>
+          <li><a href="index.html#contacts" class="site-nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <button class="btn btn--gold site-header__cta" type="button" data-popup-open>Оставить заявку</button>
+    </div>
+  </header>
 
-				<!--БЛОК ГОТОВОЙ И ПЛАНИРУЕМОЙ ПРОДУКЦИИ-->
-				<section class="readyAndTry">
-				<!--Тут надо проработать карточки товара:
-				1. Сделать адаптивную высоту как флекс с джконтент спэйс битвин + отступы
-				2. Обернуть карточки в хрефы-->
-					<div class="readyAndTry__bg ibg">
-						<img src="img/readyProduct_bg_new.png" alt="">
-					</div>
-					<div class="_container">
-						<div class="readyAndTry-main">
-							<div class="readyAndTry-main-readyProduct readyProduct" id="product">
-								<div class="readyProduct-title">
-									<h1 class="title-readyProduct">ГОТОВАЯ ПРОДУКЦИЯ</h1>
-								</div>
-								<div class="readyProduct-subtitle">
-									<h2 class="subtitle-readyProduct">Мы предлагаем широкий спектр электронных устройств и решений для энергетической отрасли</h2>
-								</div>
-								<div class="readyProduct-cards">
-									
-									<div class="cardsReady-RS80 cardsReady">
-										<img src="img/IMG_0464.png" alt="" class="cardsReady-img-RS80">
-										
-										<div class="cardsReady-name">
-											<p class="cardsReady-name-RS80">РС-80</p>
-										</div>
-									</div>
-									<a href="../BPVV.html" class="cardsReady-BPVV-link">
-										<div class="cardsReady-BPVV cardsReady">
-												<img src="img/IMG_0260.png" alt="" class="cardsReady-img-BPVV">
-											<div class="cardsReady-name">
-												<p class="cardsReady-name-BPVV">БПВВ-1&nbsp;<br class="cardsReady-ifnone">(ВР-220-02A)</p>
-											</div>
-										</div>
-									</a>
-									<a href="../BUVV.html" class="cardsReady-BUVV-link">
-										<div class="cardsReady-BUVV cardsReady">
-											<img src="img/IMG_0159.png" alt="" class="cardsReady-img-BUVV">
-											<div class="cardsReady-name">
-												<p class="cardsReady-name-BUVV">БУВВ-1&nbsp;<br class="cardsReady-ifnone">(ВU-220-05A)</p>
-											</div>
-										</div>
-									</a>	
-									<div class="cardsReady-digmat cardsReady">
-										
-											<img src="img/IMG_0502.png" alt="" class="cardsReady-img-digmat">
-										
-										<div class="cardsReady-name">
-											<p class="cardsReady-name-digmat">ДИГМАТ</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="readyAndTry-main-readyProduct tryProduct">
-								<div class="readyProduct-title">
-									<h1 class="title-tryProduct">В РАЗРАБОТКЕ</h1>
-								</div>
-								<div class="readyProduct-subtitle">
-									<h2 class="subtitle-tryProduct">Мы регулярно пополняем наш ассортимент новой отечественной продукцией, востребованной в сфере энергетики</h2>
-								</div>
-								<div class="readyProduct-cards">
-									<div class="cardsReady cardsTry">
-											<img src="img/whatsNext.png" alt="" class="cardsTry-img">
-										<div class="cardsTry-name">
-											<p class="cardsTry-name-RMS">РМС</p>
-										</div>
-										<div class="cardsTry-subname">
-											<p class="cardsTry-subname-RMS">Реле мигающего света</p>
-										</div>
-									</div>
-									<div class="cardsReady cardsTry">
-											<img src="img/whatsNext.png" alt="" class="cardsTry-img">
-										<div class="cardsTry-name">
-											<p class="cardsTry-name-AVR">АВР</p>
-										</div>
-										<div class="cardsTry-subname">
-											<p class="cardsTry-subname-AVR">Автоматический ввод резерва</p>
-										</div>
-									</div>
-									<div class="cardsReady cardsTry">
-											<img src="img/whatsNext.png" alt="" class="cardsTry-img">
-										<div class="cardsTry-name">
-											<p class="cardsTry-name-MRZS">МРЗС</p>
-										</div>
-										<div class="cardsTry-subname">
-											<p class="cardsTry-subname-MRZS">Устройство микропроцессорной защиты</p>
-										</div>
-									</div>
-									<div class="cardsReady cardsTry">
-											<img src="img/whatsNext.png" alt="" class="cardsTry-img">
-										<div class="cardsTry-name">
-											<p class="cardsTry-name-MRZS">КТРМ</p>
-										</div>
-										<div class="cardsTry-subname">
-											<p class="cardsTry-subname-MRZS">Регулятор температуры печи</p>
-										</div>
-									</div>
-								</div>
-								<div class="tryProduct-noneBlock">
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <img src="img/backgrounds/hero-circuit.jpg" alt="" loading="eager" />
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="hero__eyebrow">
+            <span class="hero__eyebrow-mark" aria-hidden="true"></span>
+            Производственное Предприятие&nbsp;ДЗВА
+          </p>
+          <h1 class="hero__title">Электроника для вакуумных выключателей и релейной защиты</h1>
+          <p class="hero__fact">
+            Прямые pin-to-pin аналоги оборудования, снятого с производства — интеграция без изменения проектной
+            документации.
+          </p>
+          <div class="hero__actions">
+            <button class="btn btn--gold" type="button" data-popup-open>Оставить заявку</button>
+            <a href="#products" class="hero__scroll-hint">
+              Смотреть продукцию
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <img
+            src="img/hero/product-lineup.png"
+            alt="Линейка продукции ПП ДЗВА: БПВВ-1, РС-80, БУВВ-1, ДИГМАТ"
+            class="hero__visual-img"
+            loading="eager"
+          />
+        </div>
+      </div>
+      <div class="container">
+        <div class="trust-strip">
+          <span class="trust-strip__item">Соответствует ГОСТ Р</span>
+          <span class="trust-strip__item">Производство в России</span>
+          <span class="trust-strip__item">Независимо от импорта</span>
+          <span class="trust-strip__item">С 2024 года</span>
+        </div>
+      </div>
+    </section>
 
-								</div>
-							</div>
-						</div>
-					
-					</div>
-				</section>
-				
-				<!--БЛОК ПРЕИМУЩЕСТВА РАБОТЫ С НАМИ-->
-				<section class="advantages" id="advantages">
-					<div class="advantages-bg">
-						<div class="_container advantages_container">
-							<div class="advantages-title">
-								<p class="title-advantages">ПРЕИМУЩЕСТВА СОТРУДНИЧЕСТВА С НАМИ</p>
-							</div>
-							<div class="advantages-main">
-								<div class="advantages-card left-card">
-									<div class="advantages-card-img left-img">
-										<img src="img/like_ico.svg" alt="" class="advantages-card-img-img">
-									</div>
-									<div class="advantages-card-title left-title">ГАРАНТИРУЕМ КАЧЕСТВО</div>
-									<div class="advantages-card-subtitle left-subtitle">Используем только проверенные технологии и материалы для достижения максимальной надежности</div>
-								</div>
-								<div class="advantages-card mid-card">
-									<div class="advantages-card-img mid-img">
-										<img src="img/brilliant_ico.svg" alt="" class="advantages-card-img-img">
-									</div>
-									<div class="advantages-card-title mid-title">ИНДИВИДУАЛЬНЫЕ РЕШЕНИЯ</div>
-									<div class="advantages-card-subtitle mid-subtitle">Создаем электронику под конкретные задачи наших клиентов</div>
-								</div>
-								<div class="advantages-card right-card">
-									<div class="advantages-card-img right-img">
-										<img src="img/hammer_ico.svg" alt="" class="advantages-card-img-img">
-									</div>
-									<div class="advantages-card-title right-title">РЕМОНТ ОБОРУДОВАНИЯ</div>
-									<div class="advantages-card-subtitle right-subtitle">Мы производим постгарантийное обслуживание и выполняем ремонтные работы устройств сторонних производителей</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+    <!-- ============ ПРОДУКЦИЯ ============ -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="products__intro-row">
+          <div class="products__intro">
+            <p class="section-eyebrow">
+              <span class="section-eyebrow-mark" aria-hidden="true"></span>
+              Продукция
+            </p>
+            <h2 class="products__title">Готовая продукция и разработки</h2>
+            <p class="products__lead">
+              Электронные блоки управления и питания вакуумных выключателей, релейной защиты и автоматики —
+              собственного производства, часть линейки как прямые pin-to-pin аналоги оборудования, снятого с
+              производства.
+            </p>
+          </div>
+          <div class="products__finder">
+            <label for="product-search" class="products__finder-label">Быстрый поиск по продукции</label>
+            <div class="products__finder-input-wrap">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" class="products__finder-icon">
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+                <path d="M16 16L12.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+              <input
+                type="search"
+                id="product-search"
+                class="products__finder-input"
+                placeholder="Например, БУВВ или REF615"
+                autocomplete="off"
+              />
+            </div>
+            <p class="products__finder-empty" data-search-empty hidden>Ничего не найдено — попробуйте другой запрос.</p>
+            <div class="products__finder-stats">
+              <span><strong>6</strong>&nbsp;готовых позиций</span>
+              <span><strong>3</strong>&nbsp;в разработке</span>
+            </div>
+          </div>
+        </div>
 
-				<!--БЛОК СДЕЛАНО В РОССИИ-->
-				<section class="ruProduct">
-					<div class="ruProduct-bg">
-						<div class="_container">
-							<div class="ruProduct-main">
-								<div class="ruProduct-left">
-									<div class="ruProduct-left-ico">
-										<img src="img/RU_ico.png" alt="" class="ruProduct-left-ico-img">
-									</div>
-									<div class="ruProduct-left-title">НАШЕ ОБОРУДОВАНИЕ ПРОИЗВОДИТСЯ В РОССИИ</div>
-									
-									<div class="ruProduct-left-subtitle">Мы гордимся тем, что все наши продукты созданы на отечественных мощностях. Это гарантирует высокие стандарты качества и поддерживает местную экономику.</div>
-									<div class="ruProduct-left-double">
-										<img src="img/ru_product.png" alt="" class="ruProduct-right-img">
-									</div>
-									<div class="header__menu-orderBtn orderBtn ruProduct-left-btn">
-										<a href="#" class="orderBtn__text">ОСТАВИТЬ ЗАЯВКУ</a>
-									</div>
-								</div>
-								<div class="ruProduct-right">
-									<img src="img/ru_product.png" alt="" class="ruProduct-right-img">
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+        <h3 class="products__group-title">Готовая продукция</h3>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <img src="img/products/bpvv/bpvv-card.png" alt="БПВВ-1 (BP-220-02A)" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">БПВВ-1&nbsp;<span class="product-card__code">(BP-220-02A)</span></p>
+            <p class="product-card__subname">Блок питания для БУВВ-1</p>
+            <span class="badge badge--analog">Аналог BP/TEL-220-02A</span>
+          </div>
+          <a href="products/buvv.html" class="product-card">
+            <div class="product-card__img-wrap">
+              <img src="img/products/buvv/buvv-card.png" alt="БУВВ-1 (BU-220-05A)" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">БУВВ-1&nbsp;<span class="product-card__code">(BU-220-05A)</span></p>
+            <p class="product-card__subname">Управление вакуумным выключателем ВВ/TEL-6(10)</p>
+            <span class="badge badge--analog">Аналог BU/TEL-220-05A</span>
+          </a>
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <img src="img/products/rs80/rs80-card.png" alt="РС-80/Д" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">РС-80/Д</p>
+            <!-- TODO: краткое описание уточняется у заказчика -->
+            <span class="badge badge--original">Собственная разработка</span>
+          </div>
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <img src="img/products/digmat/digmat-card.png" alt="ДИГМАТ" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">ДИГМАТ</p>
+            <!-- TODO: краткое описание уточняется у заказчика -->
+            <span class="badge badge--original">Собственная разработка</span>
+          </div>
+          <div class="product-card product-card--pending">
+            <div class="product-card__img-wrap">
+              <img src="img/icons/placeholder-device.png" alt="" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">ЭИС-ЛН-220-К(Б)</p>
+            <!-- TODO: краткое описание уточняется у заказчика -->
+            <span class="badge badge--original">Собственная разработка</span>
+          </div>
+          <div class="product-card product-card--pending">
+            <div class="product-card__img-wrap">
+              <img src="img/icons/placeholder-device.png" alt="" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">КТРМ</p>
+            <p class="product-card__subname">Регулятор температуры печи</p>
+            <span class="badge badge--original">Собственная разработка</span>
+          </div>
+        </div>
 
-				<!--Верстаем футер-->
-				<footer class="footer" id="contacts">
-					<div class="footer-bg">
-						<div class="_container">
-							<div class="footer-main">
-								<div class="footer-left">
-									<div class="footer-left-body">
-										<ul class="footer-left-body-list">
-											<li><a href="#main" class="menu__link">ГЛАВНАЯ</a></li>
-											<li><a href="#about" class="menu__link">О КОМПАНИИ</a></li>
-											<li><a href="#product" class="menu__link">ПРОДУКЦИЯ</a></li>
-											<li><a href="#advantages" class="menu__link">НАШИ ПРЕИМУЩЕСТВА</a></li>
-											<li><a href="#" class="menu__link  menu__link-active">КОНТАКТЫ</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="footer-center">
-									<div class="footer-center-title">
-										КОНТАКТНАЯ ИНФОРМАЦИЯ
-									</div>
-									<div class="footer-center-name">
-										ООО "ПП "ДЗВА"
-									</div>
-									<div class="footer-center-phone">
-										<a href="tel:+79119688528" class="footer-center-phone">+7 (911) 968-85-28</a>
+        <h3 class="products__group-title products__group-title--dev">В разработке</h3>
+        <div class="product-grid product-grid--dev">
+          <div class="product-card product-card--dev">
+            <div class="product-card__img-wrap">
+              <img src="img/icons/placeholder-device.png" alt="" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">АВР</p>
+            <p class="product-card__subname">Автоматический ввод резерва</p>
+          </div>
+          <div class="product-card product-card--dev">
+            <div class="product-card__img-wrap">
+              <img src="img/icons/placeholder-device.png" alt="" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">МРЗС</p>
+            <p class="product-card__subname">Устройство микропроцессорной защиты</p>
+          </div>
+          <div class="product-card product-card--dev">
+            <div class="product-card__img-wrap">
+              <img src="img/icons/placeholder-device.png" alt="" class="product-card__img" loading="lazy" />
+            </div>
+            <p class="product-card__name">REF615</p>
+            <p class="product-card__subname">Отечественный аналог терминала защиты REF615</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-									</div>
-									<div class="footer-center-icons">
-										<a href="tel:+79119688528">
-											<img src="img/phone.svg" alt="phone">
-										</a>
-										<a href="tg://resolve?domain=Ligilement">
-											<img src="img/telegram.svg" alt="telegram">
-										</a>
-										<a href="https://wa.me/79119688528">
-											<img src="img/whatsapp.svg" alt="whatsapp">
-										</a>
-									</div>
-									<div class="footer-center-mail">
-										<a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="footer-center-mail">MANAGER@PPDZVA.RU</a>
-									</div>
-								</div>
-								<div class="footer-right">
-									<div class="header__menu-orderBtn orderBtn footer-right-btn">
-										<a href="#" class="orderBtn__text">ОСТАВИТЬ ЗАЯВКУ</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</footer>
-			</main>
-		</div>
-		<script language="JavaScript" type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-		<!--Пробую вставить график. ПОТОМ НАДО ЗАМЕНИТЬ НА БИБЛИОТЕКИ ИЗ ЗАГРУЗКИ ЕСП-->
-		<script src="js/default.js"></script>
-		<script src="js/index.js"></script>
-	</body>
-</html>	
-	
+    <!-- ============ О КОМПАНИИ ============ -->
+    <section class="about" id="about">
+      <div class="container about__inner">
+        <div class="about__intro">
+          <p class="section-eyebrow">
+            <span class="section-eyebrow-mark" aria-hidden="true"></span>
+            О компании
+          </p>
+          <h2 class="about__title">Производственное Предприятие ДЗВА</h2>
+          <p class="about__lead">
+            От экспертов отрасли — для вашей инфраструктуры. 15 лет реализуем сложные энергетические проекты.
+            Накопленный опыт и дефицит качественных решений на рынке побудили нас создать собственную
+            производственную базу. Сегодня мы выпускаем блоки защиты и управления, готовые к бесперебойной работе в
+            любых условиях.
+          </p>
+        </div>
+        <ul class="about__facts">
+          <li class="about__fact">
+            <span class="about__fact-index">01</span>
+            <p class="about__fact-text">С 2014 года занимаемся энергетическими проектами</p>
+          </li>
+          <li class="about__fact">
+            <span class="about__fact-index">02</span>
+            <p class="about__fact-text">Создали собственное производство электроники из-за дефицита качественных решений</p>
+          </li>
+          <li class="about__fact">
+            <span class="about__fact-index">03</span>
+            <p class="about__fact-text">Разработали уникальные технологии производства и получили сертификаты качества</p>
+          </li>
+          <li class="about__fact">
+            <span class="about__fact-index">04</span>
+            <p class="about__fact-text">Выходим на рынок с новой эксклюзивной продукцией под брендом ПП ДЗВА</p>
+          </li>
+          <li class="about__fact">
+            <span class="about__fact-index">05</span>
+            <p class="about__fact-text">Не зависим от зарубежных поставщиков — производство и сертификация полностью в России</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ ПРЕИМУЩЕСТВА ============ -->
+    <section class="advantages" id="advantages">
+      <div class="container">
+        <div class="advantages__intro">
+          <p class="section-eyebrow">
+            <span class="section-eyebrow-mark" aria-hidden="true"></span>
+            Преимущества
+          </p>
+          <h2 class="advantages__title">Почему выбирают ПП ДЗВА</h2>
+          <p class="advantages__lead">
+            От разработки до сервисного обслуживания — полный цикл на одной производственной площадке.
+          </p>
+        </div>
+        <div class="advantages__grid">
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h13M17 7l-3-3M17 7l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 17H7M7 17l3-3M7 17l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Pin-to-pin аналоги</h3>
+            <p class="advantage-card__text">
+              Замена снятого с производства оборудования без изменения проектной документации и повторных
+              согласований.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M14.5 3.5a4 4 0 0 0-5.4 4.9L3 14.5 5.5 17l6.1-6.1a4 4 0 0 0 4.9-5.4l-2.6 2.6-2-2 2.6-2.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Исправленные ошибки оригинала</h3>
+            <p class="advantage-card__text">
+              Учли конструктивные недостатки оригинальных решений и внесли доработки в схемотехнику и корпус.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect x="13" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <path d="M17 13v8M13 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Расширенный функционал</h3>
+            <p class="advantage-card__text">
+              Наши блоки получают возможности, которых не было в исходном оборудовании — дополнительная диагностика и защита.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 8l9-4 9 4-9 4-9-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M3 8v8l9 4 9-4V8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 12v8" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Быстрая поставка</h3>
+            <p class="advantage-card__text">
+              Складские позиции по ключевым моделям — без ожидания производства месяцами.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 13v-2a8 8 0 0 1 16 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <path d="M20 19v1a3 3 0 0 1-3 3h-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Техническая поддержка</h3>
+            <p class="advantage-card__text">
+              Инженерное сопровождение на этапе подбора, интеграции и монтажа оборудования.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="10" r="6" stroke="currentColor" stroke-width="1.5" />
+                <path d="M9.5 10l1.5 1.5 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 15.5L7 21l5-2 5 2-2-5.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Гарантия и сервис</h3>
+            <p class="advantage-card__text">
+              Гарантийное и постгарантийное обслуживание собственными силами, без посредников.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Общий футер — переносится без изменений на все страницы -->
+  <footer class="site-footer" id="contacts">
+    <div class="container site-footer__grid">
+      <nav class="site-footer__nav">
+        <p class="site-footer__heading">Навигация</p>
+        <ul class="site-footer__nav-list">
+          <li><a href="index.html#hero" class="site-footer__link">Главная</a></li>
+          <li><a href="index.html#products" class="site-footer__link">Продукция</a></li>
+          <li><a href="index.html#about" class="site-footer__link">О компании</a></li>
+          <li><a href="analogs.html" class="site-footer__link">Аналоги</a></li>
+          <li><a href="index.html#advantages" class="site-footer__link">Преимущества</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contacts">
+        <p class="site-footer__heading">Контактная информация</p>
+        <p class="site-footer__legal">Производственное Предприятие&nbsp;ДЗВА</p>
+        <a href="tel:+79119688528" class="site-footer__phone">+7 (911) 968-85-28</a>
+        <a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="site-footer__mail">MANAGER@PPDZVA.RU</a>
+        <div class="site-footer__icons">
+          <a href="tel:+79119688528" aria-label="Позвонить"><img src="img/icons/phone.svg" alt="" /></a>
+          <a href="tg://resolve?domain=Ligilement" aria-label="Telegram"><img src="img/icons/telegram.svg" alt="" /></a>
+          <a href="https://wa.me/79119688528" aria-label="WhatsApp"><img src="img/icons/whatsapp.svg" alt="" /></a>
+        </div>
+      </div>
+      <div class="site-footer__cta">
+        <button class="btn btn--gold" type="button" data-popup-open>Оставить заявку</button>
+      </div>
+      <div class="site-footer__bottom">© 2026 Производственное Предприятие&nbsp;ДЗВА. Все права защищены.</div>
+    </div>
+  </footer>
+
+  <!-- TODO: заменить 12345678 на реальный номер счётчика Яндекс.Метрики (см. js/analytics.js) -->
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/12345678" style="position: absolute; left: -9999px" alt="" /></div>
+  </noscript>
+
+  <script src="js/components/burger-menu.js"></script>
+  <script src="js/components/popup.js"></script>
+  <script src="js/components/product-search.js"></script>
+  <script src="js/components/gallery.js"></script>
+  <script src="js/components/spec-table.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

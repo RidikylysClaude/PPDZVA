@@ -1,49 +1,218 @@
+/* Self-hosted шрифты — без зависимости от Google Fonts CDN на проде.
+   Каждый вес разбит на latin/cyrillic по unicode-range, чтобы браузер грузил
+   только нужный подкомплект глифов. */
+
+/* ---------- Unbounded (заголовки) ---------- */
 @font-face {
-  font-family: "Montserrat";
+  font-family: "Unbounded";
   font-display: swap;
-  src: local("O"), url("../fonts/MontserratBold.woff") format("woff"), url("../fonts/MontserratBold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat";
-  font-display: swap;
-  src: local("O"), url("../fonts/MontserratSemiBold.woff") format("woff"), url("../fonts/MontserratSemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat";
-  font-display: swap;
-  src: local("O"), url("../fonts/MontserratRegular.woff") format("woff"), url("../fonts/MontserratRegular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Roboto";
-  font-display: swap;
-  src: local("O"), url("../fonts/Roboto-Medium.woff") format("woff"), url("../fonts/Roboto-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
+  src: url("../fonts/Unbounded-Medium-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Unbounded";
   font-display: swap;
-  src: local("O"), url("../fonts/Roboto-Bold.woff") format("woff"), url("../fonts/Roboto-Bold.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/Unbounded-Medium-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Unbounded";
+  font-display: swap;
   font-weight: 600;
   font-style: normal;
+  src: url("../fonts/Unbounded-SemiBold-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Unbounded";
   font-display: swap;
-  src: local("O"), url("../fonts/Roboto-Light.woff") format("woff"), url("../fonts/Roboto-Light.woff2") format("woff2");
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
+  src: url("../fonts/Unbounded-SemiBold-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
-  font-family: "Chocolate Classical Sans";
+  font-family: "Unbounded";
   font-display: swap;
-  src: local("O"), url("../fonts/ChocolateClassicalSans-Regular.woff") format("woff"), url("../fonts/ChocolateClassicalSans-Regular.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/Unbounded-Bold-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Unbounded";
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/Unbounded-Bold-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Unbounded";
+  font-display: swap;
+  font-weight: 800;
+  font-style: normal;
+  src: url("../fonts/Unbounded-ExtraBold-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Unbounded";
+  font-display: swap;
+  font-weight: 800;
+  font-style: normal;
+  src: url("../fonts/Unbounded-ExtraBold-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+  src: url("../fonts/Unbounded-ExtraBold-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Unbounded";
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+  src: url("../fonts/Unbounded-ExtraBold-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* ---------- Inter (текст) ---------- */
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
   font-weight: 400;
   font-style: normal;
+  src: url("../fonts/Inter-Regular-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/Inter-Regular-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/Inter-Medium-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/Inter-Medium-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+  src: url("../fonts/Inter-SemiBold-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+  src: url("../fonts/Inter-SemiBold-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/Inter-Bold-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/Inter-Bold-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* ---------- JetBrains Mono (коды моделей, характеристики, цифры) ---------- */
+@font-face {
+  font-family: "JetBrains Mono";
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/JetBrainsMono-Regular-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/JetBrainsMono-Regular-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/JetBrainsMono-Medium-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/JetBrainsMono-Medium-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+  src: url("../fonts/JetBrainsMono-SemiBold-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+  src: url("../fonts/JetBrainsMono-SemiBold-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/JetBrainsMono-Bold-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/JetBrainsMono-Bold-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
