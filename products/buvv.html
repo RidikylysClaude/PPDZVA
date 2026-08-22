@@ -45,6 +45,37 @@
     <button class="btn btn--outline popup__ok" type="button" data-popup-close>Хорошо</button>
   </div>
 
+  <!-- Лайтбокс галереи товара — список слайдов строится в js/components/lightbox.js
+       из миниатюр [data-gallery-thumb] ниже, здесь только каркас. -->
+  <div class="overlay" id="lightbox-overlay"></div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения товара">
+    <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрыть">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Предыдущее изображение">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__stage">
+      <img src="" alt="" class="lightbox__image" data-lightbox-image />
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Следующее изображение">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__thumbs" data-lightbox-thumbs></div>
+  </div>
+
+  <!-- Просмотр скриншотов веб-интерфейса в полный размер — каждый скриншот самостоятелен
+       (не серия фото одного товара), поэтому без стрелок/миниатюр, см. js/components/webui-gallery.js -->
+  <div class="overlay" id="webui-lightbox-overlay"></div>
+  <div class="lightbox" id="webui-lightbox" role="dialog" aria-modal="true" aria-label="Просмотр скриншота веб-интерфейса">
+    <button class="lightbox__close" type="button" data-webui-lightbox-close aria-label="Закрыть">&times;</button>
+    <div class="lightbox__stage">
+      <img src="" alt="" class="lightbox__image" data-webui-lightbox-image />
+    </div>
+  </div>
+
   <!-- Общая шапка — переносится без изменений на все страницы (products/*.html, analogs.html) -->
   <header class="site-header">
     <div class="container site-header__row">
@@ -86,12 +117,22 @@
       <div class="container product-hero__inner">
         <div class="product-hero__visual" data-gallery>
           <div class="product-viewer__stage">
+            <button type="button" class="product-viewer__nav product-viewer__nav--prev" data-gallery-prev aria-label="Предыдущее фото">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
             <img
               src="../img/products/buvv/buvv1.jpg"
               alt="БУВВ-1 (BU-220-05A) — вид сверху"
               class="product-viewer__main"
               data-gallery-main
             />
+            <button type="button" class="product-viewer__nav product-viewer__nav--next" data-gallery-next aria-label="Следующее фото">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
           </div>
           <div class="product-viewer__thumbs" data-gallery-thumbs>
             <button
@@ -143,11 +184,13 @@
         </div>
 
         <div class="product-hero__info">
-          <p class="section-eyebrow">
-            <span class="section-eyebrow-mark" aria-hidden="true"></span>
-            Готовая продукция
-          </p>
-          <h1 class="product-hero__title">БУВВ-1&nbsp;<span class="product-hero__code">(BU-220-05A)</span></h1>
+          <div class="product-hero__heading">
+            <p class="section-eyebrow">
+              <span class="section-eyebrow-mark" aria-hidden="true"></span>
+              Готовая продукция
+            </p>
+            <h1 class="product-hero__title">БУВВ-1 <span class="product-hero__code">(BU-220-05A)</span></h1>
+          </div>
 
           <div class="product-hero__replaces">
             <span class="badge badge--analog">Аналог BU/TEL-220-05A</span>
@@ -158,8 +201,8 @@
           </div>
 
           <p class="product-hero__desc">
-            Блок управления БУВВ-1 (BU-220-05A) предназначен для управления вакуумным выключателем серии ВВ/TEL-6(10)
-            и применяется совместно с блоком питания БПВВ-1 (BP-220-02A).
+            Блок управления БУВВ-1 (BU-220-05A) предназначен для управления вакуумным выключателем серии <span class="nowrap">ВВ/TEL-6(10)</span>
+            и применяется совместно с блоком питания <a href="bpvv.html" class="inline-link">БПВВ-1 (BP-220-02A)</a>.
           </p>
 
           <div class="product-hero__actions">
@@ -184,48 +227,43 @@
           <div class="advantage-card">
             <div class="advantage-card__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 14V5a2 2 0 1 0-4 0v9a4 4 0 1 0 4 0Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                <path d="M16 6l2 2 2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4 7h10M17 7h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="14" cy="7" r="2.2" stroke="currentColor" stroke-width="1.5" />
+                <path d="M4 17h3M10 17h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="7" cy="17" r="2.2" stroke="currentColor" stroke-width="1.5" />
               </svg>
             </div>
-            <h3 class="advantage-card__title">Уменьшенный нагрев</h3>
+            <h3 class="advantage-card__title">Адаптивная подстройка под ВВ</h3>
             <p class="advantage-card__text">
-              Нагрев блока снижен на 15&nbsp;°C — увеличенный срок службы и более надёжная работа.
+              Блок автоматически подбирает время включения и отключения под соленоид конкретного вакуумного
+              выключателя — точная работа без ручной калибровки на объекте.
             </p>
           </div>
           <div class="advantage-card">
             <div class="advantage-card__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="10" cy="10" r="6.5" stroke="currentColor" stroke-width="1.5" />
+                <path d="M7.5 10l1.7 1.7L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14.8 14.8L19.5 19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
               </svg>
             </div>
-            <h3 class="advantage-card__title">Стабильное напряжение</h3>
+            <h3 class="advantage-card__title">Диагностика в реальном времени</h3>
             <p class="advantage-card__text">
-              Выходное напряжение 230&nbsp;±&nbsp;5&nbsp;В — стабильная работа блока управления.
+              Отслеживает обрыв цепи, короткое замыкание и перегрев блока — неисправность видна раньше, чем
+              приводит к отказу выключателя.
             </p>
           </div>
           <div class="advantage-card">
             <div class="advantage-card__icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M7 9a3 3 0 1 0 0 6c2 0 3.5-2 5-4s3-4 5-4a3 3 0 1 1 0 6c-2 0-3.5-2-5-4s-3-4-5-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 2.5l7 2.8v6c0 5-3.5 8.3-7 9.7-3.5-1.4-7-4.7-7-9.7v-6l7-2.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M13 7l-4 6h3l-1 5 4-6h-3l1-5Z" fill="currentColor" />
               </svg>
             </div>
-            <h3 class="advantage-card__title">Неограниченное время работы</h3>
+            <h3 class="advantage-card__title">Токовая защита соленоида</h3>
             <p class="advantage-card__text">
-              Работа от вспомогательного источника питания не ограничена по времени — бесперебойная работа системы.
-            </p>
-          </div>
-          <div class="advantage-card">
-            <div class="advantage-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M4 15a8 8 0 1 1 16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                <path d="M12 15l4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                <circle cx="12" cy="15" r="1" fill="currentColor" />
-              </svg>
-            </div>
-            <h3 class="advantage-card__title">Широкий диапазон напряжения</h3>
-            <p class="advantage-card__text">
-              Питание от вспомогательного источника 11–30&nbsp;В — гибкость при проектировании схемы.
+              Аппаратная и программная защита по току, потребляемому соленоидом, — двойной контур защищает
+              электромагнит от перегрузки.
             </p>
           </div>
           <div class="advantage-card">
@@ -235,9 +273,25 @@
                 <path d="M20 12a8 8 0 0 1-14 5m-2 2v-5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </div>
-            <h3 class="advantage-card__title">Непрерывность включения</h3>
+            <h3 class="advantage-card__title">Быстрый повторный цикл включения</h3>
             <p class="advantage-card__text">
-              Частое включение/отключение блока питания не требует паузы — ускоряет работу.
+              Периодичность включения ВВ/TEL при совместной работе с БУВВ-1 — менее 2,5&nbsp;секунды: блок готов к
+              следующей коммутации практически сразу.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 8.5a15 15 0 0 1 18 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M6.5 12a10 10 0 0 1 11 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M9.5 15.5a5 5 0 0 1 5 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="12" cy="19" r="1.2" fill="currentColor" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Wi-Fi веб-интерфейс</h3>
+            <p class="advantage-card__text">
+              В каждый БУВВ-1 встроен web-интерфейс с беспроводным доступом по Wi-Fi — состояние, история и журнал
+              событий прямо на объекте, без дополнительного оборудования (см. скриншоты ниже).
             </p>
           </div>
           <div class="advantage-card">
@@ -250,9 +304,126 @@
             </div>
             <h3 class="advantage-card__title">Pin-to-pin совместимость</h3>
             <p class="advantage-card__text">
-              Совместим с блоком питания БПВВ-1 (BP/TEL-220-02A) без изменения проектной документации.
+              Прямая замена блока управления BU/TEL-220-05A — интеграция без изменения проектной документации и
+              повторных согласований.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WI-FI ВЕБ-ИНТЕРФЕЙС ============ -->
+    <section class="web-ui" id="web-ui">
+      <div class="container">
+        <div class="web-ui__intro">
+          <p class="section-eyebrow">
+            <span class="section-eyebrow-mark" aria-hidden="true"></span>
+            Wi-Fi веб-интерфейс
+          </p>
+          <h2 class="web-ui__title">Полная диагностика без ноутбука и спец. ПО</h2>
+          <p class="web-ui__lead">
+            БУВВ-1 создаёт собственную Wi-Fi-точку доступа со встроенным веб-интерфейсом — подойдите к шкафу,
+            откройте браузер на телефоне и получите состояние, историю и журнал событий в реальном времени, без
+            дополнительного ПО и оборудования.
+          </p>
+        </div>
+
+        <div class="web-ui__grid">
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot"
+              data-webui-shot
+              data-full="../img/products/buvv/webui/web-status.webp"
+              data-alt="Веб-интерфейс БУВВ-1 — вкладка «Состояние»: токи фаз, напряжения и температура в реальном времени"
+            >
+              <img src="../img/products/buvv/webui/web-status.webp" alt="Вкладка «Состояние» веб-интерфейса БУВВ-1" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">Состояние</p>
+              <p class="web-ui__card-text">Токи фаз, входное напряжение, температура, состояние доп. контактов — в реальном времени</p>
+            </figcaption>
+          </figure>
+
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot"
+              data-webui-shot
+              data-full="../img/products/buvv/webui/web-log.webp"
+              data-alt="Веб-интерфейс БУВВ-1 — журнал событий с точными метками времени"
+            >
+              <img src="../img/products/buvv/webui/web-log.webp" alt="Вкладка «Журнал событий» веб-интерфейса БУВВ-1" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">Журнал событий</p>
+              <p class="web-ui__card-text">32&nbsp;000 записей с выборкой по дате — каждый обрыв и КЗ зафиксированы с точным временем</p>
+            </figcaption>
+          </figure>
+
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot"
+              data-webui-shot
+              data-full="../img/products/buvv/webui/web-history.webp"
+              data-alt="Веб-интерфейс БУВВ-1 — история токов, напряжения и температуры за 4 суток"
+            >
+              <img src="../img/products/buvv/webui/web-history.webp" alt="Вкладка «История» веб-интерфейса БУВВ-1" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">История</p>
+              <p class="web-ui__card-text">Графики токов фаз, напряжения и температуры за последние 4&nbsp;суток</p>
+            </figcaption>
+          </figure>
+
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot"
+              data-webui-shot
+              data-full="../img/products/buvv/webui/web-diagnostics.webp"
+              data-alt="Веб-интерфейс БУВВ-1 — переходные процессы тока и напряжения электромагнита"
+            >
+              <img src="../img/products/buvv/webui/web-diagnostics.webp" alt="Вкладка «Диагностика» веб-интерфейса БУВВ-1" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">Диагностика</p>
+              <p class="web-ui__card-text">Переходные процессы электромагнита при включении и отключении ВВ — до миллисекунды</p>
+            </figcaption>
+          </figure>
+
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot"
+              data-webui-shot
+              data-full="../img/products/buvv/webui/web-support.webp"
+              data-alt="Веб-интерфейс БУВВ-1 — раздел технической поддержки с документацией"
+            >
+              <img src="../img/products/buvv/webui/web-support.webp" alt="Вкладка «Тех. поддержка» веб-интерфейса БУВВ-1" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">Техподдержка</p>
+              <p class="web-ui__card-text">Руководство по эксплуатации и контакты разработчиков — в один клик, без поиска на сайте</p>
+            </figcaption>
+          </figure>
+
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot"
+              data-webui-shot
+              data-full="../img/products/buvv/webui/web-settings.webp"
+              data-alt="Веб-интерфейс БУВВ-1 — панель настройки токовой защиты"
+            >
+              <img src="../img/products/buvv/webui/web-settings.webp" alt="Панель «Настройки защиты» веб-интерфейса БУВВ-1" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">Настройки защиты</p>
+              <p class="web-ui__card-text">Номинальный ток, время и ток срабатывания защиты соленоида — настраивается прямо в браузере, без специального ПО</p>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -276,109 +447,105 @@
             </thead>
             <tbody>
               <tr class="spec-table__row">
-                <td>Номинальное напряжение БП, постоянное</td>
-                <td>= 110 / 220 В</td>
+                <td>Номинальное постоянное напряжение БУ</td>
+                <td>= 230 В</td>
               </tr>
               <tr class="spec-table__row">
-                <td>Номинальное напряжение БП, переменное</td>
-                <td>~ 100 / 127 / 220 В</td>
+                <td>Диапазон допустимых напряжений питания БУ</td>
+                <td>215…245 В</td>
               </tr>
               <tr class="spec-table__row">
-                <td>Выходное напряжение БП, постоянное</td>
-                <td>= 230 ± 5 В</td>
+                <td>Собственное время включения выключателя БУ от момента замыкания цепи управления включением, не более</td>
+                <td>100 мс</td>
               </tr>
               <tr class="spec-table__row">
-                <td>Диапазон напряжений от вспомогательного источника</td>
-                <td>= 11–30 В</td>
+                <td>Собственное время отключения выключателя БУ от момента замыкания цепи управления отключением, не более</td>
+                <td>50 мс</td>
               </tr>
               <tr class="spec-table__row">
-                <td>Ток короткого замыкания выхода, не более</td>
-                <td>0,5 А</td>
+                <td>Минимально возможная продолжительность цикла ВО (по главным контактам ВВ/TEL), не более</td>
+                <td>170 мс</td>
               </tr>
               <tr class="spec-table__row">
-                <td>Время установления выходного напряжения (сеть 220 В), не более</td>
-                <td>4 с</td>
+                <td>Время готовности БУ к включению вакуумного выключателя от момента подачи номинального напряжения на БП, не более</td>
+                <td>5 с</td>
               </tr>
               <tr class="spec-table__row">
-                <td>Масса блока, не более</td>
+                <td>Масса БУ, не более</td>
                 <td>2 кг</td>
               </tr>
               <tr class="spec-table__row">
-                <td>Габариты блока</td>
+                <td>Габариты БУ, не более</td>
                 <td>200 × 120 × 60 мм</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Диапазон допустимых напряжений питания БП, постоянное</td>
-                <td>= 75–300 В</td>
+                <td>Ток потребителей БУ по цепи питания при 230 В в режиме ожидания включения (выключатель отключён, цепи управления разомкнуты), не более</td>
+                <td>4,0 мА</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Диапазон допустимых напряжений питания БП, переменное</td>
-                <td>~ 75–260 В</td>
+                <td>Ток потребителей БУ по цепи питания при 230 В в режиме ожидания отключения (выключатель включён, цепи управления разомкнуты), не более</td>
+                <td>4,0 мА</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Напряжение отключения БП с последующим восстановлением работы, амплитудное, не менее</td>
-                <td>440 В</td>
+                <td>Ток потребителей БУ по цепи питания при 230 В в режиме блокировки от повторных включений, не более</td>
+                <td>5,0 мА</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Мощность, потребляемая БП по цепи питания при нагрузке на БУВВ-1, в режиме установления, не более</td>
-                <td>120 ВА</td>
+                <td>Ток потребителей БУ по цепи питания при 230 В в процессе включения выключателя — среднее/пиковое, не более</td>
+                <td>9/20 мА</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Мощность, потребляемая БП по цепи питания при нагрузке на БУВВ-1, в установившемся режиме, не более</td>
-                <td>10 ВА</td>
+                <td>Максимальный ток в цепи управления включением при напряжении питания 230 В, не более</td>
+                <td>15 мА</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Мощность, потребляемая БП от вспомогательного источника при нагрузке на БУВВ-1, в режиме установления, не более</td>
-                <td>25 ВА</td>
+                <td>Максимальный ток в цепи управления отключением при напряжении питания 230 В, не более</td>
+                <td>15 мА</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Мощность, потребляемая БП от вспомогательного источника при нагрузке на БУВВ-1, в установившемся режиме, не более</td>
-                <td>8 ВА</td>
+                <td>Собственное время отключения выключателя БУ от токовых цепей (25 °C) при токе фазы 5 А, не более</td>
+                <td>0,5 с</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Допустимое сопротивление нагрузки БП при питании от сети 220 В, не менее</td>
-                <td>3 кОм</td>
+                <td>Собственное время отключения выключателя БУ от токовых цепей (25 °C) при токе фазы 10 А, не более</td>
+                <td>0,2 с</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Допустимое сопротивление нагрузки БП при питании от вспомогательного источника, не менее</td>
-                <td>15 кОм</td>
+                <td>Собственное время отключения выключателя БУ от токовых цепей (25 °C) при токе фазы 20 А, не более</td>
+                <td>0,1 с</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Время установления выходного напряжения (вспомогательный источник), не более</td>
-                <td>50 с</td>
+                <td>Полное входное сопротивление токовых цепей одной из фаз в режиме ожидания отключения, не более</td>
+                <td>0,09 Ом</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Периодичность включения ВВ/TEL при совместной работе с БУВВ-1, менее</td>
-                <td>2,5 с</td>
+                <td>Время сохранения способности БУ к отключению выключателя от момента пропадания напряжения на входе БП после включения выключателя (БП разряжен), не менее</td>
+                <td>10 с</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Уровень срабатывания реле сигнализации превышения выходного напряжения</td>
-                <td>= 265 ± 15 В</td>
+                <td>Время сохранения способности БУ к отключению выключателя от момента пропадания напряжения на входе БП, когда БП заряжен (готов к включению), не менее</td>
+                <td>60 с</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Уровень срабатывания реле сигнализации принижения выходного напряжения</td>
-                <td>= 205 ± 10 В</td>
+                <td>Время готовности БУ к отключению вакуумного выключателя от момента подачи номинального напряжения на БП, не более</td>
+                <td>10 с</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Задержка срабатывания реле при превышении уровня, не более</td>
-                <td>10 мс</td>
+                <td>Минимально необходимое время замкнутого состояния цепи управления отключением для отключения вакуумного выключателя, не менее</td>
+                <td>20 мс</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Задержка срабатывания реле при принижении уровня, не менее</td>
-                <td>5 с</td>
+                <td>Электропрочность изоляции БУ между электрически соединёнными цепями и корпусом (ГОСТ Р 50514-93, МЭК 255-5-77) в течение 1 мин, 50 Гц</td>
+                <td>2 кВ</td>
               </tr>
               <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Коммутируемый постоянный ток контактов реле (250 В, 1 мс), не более</td>
-                <td>0,12 А</td>
-              </tr>
-              <tr class="spec-table__row spec-table__row--extra" hidden>
-                <td>Коммутируемый переменный ток контактов реле (250 В, cos φ = 0,3), не более</td>
-                <td>2 А</td>
+                <td>Импульсная электропрочность изоляции БУ между электрически соединёнными цепями и корпусом (1,2/50 мкс)</td>
+                <td>5 кВ</td>
               </tr>
             </tbody>
           </table>
           <button class="spec-table__toggle" type="button" data-spec-toggle aria-expanded="false" data-label-collapse="Свернуть характеристики">
-            <span data-spec-toggle-label>Показать все характеристики (25)</span>
+            <span data-spec-toggle-label>Показать все характеристики (24)</span>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -428,7 +595,10 @@
   <script src="../js/components/popup.js"></script>
   <script src="../js/components/product-search.js"></script>
   <script src="../js/components/gallery.js"></script>
+  <script src="../js/components/lightbox.js"></script>
+  <script src="../js/components/webui-gallery.js"></script>
   <script src="../js/components/spec-table.js"></script>
+  <script src="../js/components/nav-active.js"></script>
   <script src="../js/analytics.js"></script>
   <script src="../js/main.js"></script>
 </body>

@@ -257,6 +257,11 @@
 .badge {
   display: inline-flex;
   align-items: center;
+  /* Разрешаем переносить сам код (.badge__code) на вторую строку целиком при
+     нехватке места — но не ломать его посреди дефиса (см. .badge__code ниже).
+     Безусловный white-space:nowrap на всём бейдже вызывал горизонтальный
+     overflow страницы на узких карточках (3 колонки, ~900–1000px). */
+  flex-wrap: wrap;
   gap: var(--space-1);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
@@ -264,6 +269,24 @@
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+.badge__code {
+  /* Без nowrap браузер переносит строку по дефису внутри кода модели (например
+     "BU/TEL-220-05A" ломается на "05A"), из-за чего пилюля теряет форму. */
+  white-space: nowrap;
+}
+
+/* Та же проблема повторяется у нижней границы 2-колоночной раскладки
+   (560–900px, 3-колоночная — с 901px до 1200px, см. верхний диапазон выше):
+   карточка узкая, "Аналог" и .badge__code не помещаются в одну строку и
+   переносятся (flex-wrap выше) — без centering короткая строка "Аналог"
+   висит по левому краю пилюли, а не по центру над кодом. Ниже 560px карточки
+   на всю ширину экрана — места достаточно, перенос там не возникает. */
+@media (min-width: 561px) and (max-width: 1200px) {
+  .badge {
+    justify-content: center;
+  }
 }
 
 .badge--analog {
@@ -480,18 +503,174 @@
   color: var(--color-text-muted);
 }
 
+/* ============ Wi-Fi веб-интерфейс (скриншоты, карточка БУВВ-1) ============ */
+.web-ui {
+  padding-block: var(--space-9);
+}
+
+.web-ui__intro {
+  max-width: 60ch;
+  margin-bottom: var(--space-8);
+}
+
+.web-ui__title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-4);
+}
+
+.web-ui__lead {
+  font-size: var(--fs-lead);
+  color: var(--color-text-muted);
+}
+
+.web-ui__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .web-ui__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .web-ui__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.web-ui__card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Единый формат кадра для всех скриншотов, чтобы карточки были одного размера,
+   несмотря на разное соотношение сторон исходников — object-position: top
+   сохраняет самое важное (шапку вкладки и начало графика/таблицы). */
+.web-ui__shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  /* Без этого флекс-контейнер .web-ui__card растягивает кадр под естественную
+     высоту картинки (min-height: auto по умолчанию для флекс-детей), если она
+     "выше", чем даёт aspect-ratio — карточки становятся разной высоты. */
+  min-height: 0;
+  padding: 0;
+  background: var(--color-surface-alt);
+  cursor: zoom-in;
+}
+
+.web-ui__shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.web-ui__shot:hover img {
+  opacity: 0.85;
+}
+
+.web-ui__card figcaption {
+  flex: 1;
+  padding: var(--space-4);
+}
+
+.web-ui__card-title {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.web-ui__card-text {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
 /* ============ Галерея товара (fallback для <model-viewer>, см. шаг 7 ТЗ) ============ */
 .product-viewer__stage {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 4 / 3;
-  padding: var(--space-6);
+  width: 450px;
+  /* 450x544 + отступ снизу 16px + миниатюры 90px = 650px, высота .product-hero__inner (product.css) */
+  height: 544px;
+  /* space-5, а не space-4 — стрелки перелистывания (width 40px, inset space-3)
+     иначе заезжают на фото поверх его края. */
+  padding: var(--space-5);
   margin-bottom: var(--space-4);
   background: var(--color-surface-alt);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
+}
+
+/* Стрелки перелистывания фото — ненавязчивые, ярче проявляются при наведении;
+   визуальный язык (кружок, полупрозрачный тёмный фон) совпадает со значком лупы. */
+.product-viewer__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(20, 23, 26, 0.4);
+  color: var(--color-surface);
+  opacity: 0.6;
+  transform: translateY(-50%);
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.product-viewer__nav:hover {
+  opacity: 1;
+  background-color: rgba(20, 23, 26, 0.65);
+}
+
+.product-viewer__nav--prev {
+  left: var(--space-3);
+}
+
+.product-viewer__nav--next {
+  right: var(--space-3);
+}
+
+.product-viewer__stage--zoomable {
+  cursor: zoom-in;
+}
+
+/* Значок лупы — подсказка, что по клику открывается лайтбокс; появляется при
+   наведении, чтобы не загромождать карточку в состоянии покоя. */
+.product-viewer__stage--zoomable::after {
+  content: "";
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(20, 23, 26, 0.55);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23f2f3f5' stroke-width='1.5'%3E%3Ccircle cx='7' cy='7' r='4.5'/%3E%3Cpath d='M10.5 10.5L14 14' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.product-viewer__stage--zoomable:hover::after {
+  opacity: 1;
 }
 
 .product-viewer__main {
@@ -502,13 +681,17 @@
 
 .product-viewer__thumbs {
   display: flex;
+  width: 420px;
+  height: 90px;
   gap: var(--space-3);
 }
 
 .product-viewer__thumb {
   flex: 1;
-  aspect-ratio: 1;
-  padding: 0;
+  height: 80px;
+  align-self: center;
+  padding: var(--space-1);
+  background: var(--color-surface-alt);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -520,7 +703,8 @@
 .product-viewer__thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* contain, а не cover — товар должен помещаться в миниатюру целиком, без обрезки краёв */
+  object-fit: contain;
 }
 
 .product-viewer__thumb:hover {
@@ -726,4 +910,142 @@
 
 .popup__ok {
   width: 100%;
+}
+
+/* ============ Лайтбокс галереи товара ============ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-popup);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-standard), visibility var(--duration-base);
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(1040px, 92vw);
+  height: min(700px, 85vh);
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(20, 23, 26, 0.55);
+  color: var(--color-text-on-dark);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.lightbox__close:hover {
+  background: rgba(20, 23, 26, 0.8);
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(20, 23, 26, 0.55);
+  color: var(--color-text-on-dark);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.lightbox__nav:hover {
+  background: rgba(20, 23, 26, 0.8);
+}
+
+.lightbox__nav--prev {
+  left: var(--space-4);
+}
+
+.lightbox__nav--next {
+  right: var(--space-4);
+}
+
+.lightbox__thumbs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  max-width: min(1040px, 92vw);
+  overflow-x: auto;
+}
+
+.lightbox__thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 1.5px solid rgba(242, 243, 245, 0.3);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  opacity: 0.6;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.lightbox__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lightbox__thumb:hover {
+  opacity: 0.9;
+}
+
+.lightbox__thumb--active {
+  opacity: 1;
+  border-color: var(--color-signal-amber-400);
+}
+
+@media (max-width: 640px) {
+  .lightbox {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .lightbox__nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .lightbox__close {
+    top: var(--space-3);
+    right: var(--space-3);
+  }
 }

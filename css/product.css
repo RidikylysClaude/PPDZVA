@@ -34,15 +34,29 @@
 
 .product-hero__inner {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: var(--space-8);
-  align-items: start;
+  grid-template-columns: 450px minmax(0, 1fr);
+  gap: var(--space-6);
+  height: 650px;
+}
+
+.product-hero__visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Равномерно распределяет блоки по фиксированной высоте колонки. */
+.product-hero__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  height: 600px;
 }
 
 .product-hero__title {
   font-size: var(--fs-h1);
   letter-spacing: -0.01em;
-  margin-bottom: var(--space-4);
 }
 
 .product-hero__code {
@@ -54,7 +68,6 @@
 
 .product-hero__replaces {
   padding: var(--space-5);
-  margin-bottom: var(--space-5);
   background: var(--color-surface-alt);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -63,12 +76,27 @@
 .product-hero__replaces-text {
   margin-top: var(--space-3);
   color: var(--color-text-muted);
+  text-align: justify;
 }
 
 .product-hero__desc {
   font-size: var(--fs-lead);
   color: var(--color-text-muted);
-  margin-bottom: var(--space-6);
+  text-align: justify;
+}
+
+/* Ссылка на смежный товар прямо в тексте описания (например, БУВВ-1 → БПВВ-1) */
+.inline-link {
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-standard);
+}
+
+.inline-link:hover {
+  text-decoration-color: currentColor;
 }
 
 .product-hero__actions {
@@ -77,9 +105,73 @@
   gap: var(--space-4);
 }
 
+/* Ниже 1200px при фиксированной ширине фото (450px) правая колонка становится
+   узкой, текст переносится сильнее, чем рассчитано на 600px высоты, и вылезает
+   за рамку. Снимаем фиксированную высоту заранее — колонки остаются вдвоём
+   (см. брейкпоинт 900px ниже), просто подстраиваются под контент. */
+@media (max-width: 1200px) {
+  .product-hero__inner {
+    height: auto;
+  }
+
+  .product-hero__info {
+    height: auto;
+  }
+}
+
+/* В узкой правой колонке (450px фото + текст) кнопки не помещаются в один ряд
+   и flex-wrap переносит вторую на новую строку её собственной, более узкой
+   ширины — выглядит неровно. На 900px раскладка уже переходит в одну колонку
+   (там ширины хватает), так что диапазон правки — именно узкий 2-колоночный
+   промежуток. */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .product-hero__actions {
+    flex-direction: column;
+  }
+
+  .product-hero__actions .btn {
+    width: 100%;
+  }
+}
+
+/* На 900px правая колонка уже слишком узкая для двух колонок при разумной
+   ширине фото — переносим блок описания под фото. */
 @media (max-width: 900px) {
   .product-hero__inner {
     grid-template-columns: 1fr;
+  }
+
+  .product-hero__visual {
+    align-items: center;
+  }
+
+  /* width:100% без потолка раздувал блок почти на всю ширину контейнера —
+     при aspect-ratio 3/4 высота улетала за 1500px. Ограничиваем исходным
+     десктопным размером, ужимаем только на узких экранах. */
+  .product-viewer__stage {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .product-viewer__thumbs {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  .product-viewer__thumb {
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  /* Одна колонка — ширины снова хватает, чтобы кнопки встали в ряд, но своей
+     естественной (разной) шириной. flex: 1 1 0 растягивает их поровну на всю
+     ширину блока, пока текст (white-space: nowrap у .btn) не задаёт нижнюю
+     границу — тогда flex-wrap уводит каждую на свою строку на всю ширину. */
+  .product-hero__actions .btn {
+    flex: 1 1 0;
   }
 }
 

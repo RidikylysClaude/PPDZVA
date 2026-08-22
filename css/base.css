@@ -88,6 +88,12 @@ section[id] {
   outline-offset: 2px;
 }
 
+/* Утилита: для составных кодов/обозначений без пробелов (например "ВВ/TEL-6(10)"),
+   у которых браузер иначе переносит строку посреди дефиса. */
+.nowrap {
+  white-space: nowrap;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
