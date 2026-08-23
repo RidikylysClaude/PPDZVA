@@ -353,6 +353,10 @@
   background: var(--color-surface-alt-2);
   color: var(--color-text-muted);
   border: 1px solid var(--color-border);
+  /* В отличие от badge--analog у этого варианта нет .badge__code, переносить
+     нечего — общий .badge flex-wrap здесь только ломает "В разработке" на
+     две строки в узкой колонке "Статус" таблицы аналогов. */
+  white-space: nowrap;
 }
 
 /* ============ Footer ============ */
