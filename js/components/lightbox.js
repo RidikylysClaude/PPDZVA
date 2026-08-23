@@ -81,8 +81,18 @@ window.DZVA.initLightbox = function initLightbox() {
   });
 
   lightbox.querySelectorAll("[data-lightbox-close]").forEach((el) => el.addEventListener("click", close));
-  lightbox.querySelector("[data-lightbox-prev]").addEventListener("click", () => show(currentIndex - 1));
-  lightbox.querySelector("[data-lightbox-next]").addEventListener("click", () => show(currentIndex + 1));
+  const lbPrev = lightbox.querySelector("[data-lightbox-prev]");
+  const lbNext = lightbox.querySelector("[data-lightbox-next]");
+  // При одном фото (см. products/digmat.html) листать нечего — прячем стрелки
+  // и миниатюры, как gallery.js уже делает для стрелок в рамке фото.
+  if (images.length < 2) {
+    lbPrev.hidden = true;
+    lbNext.hidden = true;
+    thumbsWrap.hidden = true;
+  } else {
+    lbPrev.addEventListener("click", () => show(currentIndex - 1));
+    lbNext.addEventListener("click", () => show(currentIndex + 1));
+  }
   overlay.addEventListener("click", close);
 
   // .lightbox сам по себе — fixed на весь экран поверх .overlay (см. z-index в

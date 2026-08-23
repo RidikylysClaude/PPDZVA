@@ -634,6 +634,13 @@
     background-color var(--duration-fast) var(--ease-standard);
 }
 
+/* display:flex выше перебивает нативный [hidden]{display:none} — без этого
+   правила стрелки перелистывания остаются видимыми, даже когда gallery.js
+   их прячет (для товара с одним фото, thumbs.length < 2). */
+.product-viewer__nav[hidden] {
+  display: none;
+}
+
 .product-viewer__nav:hover {
   opacity: 1;
   background-color: rgba(20, 23, 26, 0.65);
@@ -995,6 +1002,14 @@
 
 .lightbox__nav--next {
   right: var(--space-4);
+}
+
+/* display:flex выше перебивает нативный [hidden]{display:none} — без этого
+   правила стрелки/миниатюры остаются видимыми при одном фото в галерее
+   (см. lightbox.js), как и .product-viewer__nav[hidden] чуть выше по файлу. */
+.lightbox__nav[hidden],
+.lightbox__thumbs[hidden] {
+  display: none;
 }
 
 .lightbox__thumbs {
