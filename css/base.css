@@ -107,6 +107,26 @@ section[id] {
   border: 0;
 }
 
+/* Ссылка "Перейти к содержимому" — первый элемент в <body> на каждой странице,
+   позволяет клавиатурному пользователю пропустить шапку/меню (WCAG 2.4.1). */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-3);
+  z-index: var(--z-popup);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-ink-900);
+  color: var(--color-text-on-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: var(--fs-small);
+  transition: top var(--duration-fast) var(--ease-standard);
+}
+
+.skip-link:focus-visible {
+  top: var(--space-3);
+}
+
 /* --- Контейнер --- */
 .container {
   width: 100%;

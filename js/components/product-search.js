@@ -9,6 +9,7 @@ window.DZVA.initProductSearch = function initProductSearch() {
   const input = document.getElementById("product-search");
   const cards = document.querySelectorAll(".product-card");
   const emptyState = document.querySelector("[data-search-empty]");
+  const status = document.querySelector("[data-search-status]");
   if (!input || !cards.length) return;
 
   input.addEventListener("input", () => {
@@ -32,6 +33,18 @@ window.DZVA.initProductSearch = function initProductSearch() {
 
     if (emptyState) {
       emptyState.hidden = visibleCount !== 0;
+    }
+
+    // aria-live озвучивает результат фильтрации для скринридера — без него
+    // видно только визуально (WCAG 4.1.3 Status Messages). Родительный падеж
+    // ("позиций") не согласуется с числом специально — фиксированная фраза
+    // проще и понятнее, чем правильное русское склонение под любое N.
+    if (status) {
+      status.textContent = query
+        ? visibleCount === 0
+          ? "Ничего не найдено"
+          : `Найдено позиций: ${visibleCount}`
+        : "";
     }
   });
 };

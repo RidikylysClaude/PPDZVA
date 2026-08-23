@@ -10,6 +10,7 @@ window.DZVA.initAnalogsTable = function initAnalogsTable() {
   const rows = document.querySelectorAll(".analogs-table__row");
   const emptyState = document.querySelector("[data-analogs-empty]");
   const tableWrap = document.querySelector("[data-analogs-table-wrap]");
+  const status = document.querySelector("[data-analogs-status]");
   if (!input || !rows.length) return;
 
   input.addEventListener("input", () => {
@@ -24,5 +25,15 @@ window.DZVA.initAnalogsTable = function initAnalogsTable() {
 
     if (emptyState) emptyState.hidden = visibleCount !== 0;
     if (tableWrap) tableWrap.hidden = visibleCount === 0;
+
+    // См. комментарий в product-search.js — аналогичное озвучивание результата
+    // для скринридера (WCAG 4.1.3), фиксированная фраза без склонения по числу.
+    if (status) {
+      status.textContent = query
+        ? visibleCount === 0
+          ? "Ничего не найдено"
+          : `Найдено строк: ${visibleCount}`
+        : "";
+    }
   });
 };

@@ -13,19 +13,26 @@ window.DZVA.initWebUIGallery = function initWebUIGallery() {
   if (!lightbox || !overlay || !shots.length) return;
 
   const stageImg = lightbox.querySelector("[data-webui-lightbox-image]");
+  let lastFocused = null;
+  const trapTabKey = window.DZVA.trapTabKey(lightbox);
 
   function open(src, alt) {
+    lastFocused = document.activeElement;
     stageImg.src = src;
     stageImg.alt = alt;
     lightbox.classList.add("active");
     overlay.classList.add("active");
     document.body.style.overflow = "hidden";
+    lightbox.addEventListener("keydown", trapTabKey);
+    window.DZVA.focusFirst(lightbox);
   }
 
   function close() {
     lightbox.classList.remove("active");
     overlay.classList.remove("active");
     document.body.style.overflow = "";
+    lightbox.removeEventListener("keydown", trapTabKey);
+    if (lastFocused) lastFocused.focus();
   }
 
   shots.forEach((shot) => {

@@ -10,17 +10,25 @@ window.DZVA.initPopup = function initPopup() {
   const overlay = document.getElementById("overlay");
   if (!popup || !overlay) return;
 
+  let lastFocused = null;
+  const trapTabKey = window.DZVA.trapTabKey(popup);
+
   function open(event) {
     event.preventDefault();
+    lastFocused = document.activeElement;
     popup.classList.add("active");
     overlay.classList.add("active");
     document.body.style.overflow = "hidden";
+    popup.addEventListener("keydown", trapTabKey);
+    window.DZVA.focusFirst(popup);
   }
 
   function close() {
     popup.classList.remove("active");
     overlay.classList.remove("active");
     document.body.style.overflow = "";
+    popup.removeEventListener("keydown", trapTabKey);
+    if (lastFocused) lastFocused.focus();
   }
 
   // querySelectorAll, а не querySelector — на странице несколько кнопок "Оставить заявку"

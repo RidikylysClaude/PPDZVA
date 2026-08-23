@@ -163,7 +163,6 @@
 
 .analogs-search__input:focus-visible {
   border-color: var(--color-signal-amber-700);
-  outline: none;
 }
 
 .analogs-search__input::-webkit-search-cancel-button {

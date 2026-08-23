@@ -23,6 +23,8 @@ window.DZVA.initLightbox = function initLightbox() {
   const stageImg = lightbox.querySelector("[data-lightbox-image]");
   const thumbsWrap = lightbox.querySelector("[data-lightbox-thumbs]");
   let currentIndex = 0;
+  let lastFocused = null;
+  const trapTabKey = window.DZVA.trapTabKey(lightbox);
 
   const lbThumbs = images.map((img, index) => {
     const btn = document.createElement("button");
@@ -57,20 +59,36 @@ window.DZVA.initLightbox = function initLightbox() {
   }
 
   function open(index) {
+    lastFocused = document.activeElement;
     show(index);
     lightbox.classList.add("active");
     overlay.classList.add("active");
     document.body.style.overflow = "hidden";
+    lightbox.addEventListener("keydown", trapTabKey);
+    window.DZVA.focusFirst(lightbox);
   }
 
   function close() {
     lightbox.classList.remove("active");
     overlay.classList.remove("active");
     document.body.style.overflow = "";
+    lightbox.removeEventListener("keydown", trapTabKey);
+    if (lastFocused) lastFocused.focus();
   }
 
   stage.classList.add("product-viewer__stage--zoomable");
   stage.addEventListener("click", () => open(currentIndex));
+  // .product-viewer__stage — div с role="button"/tabindex в разметке (не
+  // нативная кнопка, т.к. содержит <img data-gallery-main>), поэтому Enter/Space
+  // не открывают лайтбокс сами по себе — добавляем вручную. event.target !==
+  // stage — иначе Enter/Space на вложенных кнопках "Пред./След." (свой tabindex,
+  // свой click) тоже всплывал бы сюда и лишний раз открывал лайтбокс.
+  stage.addEventListener("keydown", (event) => {
+    if (event.target !== stage) return;
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    open(currentIndex);
+  });
 
   // Клики по миниатюрам основной галереи не должны сбрасывать currentIndex
   // лайтбокса на 0 — держим его в курсе, какая миниатюра сейчас активна.
