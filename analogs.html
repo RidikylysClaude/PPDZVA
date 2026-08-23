@@ -115,27 +115,31 @@
         <!-- Схематичная диаграмма: корпуса заведомо разного размера/пропорций (габарит не
              совпадает) — общее только одинаковое количество и раскладка клемм снизу. -->
         <div class="analogs-intro__visual">
-          <svg class="analogs-diagram" viewBox="0 0 320 200" fill="none" aria-hidden="true">
-            <rect class="analogs-diagram__original" x="20" y="25" width="90" height="120" rx="6" stroke-width="2" />
-            <rect class="analogs-diagram__original" x="34" y="145" width="8" height="14" rx="1" stroke-width="1.5" />
-            <rect class="analogs-diagram__original" x="52" y="145" width="8" height="14" rx="1" stroke-width="1.5" />
-            <rect class="analogs-diagram__original" x="70" y="145" width="8" height="14" rx="1" stroke-width="1.5" />
-            <rect class="analogs-diagram__original" x="88" y="145" width="8" height="14" rx="1" stroke-width="1.5" />
+          <svg class="analogs-diagram" viewBox="0 0 360 200" fill="none" aria-hidden="true">
+            <rect class="analogs-diagram__original" x="10" y="25" width="90" height="120" rx="6" stroke-width="2" />
+            <rect class="analogs-diagram__original" x="24" y="145" width="8" height="14" rx="1" stroke-width="1.5" />
+            <rect class="analogs-diagram__original" x="42" y="145" width="8" height="14" rx="1" stroke-width="1.5" />
+            <rect class="analogs-diagram__original" x="60" y="145" width="8" height="14" rx="1" stroke-width="1.5" />
+            <rect class="analogs-diagram__original" x="78" y="145" width="8" height="14" rx="1" stroke-width="1.5" />
 
-            <rect class="analogs-diagram__ours" x="210" y="15" width="100" height="140" rx="6" stroke-width="2" />
-            <rect class="analogs-diagram__ours" x="229" y="155" width="8" height="14" rx="1" stroke-width="1.5" />
-            <rect class="analogs-diagram__ours" x="247" y="155" width="8" height="14" rx="1" stroke-width="1.5" />
-            <rect class="analogs-diagram__ours" x="265" y="155" width="8" height="14" rx="1" stroke-width="1.5" />
-            <rect class="analogs-diagram__ours" x="283" y="155" width="8" height="14" rx="1" stroke-width="1.5" />
+            <rect class="analogs-diagram__ours" x="250" y="15" width="100" height="140" rx="6" stroke-width="2" />
+            <rect class="analogs-diagram__ours" x="269" y="155" width="8" height="14" rx="1" stroke-width="1.5" />
+            <rect class="analogs-diagram__ours" x="287" y="155" width="8" height="14" rx="1" stroke-width="1.5" />
+            <rect class="analogs-diagram__ours" x="305" y="155" width="8" height="14" rx="1" stroke-width="1.5" />
+            <rect class="analogs-diagram__ours" x="323" y="155" width="8" height="14" rx="1" stroke-width="1.5" />
 
-            <line class="analogs-diagram__equals" x1="135" y1="75" x2="185" y2="75" stroke-width="6" stroke-linecap="round" />
-            <line class="analogs-diagram__equals" x1="135" y1="95" x2="185" y2="95" stroke-width="6" stroke-linecap="round" />
+            <line class="analogs-diagram__equals" x1="150" y1="75" x2="200" y2="75" stroke-width="6" stroke-linecap="round" />
+            <line class="analogs-diagram__equals" x1="150" y1="95" x2="200" y2="95" stroke-width="6" stroke-linecap="round" />
 
-            <circle class="analogs-diagram__badge-ring" cx="160" cy="45" r="15" stroke-width="2" />
-            <path class="analogs-diagram__badge-check" d="M152 45l5 5 11-12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle class="analogs-diagram__badge-ring" cx="175" cy="45" r="15" stroke-width="2" />
+            <path class="analogs-diagram__badge-check" d="M167 45l5 5 11-12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+          <!-- Пропорции колонок (90fr/150fr/100fr) — те же ширины блоков и зазор между ними,
+               что в viewBox диаграммы выше, чтобы подпись всегда центрировалась строго под
+               "своим" блоком, а не читалась одной слитной фразой. -->
           <div class="analogs-intro__visual-labels">
             <span class="analogs-intro__visual-label">Снято с производства</span>
+            <span class="analogs-intro__visual-label-spacer" aria-hidden="true"></span>
             <span class="analogs-intro__visual-label analogs-intro__visual-label--ours">ПП ДЗВА</span>
           </div>
           <p class="analogs-intro__visual-caption">
