@@ -55,7 +55,6 @@
 
 .analogs-diagram {
   width: 100%;
-  max-width: 320px;
   height: auto;
 }
 
@@ -86,7 +85,6 @@
   grid-template-columns: 90fr 150fr 100fr;
   align-items: start;
   width: 100%;
-  max-width: 320px;
   font-family: var(--font-heading);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--ls-eyebrow);
