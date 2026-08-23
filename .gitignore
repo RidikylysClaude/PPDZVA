@@ -30,3 +30,7 @@ Thumbs.db
 
 # Настройки самого VS Code
 .vscode/
+
+# Старый Prepros-тулинг — сайт пересобран как полностью статический,
+# без сборщика (см. claude_development_t_z.md, разд. 1)
+node_modules/
