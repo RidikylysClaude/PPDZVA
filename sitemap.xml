@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO: домен ещё не определён (см. og:image в <head> каждой страницы) — сейчас
-     https://ppdzva.ru как правдоподобная заглушка по e-mail manager@ppdzva.ru.
-     После публикации заменить везде разом на реальный домен и lastmod на дату релиза.
+<!-- Домен подтверждён: ppdzva.ru. После первой публикации проставить lastmod на дату релиза.
      КТРМ (products/ktrm.html) сюда не включён — страница ещё не создана (см. handoff.md). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
