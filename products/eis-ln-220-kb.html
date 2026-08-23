@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ЭИС-ЛН-220-К(Б) — светодиодная замена ламп накаливания в табло ТСБ | ПП ДЗВА</title>
+  <meta
+    name="description"
+    content="ЭИС-ЛН-220-К(Б) — ретрофит-модуль для световых табло ТСБ взамен снятых с производства ламп накаливания. Сохраняет переходный процесс лампы накаливания, поэтому существующие импульсные реле и приборы контроля исправности цепей сигнализации продолжают работать штатно. Производство в России."
+  />
+
+  <meta property="og:type" content="product" />
+  <meta property="og:site_name" content="ПП ДЗВА" />
+  <meta property="og:title" content="ЭИС-ЛН-220-К(Б) — светодиодная замена ламп накаливания в табло ТСБ | ПП ДЗВА" />
+  <meta
+    property="og:description"
+    content="Ретрофит-модуль для табло ТСБ, сохраняющий переходный процесс лампы накаливания — без переделки существующих схем сигнализации и защит."
+  />
+  <!-- TODO: заменить на абсолютный URL после публикации сайта (домен ещё не определён) -->
+  <meta property="og:image" content="../img/products/eis-ln-220-kb/eis1.webp" />
+
+  <link rel="icon" href="../img/icons/favicon.ico" />
+  <link rel="stylesheet" href="../css/fonts.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/product.css" />
+</head>
+<body>
+  <!-- Затемнение и попап заявки — общие на все страницы, поведение см. js/components/popup.js -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <button class="popup__close" type="button" data-popup-close aria-label="Закрыть">&times;</button>
+    <img src="../img/icons/fz152-cat.png" alt="" class="popup__image" />
+    <h2 id="popup-title" class="popup__title">Мы не собираем персональные данные</h2>
+    <p class="popup__text">
+      Мы честно пытались прочитать ФЗ-152, но уснули на второй странице. Чтобы не злить Роскомнадзор и крепко спать,
+      мы просто не собираем ваши данные.
+    </p>
+    <p class="popup__text popup__text--strong">Напишите или позвоните нам</p>
+    <div class="popup__contacts">
+      <a href="tel:+79119688528" class="popup__phone">+7 (911) 968-85-28</a>
+      <a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="popup__mail">MANAGER@PPDZVA.RU</a>
+    </div>
+    <button class="btn btn--outline popup__ok" type="button" data-popup-close>Хорошо</button>
+  </div>
+
+  <!-- Лайтбокс галереи товара — список слайдов строится в js/components/lightbox.js
+       из миниатюр [data-gallery-thumb] ниже, здесь только каркас. -->
+  <div class="overlay" id="lightbox-overlay"></div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения товара">
+    <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрыть">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Предыдущее изображение">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__stage">
+      <img src="" alt="" class="lightbox__image" data-lightbox-image />
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Следующее изображение">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__thumbs" data-lightbox-thumbs></div>
+  </div>
+
+  <!-- Общая шапка — переносится без изменений на все страницы (products/*.html, analogs.html) -->
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a href="../index.html" class="site-header__logo">
+        <img src="../img/icons/logo-dzva.png" alt="ПП ДЗВА" class="site-header__logo-img" />
+      </a>
+      <nav class="site-nav">
+        <button class="site-nav__burger" type="button" aria-expanded="false" aria-controls="site-nav-list" aria-label="Открыть меню">
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="../index.html#hero" class="site-nav__link">Главная</a></li>
+          <li><a href="../index.html#about" class="site-nav__link">О компании</a></li>
+          <li><a href="../index.html#products" class="site-nav__link site-nav__link--active">Продукция</a></li>
+          <li><a href="../analogs.html" class="site-nav__link">Аналоги</a></li>
+          <li><a href="../index.html#advantages" class="site-nav__link">Преимущества</a></li>
+          <li><a href="../index.html#contacts" class="site-nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <button class="btn btn--gold site-header__cta" type="button" data-popup-open>Оставить заявку</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <p class="breadcrumbs">
+        <a href="../index.html" class="breadcrumbs__link">Главная</a>
+        <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+        <a href="../index.html#products" class="breadcrumbs__link">Продукция</a>
+        <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+        <span class="breadcrumbs__current">ЭИС-ЛН-220-К(Б)</span>
+      </p>
+    </div>
+
+    <!-- ============ ВИЗУАЛ + ОПИСАНИЕ ============ -->
+    <section class="product-hero">
+      <div class="container product-hero__inner">
+        <!-- Реального фото пока нет — используется заглушка (zaglushka.jpg, сжата в webp).
+             Галерея собрана по тому же паттерну, что у buvv/bpvv/rs80/digmat: при появлении
+             съёмки достаточно добавить новые data-gallery-thumb кнопки, JS/CSS не менять. -->
+        <div class="product-hero__visual" data-gallery>
+          <div class="product-viewer__stage">
+            <button type="button" class="product-viewer__nav product-viewer__nav--prev" data-gallery-prev aria-label="Предыдущее фото">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <img
+              src="../img/products/eis-ln-220-kb/eis1.webp"
+              alt="ЭИС-ЛН-220-К(Б) — фото скоро будет"
+              class="product-viewer__main"
+              data-gallery-main
+            />
+            <button type="button" class="product-viewer__nav product-viewer__nav--next" data-gallery-next aria-label="Следующее фото">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="product-viewer__thumbs" data-gallery-thumbs>
+            <button
+              type="button"
+              class="product-viewer__thumb product-viewer__thumb--active"
+              data-gallery-thumb
+              data-full="../img/products/eis-ln-220-kb/eis1.webp"
+              data-alt="ЭИС-ЛН-220-К(Б) — фото скоро будет"
+            >
+              <img src="../img/products/eis-ln-220-kb/eis1.webp" alt="" loading="lazy" />
+            </button>
+          </div>
+        </div>
+
+        <div class="product-hero__info">
+          <div class="product-hero__heading">
+            <p class="section-eyebrow">
+              <span class="section-eyebrow-mark" aria-hidden="true"></span>
+              Готовая продукция
+            </p>
+            <h1 class="product-hero__title">ЭИС-ЛН-220-К(Б)</h1>
+          </div>
+
+          <div class="product-hero__replaces">
+            <span class="badge badge--original">Собственная разработка</span>
+            <p class="product-hero__replaces-text">
+              Ретрофит-модуль для световых табло типа ТСБ — устанавливается взамен штатного патрона снятой с
+              производства лампы накаливания и электрически имитирует её переходный процесс, поэтому существующие
+              импульсные реле и приборы контроля исправности цепей сигнализации продолжают работать штатно, без
+              пересогласования проекта.
+            </p>
+          </div>
+
+          <p class="product-hero__desc">
+            Схемы центральной сигнализации на энергообъектах десятилетиями проектировались под лампы накаливания
+            в световых табло: импульсные реле (типа РТД) и приборы контроля исправности цепей корректно
+            срабатывают только на относительно высоких пусковых и установившихся токах, характерных для нити
+            накала. Прямая замена лампы на светодиод «не видна» этим устройствам из-за малого энергопотребления —
+            схема либо не фиксирует включение, либо показывает ложный обрыв цепи. Через клемму XS1 ЭИС-ЛН-220-К(Б)
+            в первую секунду формирует контролируемый бросок тока до 110 мА, который затем плавно, за ~1 сек,
+            спадает до 2–5 мА — так же, как остывающая нить накала. Клемма XS2 переводит устройство в режим
+            обычного светодиодного индикатора, без имитации броска, с минимальным энергопотреблением. Выпускается
+            в двух модификациях: ЭИС-ЛН-220-К (красный — для табло аварийной сигнализации) и ЭИС-ЛН-220-Б (белый
+            тёплый — для табло предупредительной сигнализации).
+          </p>
+
+          <div class="product-hero__actions">
+            <button class="btn btn--gold" type="button" data-popup-open>Отправить заявку</button>
+            <a href="../content/RE_EIS.pdf" class="btn btn--outline" target="_blank" rel="noopener">Скачать документацию</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ПРЕИМУЩЕСТВА ============ -->
+    <section class="advantages" id="advantages">
+      <div class="container">
+        <div class="advantages__intro">
+          <p class="section-eyebrow">
+            <span class="section-eyebrow-mark" aria-hidden="true"></span>
+            Преимущества
+          </p>
+          <h2 class="advantages__title">Почему ЭИС-ЛН-220-К(Б)</h2>
+        </div>
+        <div class="advantages__grid">
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 8h13m0 0l-3-3m3 3l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 16H7m0 0l3 3m-3-3l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Ретрофит табло ТСБ без переделки корпуса</h3>
+            <p class="advantage-card__text">
+              Прямая замена штатного патрона лампы накаливания — те же посадочные отверстия и крепёжное отверстие
+              М4 на задней стенке табло, без модернизации корпуса.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3a5 5 0 0 0-3 9c.6.5 1 1.2 1 2v1h4v-1c0-.8.4-1.5 1-2a5 5 0 0 0-3-9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M10 19h4M11 21h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M4 4l16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Лампы накаливания сняты с производства</h3>
+            <p class="advantage-card__text">
+              Профильные лампы для табло ТСБ больше не выпускаются — ЭИС-ЛН-220-К(Б) закрывает эту проблему без
+              замены самого табло и схемы сигнализации.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12h3l2-7 4 14 2-9 2 2h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Сохраняет переходный процесс лампы</h3>
+            <p class="advantage-card__text">
+              Через клемму XS1 — контролируемый бросок тока до 110 мА в первую секунду, плавно спадающий за ~1 сек
+              до 2–5 мА: электрическая имитация остывающей нити накала.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Совместимость с существующими защитами</h3>
+            <p class="advantage-card__text">
+              Импульсные реле (РТД) и приборы контроля исправности цепей сигнализации, рассчитанные на пусковые
+              токи ламп, продолжают штатно работать без переделки релейной схемы.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="7" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="17" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5" />
+                <path d="M9.2 12h5.6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="1.6 1.6" />
+                <path d="M3 12h1.8M19.2 12H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Два режима подключения</h3>
+            <p class="advantage-card__text">
+              Клемма XS1 — имитация лампы накаливания для схем с контролем тока; клемма XS2 — обычный
+              светодиодный индикатор с потреблением до 1 Вт, когда имитация не нужна.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+                <path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Ресурс до 50 000 часов</h3>
+            <p class="advantage-card__text">
+              Сверхъяркие светодиоды «Пиранья» рассчитаны на 30 000–50 000 часов непрерывной работы — при тех же
+              посадочных размерах, что и заменяемая лампа.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ХАРАКТЕРИСТИКИ ============ -->
+    <section class="product-specs" id="specs">
+      <div class="container">
+        <p class="section-eyebrow">
+          <span class="section-eyebrow-mark" aria-hidden="true"></span>
+          Характеристики
+        </p>
+        <h2 class="product-specs__title">Технические характеристики</h2>
+
+        <div class="spec-table-wrap" data-spec-table>
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="spec-table__row">
+                <td>Номинальное напряжение питания</td>
+                <td>~ 220 В</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Допустимое отклонение напряжения питания</td>
+                <td>± 10 %</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Частота питающей сети</td>
+                <td>50 Гц</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Потребляемый пусковой ток (клемма XS1), не менее</td>
+                <td>110 мА</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Потребляемый установившийся ток (через 1 сек)</td>
+                <td>от 2 мА до 5 мА</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Время плавного снижения входного тока (для XS1)</td>
+                <td>около 1 сек</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Потребляемая мощность в установившемся режиме</td>
+                <td>до 1 Вт</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Степень защиты по ГОСТ 14254-2015</td>
+                <td>IP65 (внутренняя часть платы) / IP20 (со стороны клемм)</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Длина волны излучения (красный «К»)</td>
+                <td>630 нм</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Длина волны излучения (белый тёплый «Б»)</td>
+                <td>590 нм</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Видимый угол излучения светодиодов</td>
+                <td>140 град.</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Максимальная сила света светодиодов</td>
+                <td>900 мКд</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Климатическое исполнение по ГОСТ 15150-69</td>
+                <td>УХЛ4</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Габаритные размеры (Ш × В × Г)</td>
+                <td>71 × 25 × 74 мм</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="spec-table__toggle" type="button" data-spec-toggle aria-expanded="false" data-label-collapse="Свернуть характеристики">
+            <span data-spec-toggle-label>Показать все характеристики (14)</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Общий футер — переносится без изменений на все страницы -->
+  <footer class="site-footer" id="contacts">
+    <div class="container site-footer__grid">
+      <nav class="site-footer__nav">
+        <p class="site-footer__heading">Навигация</p>
+        <ul class="site-footer__nav-list">
+          <li><a href="../index.html#hero" class="site-footer__link">Главная</a></li>
+          <li><a href="../index.html#about" class="site-footer__link">О компании</a></li>
+          <li><a href="../index.html#products" class="site-footer__link">Продукция</a></li>
+          <li><a href="../analogs.html" class="site-footer__link">Аналоги</a></li>
+          <li><a href="../index.html#advantages" class="site-footer__link">Преимущества</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contacts">
+        <p class="site-footer__heading">Контактная информация</p>
+        <p class="site-footer__legal">Производственное Предприятие&nbsp;ДЗВА</p>
+        <a href="tel:+79119688528" class="site-footer__phone">+7 (911) 968-85-28</a>
+        <a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="site-footer__mail">MANAGER@PPDZVA.RU</a>
+        <div class="site-footer__icons">
+          <a href="tel:+79119688528" aria-label="Позвонить"><img src="../img/icons/phone.svg" alt="" /></a>
+          <a href="tg://resolve?domain=Ligilement" aria-label="Telegram"><img src="../img/icons/telegram.svg" alt="" /></a>
+          <a href="https://wa.me/79119688528" aria-label="WhatsApp"><img src="../img/icons/whatsapp.svg" alt="" /></a>
+        </div>
+      </div>
+      <div class="site-footer__cta">
+        <button class="btn btn--gold" type="button" data-popup-open>Оставить заявку</button>
+      </div>
+      <div class="site-footer__bottom">© 2026 Производственное Предприятие&nbsp;ДЗВА. Все права защищены.</div>
+    </div>
+  </footer>
+
+  <!-- TODO: заменить 12345678 на реальный номер счётчика Яндекс.Метрики (см. js/analytics.js) -->
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/12345678" style="position: absolute; left: -9999px" alt="" /></div>
+  </noscript>
+
+  <script src="../js/components/burger-menu.js"></script>
+  <script src="../js/components/popup.js"></script>
+  <script src="../js/components/product-search.js"></script>
+  <script src="../js/components/gallery.js"></script>
+  <script src="../js/components/lightbox.js"></script>
+  <script src="../js/components/spec-table.js"></script>
+  <script src="../js/components/nav-active.js"></script>
+  <script src="../js/analytics.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
