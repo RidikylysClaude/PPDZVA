@@ -1,0 +1,5 @@
+# TODO: домен ещё не определён — заменить хост в Sitemap на реальный после публикации.
+User-agent: *
+Allow: /
+
+Sitemap: https://ppdzva.ru/sitemap.xml
