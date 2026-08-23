@@ -13,7 +13,6 @@ function runInit(name) {
 document.addEventListener("DOMContentLoaded", function () {
   runInit("initBurgerMenu");
   runInit("initPopup");
-  runInit("initAnalytics");
   runInit("initProductSearch");
   runInit("initGallery");
   runInit("initLightbox");
@@ -21,4 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
   runInit("initSpecTable");
   runInit("initAnalogsTable");
   runInit("initNavActive");
+});
+
+// Метрика — отдельно, после полной загрузки страницы (не DOMContentLoaded): сам тег
+// грузится асинхронно (k.async=1 в analytics.js), но именно вызов инициализации на
+// критичном пути DOMContentLoaded конкурировал за основной поток с рендером
+// (см. handoff.md, п.13 — bootup-time тега доходил до ~4с под мобильным CPU-троттлингом
+// в Lighthouse). Счётчику не важно, на пару сотен мс раньше или позже он стартует.
+window.addEventListener("load", function () {
+  runInit("initAnalytics");
 });
