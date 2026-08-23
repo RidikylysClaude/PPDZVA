@@ -81,12 +81,11 @@
 
 .analogs-intro__visual-labels {
   display: grid;
-  /* 10fr/90fr/150fr/100fr/10fr — точное деление viewBox диаграммы (0 360): пустое поле
-     слева (0-10), левый блок (10-100), зазор (100-250), правый блок (250-350), пустое
-     поле справа (350-360). Без крайних 10fr-колонок подпись "ПП ДЗВА" смещалась вправо
-     за правый край блока — grid растягивал колонку вплоть до края контейнера, а сам блок
-     в SVG не доходит до края на те же ~3% ширины. */
-  grid-template-columns: 10fr 90fr 150fr 100fr 10fr;
+  /* 20px/90fr/150fr/100fr/20px — крайние отступы фиксированы (совпадают с пустым полем
+     по краям viewBox диаграммы выше), 90fr/150fr/100fr делят остаток пропорционально
+     ширинам блоков и зазору между ними. Без крайних отступов подпись "ПП ДЗВА" смещалась
+     вправо за правый край блока — grid растягивал колонку вплоть до края контейнера. */
+  grid-template-columns: 20px 90fr 150fr 100fr 20px;
   align-items: start;
   width: 100%;
   font-family: var(--font-heading);
@@ -98,6 +97,10 @@
 .analogs-intro__visual-label {
   text-align: center;
   color: var(--color-text-muted);
+}
+
+.analogs-intro__visual-label-spacer {
+  width: 20px;
 }
 
 .analogs-intro__visual-label--ours {
