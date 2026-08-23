@@ -238,15 +238,22 @@
   display: none;
 }
 
-/* Узкие экраны: 4 колонки не помещаются построчно — переключаем на карточки
-   параметр/значение, тот же приём, что у .spec-table (components.css). */
+/* Узкие экраны: 4 колонки не помещаются построчно — переключаем строку на сетку
+   2×(Искали/У нас есть) сверху и Категория/Статус на всю ширину под ними, вместо
+   полного постолбцового стека (был слишком высоким и терял горизонтальное место). */
 @media (max-width: 760px) {
   .analogs-table thead {
     display: none;
   }
 
   .analogs-table__row {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "searched ours"
+      "category category"
+      "status status";
+    column-gap: var(--space-4);
     padding: var(--space-4) var(--space-5);
     border-bottom: 1px solid var(--color-border);
   }
@@ -255,6 +262,22 @@
     display: block;
     padding: var(--space-2) 0;
     border-bottom: none;
+  }
+
+  .analogs-table__row td[data-label="Искали"] {
+    grid-area: searched;
+  }
+
+  .analogs-table__row td[data-label="У нас есть"] {
+    grid-area: ours;
+  }
+
+  .analogs-table__row td[data-label="Категория"] {
+    grid-area: category;
+  }
+
+  .analogs-table__row td[data-label="Статус"] {
+    grid-area: status;
   }
 
   .analogs-table__row td::before {
