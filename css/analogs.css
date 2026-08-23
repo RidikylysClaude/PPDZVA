@@ -262,6 +262,7 @@
     display: block;
     padding: var(--space-2) 0;
     border-bottom: none;
+    text-align: center;
   }
 
   .analogs-table__row td[data-label="Искали"] {
