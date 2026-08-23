@@ -1,31 +1,7 @@
 /* Стили только для карточек товара (products/*.html). Требует tokens.css, base.css,
    components.css, подключённых раньше. */
 
-/* ============ Хлебные крошки ============ */
-.breadcrumbs {
-  padding-block: var(--space-5) var(--space-2);
-  font-size: var(--fs-small);
-  color: var(--color-text-muted);
-}
-
-.breadcrumbs__link {
-  color: var(--color-text-muted);
-  transition: color var(--duration-fast) var(--ease-standard);
-}
-
-.breadcrumbs__link:hover {
-  color: var(--color-signal-amber-700);
-}
-
-.breadcrumbs__sep {
-  margin-inline: var(--space-2);
-  opacity: 0.5;
-}
-
-.breadcrumbs__current {
-  color: var(--color-text);
-  font-weight: 600;
-}
+/* Хлебные крошки — общий компонент, см. components.css (используются также на analogs.html). */
 
 /* ============ Визуал + описание товара ============ */
 .product-hero {
@@ -95,19 +71,8 @@
   margin-top: var(--space-6);
 }
 
-/* Ссылка на смежный товар прямо в тексте описания (например, БУВВ-1 → БПВВ-1) */
-.inline-link {
-  color: var(--color-text);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: var(--color-border);
-  text-underline-offset: 0.15em;
-  transition: text-decoration-color var(--duration-fast) var(--ease-standard);
-}
-
-.inline-link:hover {
-  text-decoration-color: currentColor;
-}
+/* Ссылка на смежный товар/раздел прямо в тексте (например, БУВВ-1 → БПВВ-1) —
+   общий компонент, см. components.css (используется также на analogs.html). */
 
 .product-hero__actions {
   display: flex;

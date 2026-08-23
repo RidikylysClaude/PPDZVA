@@ -1,0 +1,201 @@
+/* Стили только для страницы аналогов (analogs.html). Требует tokens.css, base.css,
+   components.css, подключённых раньше. */
+
+/* ============ Вводный блок ============ */
+.analogs-intro {
+  padding-block: var(--space-6) var(--space-7);
+}
+
+.analogs-intro__inner {
+  max-width: 72ch;
+}
+
+.analogs-intro__title {
+  font-size: var(--fs-h1);
+  letter-spacing: var(--ls-heading);
+  margin-bottom: var(--space-4);
+}
+
+.analogs-intro__lead {
+  font-size: var(--fs-lead);
+  color: var(--color-text-muted);
+}
+
+/* ============ Поиск по таблице ============ */
+.analogs-search {
+  margin-top: var(--space-6);
+  max-width: 480px;
+}
+
+.analogs-search__label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.analogs-search__input-wrap {
+  position: relative;
+}
+
+.analogs-search__icon {
+  position: absolute;
+  top: 50%;
+  left: var(--space-3);
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.analogs-search__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-3) var(--space-3) calc(var(--space-3) * 2 + 18px);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  font-size: var(--fs-body);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.analogs-search__input:focus-visible {
+  border-color: var(--color-signal-amber-700);
+  outline: none;
+}
+
+.analogs-search__input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+/* ============ Таблица аналогов ============ */
+.analogs-table-section {
+  padding-block: var(--space-2) var(--space-9);
+}
+
+.analogs-table-wrap {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.analogs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+.analogs-table th,
+.analogs-table td {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.analogs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.analogs-table th {
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+}
+
+.analogs-table__code {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.analogs-table__product-code {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.9em;
+  color: var(--color-text-muted);
+}
+
+.analogs-table__product-pending {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.analogs-table__match-type {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--fs-eyebrow);
+  color: var(--color-text-muted);
+}
+
+.analogs-table__row--hidden {
+  display: none;
+}
+
+/* Узкие экраны: 4 колонки не помещаются построчно — переключаем на карточки
+   параметр/значение, тот же приём, что у .spec-table (components.css). */
+@media (max-width: 760px) {
+  .analogs-table thead {
+    display: none;
+  }
+
+  .analogs-table__row {
+    display: block;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .analogs-table__row td {
+    display: block;
+    padding: var(--space-2) 0;
+    border-bottom: none;
+  }
+
+  .analogs-table__row td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-1);
+  }
+}
+
+/* ============ Пустой результат поиска ============ */
+.analogs-table__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+}
+
+.analogs-table__empty[hidden] {
+  display: none;
+}
+
+/* ============ Сноска про собственные разработки без прямого аналога ============ */
+.analogs-note {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border-left: 3px solid var(--color-signal-amber-500);
+  background: var(--color-surface-alt);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.analogs-note strong {
+  color: var(--color-text);
+}

@@ -220,6 +220,46 @@
   opacity: 0.5;
 }
 
+/* ============ Хлебные крошки (общий компонент — products/*.html, analogs.html) ============ */
+.breadcrumbs {
+  padding-block: var(--space-5) var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.breadcrumbs__link {
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.breadcrumbs__link:hover {
+  color: var(--color-signal-amber-700);
+}
+
+.breadcrumbs__sep {
+  margin-inline: var(--space-2);
+  opacity: 0.5;
+}
+
+.breadcrumbs__current {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ============ Инлайн-ссылка на смежный товар/раздел (общий компонент) ============ */
+.inline-link {
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-standard);
+}
+
+.inline-link:hover {
+  text-decoration-color: currentColor;
+}
+
 /* ============ Section eyebrow (переиспользуется на светлых секциях: О компании, Продукция, Преимущества) ============
    amber-700 вместо amber-500: на белом/светлом фоне amber-500 даёт 1.83:1 —
    не проходит WCAG (нужно 4.5:1 для текста, 3:1 для графики). */
@@ -304,6 +344,15 @@
   background: rgba(255, 176, 32, 0.1);
   color: var(--color-signal-amber-700);
   border: 1px solid rgba(255, 176, 32, 0.35);
+}
+
+.badge--dev {
+  /* Нейтральный серый — «в разработке», сознательно без цветового статуса
+     готовности (не зелёный/не amber), чтобы не читался как «уже доступно». */
+  font-family: var(--font-mono);
+  background: var(--color-surface-alt-2);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
 }
 
 /* ============ Footer ============ */
