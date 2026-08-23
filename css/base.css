@@ -63,6 +63,7 @@ h4 {
   font-family: var(--font-heading);
   line-height: var(--lh-heading);
   font-weight: 700;
+  overflow-wrap: break-word;
 }
 
 @media (prefers-reduced-motion: reduce) {
