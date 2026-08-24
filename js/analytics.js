@@ -27,13 +27,15 @@ window.DZVA.initAnalytics = function initAnalytics() {
   })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
   /* eslint-enable */
 
+  // Только стандартные, официально задокументированные опции — ssr/url/referrer
+  // из исходного сниппета (для SPA/SSR-сценариев, нам не нужны на статическом
+  // многостраничном сайте) убраны: подозреваются в подавлении автоматической
+  // отправки хита о просмотре страницы (проверка счётчика в кабинете Метрики
+  // не находила счётчик даже при полностью корректной загрузке tag.js).
   window.ym(id, "init", {
-    ssr: true,
     clickmap: true,
     trackLinks: true,
     accurateTrackBounce: true,
     webvisor: false,
-    referrer: document.referrer,
-    url: location.href,
   });
 };
