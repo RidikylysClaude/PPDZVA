@@ -20,13 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
   runInit("initSpecTable");
   runInit("initAnalogsTable");
   runInit("initNavActive");
-});
-
-// Метрика — отдельно, после полной загрузки страницы (не DOMContentLoaded): сам тег
-// грузится асинхронно (k.async=1 в analytics.js), но именно вызов инициализации на
-// критичном пути DOMContentLoaded конкурировал за основной поток с рендером
-// (см. handoff.md, п.13 — bootup-time тега доходил до ~4с под мобильным CPU-троттлингом
-// в Lighthouse). Счётчику не важно, на пару сотен мс раньше или позже он стартует.
-window.addEventListener("load", function () {
+  // Метрика — на DOMContentLoaded, не на window.load: перенос на load ради Lighthouse-метрики
+  // (TBT под мобильным CPU-троттлингом) откатили — Яндекс сам не смог обнаружить счётчик
+  // при проверке ("загрузка счетчика инициализируется каким-то действием на сайте"), и по той же
+  // причине реальные визиты, где пользователь уходит до полной догрузки картинок/шрифтов
+  // (window.load), вообще не попадали бы в статистику. Тег сам по себе как грузился
+  // асинхронно (k.async=1 в analytics.js), так и грузится — блокировки рендера это не создаёт.
   runInit("initAnalytics");
 });
