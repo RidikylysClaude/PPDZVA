@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# www -> без www (канонический домен ppdzva.ru — см. sitemap.xml, robots.txt, JSON-LD)
+RewriteCond %{HTTP_HOST} ^www\.ppdzva\.ru$ [NC]
+RewriteRule ^(.*)$ https://ppdzva.ru/$1 [L,R=301]
+
+# http -> https
+# Просто %{HTTPS} off не работает на sweb.ru — SSL терминируется до .htaccess,
+# поэтому %{HTTPS} всегда "off", даже для реальных https-запросов (вызывало
+# бесконечный редирект на себя же, сайт лежал 2026-08-25). Добавлена проверка
+# X-Forwarded-Proto — по официальной документации sweb.ru именно эта пара условий
+# рекомендована как решение от циклического редиректа за их прокси/балансировщиком:
+# https://help.sweb.ru/redirekt-s-http-na-https-dlya-linux_1346.html
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://ppdzva.ru/$1 [L,R=301]
