@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Домен подтверждён: ppdzva.ru. После первой публикации проставить lastmod на дату релиза.
+     КТРМ (products/ktrm.html) сюда не включён — страница ещё не создана (см. handoff.md). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://ppdzva.ru/index.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ppdzva.ru/analogs.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ppdzva.ru/products/buvv.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ppdzva.ru/products/bpvv.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ppdzva.ru/products/rs80.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ppdzva.ru/products/digmat.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ppdzva.ru/products/eis-ln-220-kb.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

@@ -1,0 +1,611 @@
+/* Стили только для index.html. Требует tokens.css, base.css, components.css. */
+
+/* ============ Hero ============ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-ink-900);
+  color: var(--color-text-on-dark);
+  padding-block: var(--space-9) var(--space-7);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 23, 26, 0.35) 0%,
+    rgba(20, 23, 26, 0.85) 78%,
+    var(--color-ink-900) 100%
+  );
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+
+/* Десктоп: .hero__copy — единый элемент грида (левая колонка), .hero__visual — правая.
+   Без этого текстовые блоки как отдельные элементы грида растягивали бы высоту строк
+   на всю высоту картинки. На мобильном .hero__copy "распаковывается" через display:contents
+   (см. медиа-запрос ниже), и картинка вставляется между блоками через order. */
+.hero__copy {
+  min-width: 0;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber-300);
+  margin-bottom: var(--space-3);
+}
+
+.hero__eyebrow-mark {
+  flex-shrink: 0;
+  width: 28px;
+  height: 2px;
+  margin-top: 0.6em;
+  background: var(--color-signal-amber-400);
+}
+
+.hero__title {
+  font-size: var(--fs-h1);
+  letter-spacing: -0.01em;
+  max-width: 15ch;
+  margin-bottom: var(--space-5);
+}
+
+.hero__fact {
+  font-size: var(--fs-lead);
+  color: var(--color-text-on-dark-muted);
+  max-width: 40ch;
+  margin-bottom: var(--space-6);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.hero__scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text-on-dark-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.hero__scroll-hint:hover {
+  color: var(--color-signal-amber-400);
+}
+
+.hero__scroll-hint svg {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.hero__scroll-hint:hover svg {
+  transform: translateX(3px);
+}
+
+.hero__visual {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero__visual-img {
+  /* Бleed растёт только сверх точки, где .container перестаёт расширяться (1280px) —
+     иначе при ширине контейнера, зафиксированной на 1280px, картинка продолжала расти
+     по формуле от vw и вылезала за край вьюпорта (обрезалась hero{overflow:hidden}
+     примерно с 1350px). 0.64 подобран так, чтобы на 1440px ширина совпадала с прежним
+     расчётом (~118% колонки); потолок 130% на сверхширoких экранах не изменился. */
+  width: clamp(100%, calc(100% + 0.64 * (100vw - 1280px)), 130%);
+  max-width: none;
+  /* height:auto обязателен — <img> теперь имеет HTML width/height (см. index.html,
+     добавлены для резервирования места под CLS). Без явного height:auto в CSS браузер
+     применяет height="1421" как есть (презентационная подсказка из атрибута), игнорируя
+     aspect-ratio, и картинка рендерится с фиксированной высотой 1421px независимо от
+     вычисленной по clamp() ширины — на широких экранах она становится непропорционально
+     огромной по высоте. height:auto возвращает высоту к auto, тогда её уже считает
+     aspect-ratio (тоже из width/height атрибутов) пропорционально текущей ширине. */
+  height: auto;
+  filter: drop-shadow(0 32px 64px rgba(0, 0, 0, 0.5));
+}
+
+.hero .trust-strip {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* В этом диапазоне заголовок "Производственное Предприятие ДЗВА" переносится в 2
+   строки (примерно 1112–1144px) — по умолчанию align-items:flex-start + отступ на
+   .hero__eyebrow-mark центрируют чёрточку только относительно первой строки. Здесь
+   переключаем на честное центрирование по всему (уже перенесённому) блоку текста;
+   для однострочного текста в этом же диапазоне визуально почти неотличимо от
+   исходного варианта. Полноэкранный и мобильный режимы (за пределами диапазона) — без изменений. */
+@media (min-width: 901px) and (max-width: 1279px) {
+  .hero__eyebrow {
+    align-items: center;
+  }
+
+  .hero__eyebrow-mark {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-block: var(--space-7) var(--space-6);
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    row-gap: 0;
+    padding-bottom: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+  }
+
+  .hero__title,
+  .hero__fact {
+    max-width: none;
+    margin-inline: auto;
+  }
+
+  .hero__eyebrow {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  /* "Распаковываем" обёртку: eyebrow/title/fact/actions становятся прямыми элементами
+     грида наравне с .hero__visual, что позволяет расставить порядок через order —
+     подпись -> картинка -> заголовок -> текст -> кнопки. */
+  .hero__copy {
+    display: contents;
+  }
+
+  .hero__eyebrow {
+    order: 1;
+  }
+
+  .hero__visual {
+    order: 2;
+    justify-content: center;
+    margin-block: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+  }
+
+  .hero__title {
+    order: 3;
+  }
+
+  .hero__fact {
+    order: 4;
+  }
+
+  .hero__actions {
+    order: 5;
+  }
+
+  .hero__visual-img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero .trust-strip {
+    padding-top: var(--space-4);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero__title {
+    font-size: 30px;
+  }
+}
+
+/* В этом диапазоне двухколоночная раскладка ещё активна (одноколоночный стек
+   начинается только с 900px), но clamp() держит заголовок почти у потолка
+   (~45–51px) — на фоне сужающейся колонки с картинкой текст визуально "давит"
+   на неё. Здесь — отдельная фиксированная ступень поменьше, а не часть общей
+   плавной кривой clamp(). */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .hero__title {
+    font-size: 34px;
+  }
+}
+
+/* ============ О компании ============ */
+.about {
+  background: var(--color-surface-alt);
+  padding-block: var(--space-9);
+  /* Ниже примыкает .advantages с тем же фоном (surface-alt) — без разницы цвета
+     192px совмещённых отступов (нижний паддинг этой секции + верхний у advantages)
+     читаются как один непропорционально большой пустой блок, в отличие от
+     переходов между секциями с контрастным фоном. Урезаем нижний паддинг здесь. */
+  padding-bottom: var(--space-7);
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--space-8);
+  align-items: start;
+  justify-items: end;
+}
+
+.about__intro {
+  min-width: 0;
+}
+
+/* justify-items:end сжимает .about__intro до содержимого и прижимает вправо —
+   на этой ширине заголовок ("Производственное" одним словом, не переносится)
+   становится шире самой колонки грида, и блок вместе с текстом вылезает за
+   левый край секции (реальный горизонтальный overflow страницы, не просто
+   визуальная теснота). stretch растягивает элемент на всю колонку, текст
+   переносится по её ширине как обычно. */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .about__inner {
+    justify-items: stretch;
+  }
+}
+
+.about__title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-4);
+  max-width: 16ch;
+}
+
+.about__lead {
+  font-size: var(--fs-lead);
+  color: var(--color-text-muted);
+  max-width: 42ch;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.about__facts {
+  /* Смещаем вниз, чтобы «01» визуально стартовало на уровне заголовка слева,
+     а не мелкой подписи «О компании» над ним. */
+  margin-top: 45px;
+}
+
+.about__fact {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-5);
+  align-items: center;
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about__fact:last-child {
+  border-bottom: none;
+}
+
+.about__fact-index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--color-signal-amber-700);
+}
+
+.about__fact-text {
+  color: var(--color-text);
+  max-width: 48ch;
+}
+
+@media (max-width: 900px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    /* Слева, как у "Преимущества" (.advantages__intro нигде не центрируется) —
+       для единообразия блоков на этой ширине. Базовое правило задаёт
+       justify-items:end под двухколоночную раскладку, stretch сбрасывает это,
+       давая блоку и заголовку/тексту внутри встать по левому краю. Пункты с
+       цифрами (.about__fact) при этом остаются центрированными — см. правило ниже. */
+    justify-items: stretch;
+    text-align: left;
+  }
+
+  .about__facts {
+    /* Раньше здесь был ещё и margin-top поверх gap грид-контейнера (64px) —
+       вместе давали ~112px и список цифр читался как отдельный, не связанный
+       блок. Оставляем расстояние только на gap, как у advantages__intro. */
+    margin-top: 0;
+  }
+
+  .about__fact {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--space-2);
+    text-align: center;
+  }
+}
+
+/* ============ Продукция ============ */
+.products {
+  background: var(--color-surface);
+  padding-block: var(--space-9);
+}
+
+.products__intro-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--space-8);
+  align-items: end;
+  margin-bottom: var(--space-8);
+}
+
+.products__intro {
+  max-width: 60ch;
+  height: 325px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.products__finder {
+  padding: var(--space-5);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.products__finder-label {
+  display: block;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.products__finder-input-wrap {
+  position: relative;
+  margin-bottom: var(--space-4);
+}
+
+.products__finder-icon {
+  position: absolute;
+  top: 50%;
+  left: var(--space-3);
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.products__finder-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-3) var(--space-3) calc(var(--space-3) * 2 + 18px);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  font-size: var(--fs-body);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.products__finder-input:focus-visible {
+  border-color: var(--color-signal-amber-700);
+}
+
+.products__finder-input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.products__finder-empty {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.products__finder-stats {
+  display: flex;
+  justify-content: space-evenly;
+  gap: var(--space-5);
+  text-align: center;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.products__finder-stats strong {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  color: var(--color-text);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .products__intro-row {
+    grid-template-columns: 1fr;
+  }
+
+  .products__intro {
+    height: auto;
+  }
+}
+
+/* На мобильных клавиатура перекрывает результаты живого поиска, а юзер может
+   набрать запрос и не увидеть карточки, решив, что ничего не найдено —
+   на десктопе/планшете блок остаётся (см. products__finder-stats), убираем
+   только на мобильном (по просьбе пользователя, 2026-08-24). */
+@media (max-width: 560px) {
+  .products__finder {
+    display: none;
+  }
+}
+
+.products__title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-4);
+}
+
+.products__lead {
+  font-size: var(--fs-lead);
+  color: var(--color-text-muted);
+}
+
+.products__group-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-5);
+}
+
+.products__group-title--dev {
+  margin-top: var(--space-8);
+  color: var(--color-text-muted);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+/* Карточки, у которых уже готова страница товара, — ссылки (см. products/buvv.html);
+   остальные пока статичные div, эффект применяется только к реальным ссылкам. */
+a.product-card {
+  transition: transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+a.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.product-card--hidden {
+  display: none;
+}
+
+.product-card--pending,
+.product-card--dev {
+  background: transparent;
+}
+
+.product-card--pending .product-card__img-wrap img,
+.product-card--dev .product-card__img-wrap img {
+  opacity: 0.5;
+}
+
+.product-card__img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  margin-bottom: var(--space-3);
+}
+
+/* Готовая продукция — увеличенное фото и отступ до текста; карточки "в разработке"
+   (.product-grid--dev) не затрагиваем, см. правило выше. */
+.product-grid:not(.product-grid--dev) .product-card__img-wrap {
+  height: 350px;
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .product-grid:not(.product-grid--dev) .product-card__img-wrap {
+    height: 280px;
+  }
+}
+
+@media (max-width: 560px) {
+  .product-grid:not(.product-grid--dev) .product-card__img-wrap {
+    height: 240px;
+  }
+}
+
+.product-card__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-card__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-body);
+}
+
+.product-card__code {
+  /* Перенос допускаем только на пробеле перед кодом (см. обычный пробел
+     вместо &nbsp; в разметке), не посреди дефиса внутри самого кода. */
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.product-card__subname {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* Карточки в одном ряду грида уже равны по высоте (grid stretch по умолчанию) —
+   margin-top:auto дожимает бейдж до низа независимо от длины описания над ним,
+   вместо того чтобы он "плавал" сразу под текстом на разной высоте между карточками. */
+.product-card > .badge {
+  margin-top: auto;
+}
+

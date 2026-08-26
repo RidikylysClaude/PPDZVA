@@ -1,0 +1,193 @@
+/* Стили только для карточек товара (products/*.html). Требует tokens.css, base.css,
+   components.css, подключённых раньше. */
+
+/* Хлебные крошки — общий компонент, см. components.css (используются также на analogs.html). */
+
+/* ============ Визуал + описание товара ============ */
+.product-hero {
+  padding-block: var(--space-6) var(--space-9);
+}
+
+.product-hero__inner {
+  display: grid;
+  grid-template-columns: 450px minmax(0, 1fr);
+  gap: var(--space-6);
+  height: 650px;
+}
+
+.product-hero__visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Равномерно распределяет блоки по фиксированной высоте колонки. */
+.product-hero__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  height: 600px;
+}
+
+.product-hero__title {
+  font-size: var(--fs-h1);
+  letter-spacing: -0.01em;
+}
+
+.product-hero__code {
+  font-family: var(--font-mono);
+  font-size: 0.5em;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.product-hero__replaces {
+  padding: var(--space-5);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.product-hero__replaces-text {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+  text-align: justify;
+}
+
+.product-hero__desc {
+  font-size: var(--fs-lead);
+  color: var(--color-text-muted);
+  text-align: justify;
+}
+
+/* Продолжение описания на всю ширину контейнера, под двухколоночным блоком
+   фото+текст (см. eis-ln-220-kb.html) — используется, когда текст не
+   помещается в узкую .product-hero__info без риска вылезти за фиксированную
+   высоту .product-hero__inner. Ширина строки ограничена для читаемости при
+   text-align: justify на широком контейнере. */
+.product-hero__desc--more {
+  max-width: 80ch;
+  margin-top: var(--space-6);
+}
+
+/* Ссылка на смежный товар/раздел прямо в тексте (например, БУВВ-1 → БПВВ-1) —
+   общий компонент, см. components.css (используется также на analogs.html). */
+
+.product-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* Ниже 1200px при фиксированной ширине фото (450px) правая колонка становится
+   узкой, текст переносится сильнее, чем рассчитано на 600px высоты, и вылезает
+   за рамку. Снимаем фиксированную высоту заранее — колонки остаются вдвоём
+   (см. брейкпоинт 900px ниже), просто подстраиваются под контент. */
+@media (max-width: 1200px) {
+  .product-hero__inner {
+    height: auto;
+  }
+
+  .product-hero__info {
+    height: auto;
+  }
+}
+
+/* В узкой правой колонке (450px фото + текст) кнопки не помещаются в один ряд
+   и flex-wrap переносит вторую на новую строку её собственной, более узкой
+   ширины — выглядит неровно. На 900px раскладка уже переходит в одну колонку
+   (там ширины хватает), так что диапазон правки — именно узкий 2-колоночный
+   промежуток. */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .product-hero__actions {
+    flex-direction: column;
+  }
+
+  .product-hero__actions .btn {
+    width: 100%;
+  }
+
+  /* Та же узкая правая колонка (450px фото + текст) — у длинных названий
+     (см. .product-hero__title--long, например «ЭИС-ЛН-220-К(Б)») штатный
+     --fs-h1 переносится на вторую строку уже с 901px. 2rem — крупнейший
+     размер, который проверен на этой ширине без переноса (2.1rem уже
+     переносит); берём 1.9rem с небольшим запасом. */
+  .product-hero__title--long {
+    font-size: 1.9rem;
+  }
+}
+
+/* На 900px правая колонка уже слишком узкая для двух колонок при разумной
+   ширине фото — переносим блок описания под фото. */
+@media (max-width: 900px) {
+  .product-hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .product-hero__visual {
+    align-items: center;
+  }
+
+  /* width:100% без потолка раздувал блок почти на всю ширину контейнера —
+     при aspect-ratio 3/4 высота улетала за 1500px. Ограничиваем исходным
+     десктопным размером, ужимаем только на узких экранах. */
+  .product-viewer__stage {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .product-viewer__thumbs {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  .product-viewer__thumb {
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  /* aspect-ratio: 3/4 выше рассчитан на несколько миниатюр в ряд — flex: 1
+     (components.css) делит между ними ширину полосы, и портретный аспект
+     даёт компактный превью. При одном фото (товар без доп. съёмки, например
+     ДИГМАТ/ЭИС) flex: 1 растягивает единственную миниатюру на всю ширину
+     полосы, и тот же aspect-ratio даёт огромную высоту — по сути дубль
+     главного фото. Для одиночной миниатюры возвращаем невысокую полосу,
+     как на десктопе. */
+  .product-viewer__thumb:only-child {
+    height: 80px;
+    aspect-ratio: auto;
+  }
+
+  /* Одна колонка — ширины снова хватает, чтобы кнопки встали в ряд, но своей
+     естественной (разной) шириной. flex: 1 1 0 растягивает их поровну на всю
+     ширину блока, пока текст (white-space: nowrap у .btn) не задаёт нижнюю
+     границу — тогда flex-wrap уводит каждую на свою строку на всю ширину. */
+  .product-hero__actions .btn {
+    flex: 1 1 0;
+  }
+}
+
+/* Ниже ~400px --fs-h1 уже стоит на нижней границе clamp(2.1rem, ...) и
+   дальше не уменьшается, а доступная ширина продолжает падать — длинные
+   названия (.product-hero__title--long) переносятся на вторую строку.
+   1.6rem проверен на 320px (нижняя граница) без переноса, запас есть. */
+@media (max-width: 410px) {
+  .product-hero__title--long {
+    font-size: 1.6rem;
+  }
+}
+
+/* ============ Характеристики ============ */
+.product-specs {
+  padding-block: var(--space-9);
+  background: var(--color-surface);
+}
+
+.product-specs__title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-6);
+}

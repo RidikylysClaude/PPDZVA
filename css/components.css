@@ -1,0 +1,1120 @@
+/* Общие компоненты: header, nav, footer, popup/overlay, кнопки, trust-strip, badge.
+   Используется на всех страницах. Требует tokens.css + base.css, подключённых раньше. */
+
+/* ============ Кнопки ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.btn--gold {
+  background: linear-gradient(180deg, var(--color-signal-amber-400), var(--color-signal-amber-500));
+  color: var(--color-ink-900);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--gold:hover {
+  background: linear-gradient(180deg, var(--color-signal-amber-400), var(--color-signal-amber-600));
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-ink-600);
+  background: var(--color-surface-alt);
+}
+
+.btn--on-dark.btn--outline {
+  color: var(--color-text-on-dark);
+  border-color: rgba(243, 246, 250, 0.35);
+}
+
+.btn--on-dark.btn--outline:hover {
+  border-color: var(--color-signal-amber-400);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ============ Header ============ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: rgba(20, 23, 26, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-block: var(--space-3);
+}
+
+.site-header__logo {
+  flex-shrink: 0;
+}
+
+.site-header__logo-img {
+  height: clamp(22px, 1.6rem + 0.5vw, 32px);
+  width: auto;
+}
+
+/* ============ Навигация ============ */
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 0.1rem + 1.4vw, 1.75rem);
+}
+
+.site-nav__link {
+  font-family: var(--font-heading);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--color-text-on-dark-muted);
+  white-space: nowrap;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.site-nav__link:hover,
+.site-nav__link--active {
+  color: var(--color-signal-amber-400);
+}
+
+.site-nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+}
+
+.site-nav__burger-line {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-text-on-dark);
+  transition: transform var(--duration-base) var(--ease-standard),
+    opacity var(--duration-base) var(--ease-standard);
+}
+
+.site-nav__burger[aria-expanded="true"] .site-nav__burger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.site-nav__burger[aria-expanded="true"] .site-nav__burger-line:nth-child(2) {
+  opacity: 0;
+}
+.site-nav__burger[aria-expanded="true"] .site-nav__burger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 1199px) {
+  .site-nav__burger {
+    display: flex;
+  }
+
+  .site-nav {
+    justify-content: flex-end;
+  }
+
+  .site-nav__list {
+    position: fixed;
+    inset: 64px 0 auto 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    background: var(--color-ink-800);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: var(--space-4) var(--container-padding) var(--space-6);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform var(--duration-base) var(--ease-standard),
+      opacity var(--duration-base) var(--ease-standard),
+      visibility var(--duration-base);
+  }
+
+  .site-nav__list--open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .site-nav__list li {
+    width: 100%;
+    padding-block: var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+  }
+
+  .site-nav__list .site-nav__link {
+    font-size: var(--fs-lead);
+  }
+
+  .site-header__cta {
+    display: none;
+  }
+}
+
+/* ============ Trust strip ============ */
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-on-dark-muted);
+}
+
+.trust-strip__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.trust-strip__item:not(:last-child)::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  margin-left: var(--space-4);
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* ============ Хлебные крошки (общий компонент — products/*.html, analogs.html) ============ */
+.breadcrumbs {
+  padding-block: var(--space-5) var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.breadcrumbs__link {
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.breadcrumbs__link:hover {
+  color: var(--color-signal-amber-700);
+}
+
+.breadcrumbs__sep {
+  margin-inline: var(--space-2);
+  opacity: 0.5;
+}
+
+.breadcrumbs__current {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ============ Инлайн-ссылка на смежный товар/раздел (общий компонент) ============ */
+.inline-link {
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color var(--duration-fast) var(--ease-standard);
+}
+
+.inline-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ============ Section eyebrow (переиспользуется на светлых секциях: О компании, Продукция, Преимущества) ============
+   amber-700 вместо amber-500: на белом/светлом фоне amber-500 даёт 1.83:1 —
+   не проходит WCAG (нужно 4.5:1 для текста, 3:1 для графики). */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber-700);
+  margin-bottom: var(--space-3);
+}
+
+.section-eyebrow-mark {
+  flex-shrink: 0;
+  width: 28px;
+  height: 2px;
+  margin-top: 0.6em;
+  background: var(--color-signal-amber-700);
+}
+
+@media (max-width: 700px) {
+  .section-eyebrow {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+}
+
+/* ============ Badge («аналог …») ============ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  /* Разрешаем переносить сам код (.badge__code) на вторую строку целиком при
+     нехватке места — но не ломать его посреди дефиса (см. .badge__code ниже).
+     Безусловный white-space:nowrap на всём бейдже вызывал горизонтальный
+     overflow страницы на узких карточках (3 колонки, ~900–1000px). */
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge__code {
+  /* Без nowrap браузер переносит строку по дефису внутри кода модели (например
+     "BU/TEL-220-05A" ломается на "05A"), из-за чего пилюля теряет форму. */
+  white-space: nowrap;
+}
+
+/* Та же проблема повторяется у нижней границы 2-колоночной раскладки
+   (560–900px, 3-колоночная — с 901px до 1200px, см. верхний диапазон выше):
+   карточка узкая, "Аналог" и .badge__code не помещаются в одну строку и
+   переносятся (flex-wrap выше) — без centering короткая строка "Аналог"
+   висит по левому краю пилюли, а не по центру над кодом. Ниже 560px карточки
+   на всю ширину экрана — места достаточно, перенос там не возникает. */
+@media (min-width: 561px) and (max-width: 1200px) {
+  .badge {
+    justify-content: center;
+  }
+}
+
+.badge--analog {
+  /* Зелёный статус «совместимо/подтверждено» — как индикатор «ГОТОВ» на щитке,
+     отдельно от amber (основной интерактивный акцент действия/ссылок). */
+  font-family: var(--font-mono);
+  background: rgba(47, 174, 102, 0.1);
+  color: var(--color-signal-green-700);
+  border: 1px solid rgba(47, 174, 102, 0.35);
+}
+
+.badge--original {
+  /* Amber — «своя разработка», в отличие от зелёного «аналог/совместимо» у badge--analog. */
+  font-family: var(--font-mono);
+  background: rgba(255, 176, 32, 0.1);
+  color: var(--color-signal-amber-700);
+  border: 1px solid rgba(255, 176, 32, 0.35);
+}
+
+.badge--dev {
+  /* Нейтральный серый — «в разработке», сознательно без цветового статуса
+     готовности (не зелёный/не amber), чтобы не читался как «уже доступно». */
+  font-family: var(--font-mono);
+  background: var(--color-surface-alt-2);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  /* В отличие от badge--analog у этого варианта нет .badge__code, переносить
+     нечего — общий .badge flex-wrap здесь только ломает "В разработке" на
+     две строки в узкой колонке "Статус" таблицы аналогов. */
+  white-space: nowrap;
+}
+
+/* ============ Footer ============ */
+.site-footer {
+  background: var(--color-ink-900);
+  color: var(--color-text-on-dark);
+  padding-block: var(--space-8);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.site-footer__heading {
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-on-dark-muted);
+  margin-bottom: var(--space-4);
+}
+
+.site-footer__nav-list li {
+  margin-bottom: var(--space-2);
+}
+
+.site-footer__cta {
+  align-self: center;
+}
+
+@media (max-width: 720px) {
+  .site-footer__cta {
+    align-self: start;
+  }
+}
+
+.site-footer__link {
+  font-size: var(--fs-body);
+  color: var(--color-text-on-dark-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.site-footer__link:hover {
+  color: var(--color-signal-amber-400);
+}
+
+.site-footer__legal {
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+.site-footer__phone,
+.site-footer__mail {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+.site-footer__mail {
+  color: var(--color-signal-amber-400);
+  word-break: break-word;
+}
+
+.site-footer__icons {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.site-footer__icons a {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  opacity: 0.85;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.site-footer__icons a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.site-footer__icons img {
+  width: 26px;
+  height: 26px;
+}
+
+.site-footer__bottom {
+  grid-column: 1 / -1;
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: var(--fs-small);
+  color: var(--color-text-on-dark-muted);
+}
+
+@media (max-width: 720px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+    text-align: center;
+  }
+
+  /* Порядок: навигация -> кнопка заявки -> контакты -> копирайт */
+  .site-footer__nav {
+    order: 1;
+  }
+
+  .site-footer__cta {
+    order: 2;
+  }
+
+  .site-footer__contacts {
+    order: 3;
+  }
+
+  .site-footer__bottom {
+    order: 4;
+  }
+
+  .site-footer__icons {
+    justify-content: center;
+  }
+}
+
+/* ============ Преимущества (используется на главной и карточках товара) ============ */
+.advantages {
+  background: var(--color-surface-alt);
+  padding-block: var(--space-9);
+}
+
+.advantages__intro {
+  max-width: 60ch;
+  margin-bottom: var(--space-8);
+}
+
+.advantages__title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-4);
+}
+
+.advantages__lead {
+  font-size: var(--fs-lead);
+  color: var(--color-text-muted);
+}
+
+.advantages__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .advantages__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .advantages__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.advantage-card {
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.advantage-card__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-4);
+  border-radius: 50%;
+  background: rgba(255, 176, 32, 0.12);
+  color: var(--color-signal-amber-700);
+}
+
+.advantage-card__title {
+  font-size: var(--fs-body);
+  margin-bottom: var(--space-2);
+}
+
+.advantage-card__text {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ============ Wi-Fi веб-интерфейс (скриншоты, карточка БУВВ-1) ============ */
+.web-ui {
+  padding-block: var(--space-9);
+}
+
+.web-ui__intro {
+  max-width: 60ch;
+  margin-bottom: var(--space-8);
+}
+
+.web-ui__title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-4);
+}
+
+.web-ui__lead {
+  font-size: var(--fs-lead);
+  color: var(--color-text-muted);
+}
+
+.web-ui__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .web-ui__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .web-ui__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.web-ui__card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Единый формат кадра для всех скриншотов, чтобы карточки были одного размера,
+   несмотря на разное соотношение сторон исходников — object-position: top
+   сохраняет самое важное (шапку вкладки и начало графика/таблицы). */
+.web-ui__shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  /* Без этого флекс-контейнер .web-ui__card растягивает кадр под естественную
+     высоту картинки (min-height: auto по умолчанию для флекс-детей), если она
+     "выше", чем даёт aspect-ratio — карточки становятся разной высоты. */
+  min-height: 0;
+  padding: 0;
+  background: var(--color-surface-alt);
+  cursor: zoom-in;
+}
+
+.web-ui__shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.web-ui__shot:hover img {
+  opacity: 0.85;
+}
+
+.web-ui__card figcaption {
+  flex: 1;
+  padding: var(--space-4);
+}
+
+.web-ui__card-title {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.web-ui__card-text {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ============ Галерея товара (fallback для <model-viewer>, см. шаг 7 ТЗ) ============ */
+.product-viewer__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  /* 450x544 + отступ снизу 16px + миниатюры 90px = 650px, высота .product-hero__inner (product.css) */
+  height: 544px;
+  /* space-5, а не space-4 — стрелки перелистывания (width 40px, inset space-3)
+     иначе заезжают на фото поверх его края. */
+  padding: var(--space-5);
+  margin-bottom: var(--space-4);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Стрелки перелистывания фото — ненавязчивые, ярче проявляются при наведении;
+   визуальный язык (кружок, полупрозрачный тёмный фон) совпадает со значком лупы. */
+.product-viewer__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(20, 23, 26, 0.4);
+  color: var(--color-surface);
+  opacity: 0.6;
+  transform: translateY(-50%);
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+/* display:flex выше перебивает нативный [hidden]{display:none} — без этого
+   правила стрелки перелистывания остаются видимыми, даже когда gallery.js
+   их прячет (для товара с одним фото, thumbs.length < 2). */
+.product-viewer__nav[hidden] {
+  display: none;
+}
+
+.product-viewer__nav:hover {
+  opacity: 1;
+  background-color: rgba(20, 23, 26, 0.65);
+}
+
+.product-viewer__nav--prev {
+  left: var(--space-3);
+}
+
+.product-viewer__nav--next {
+  right: var(--space-3);
+}
+
+.product-viewer__stage--zoomable {
+  cursor: zoom-in;
+}
+
+/* Значок лупы — подсказка, что по клику открывается лайтбокс; появляется при
+   наведении, чтобы не загромождать карточку в состоянии покоя. */
+.product-viewer__stage--zoomable::after {
+  content: "";
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(20, 23, 26, 0.55);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23f2f3f5' stroke-width='1.5'%3E%3Ccircle cx='7' cy='7' r='4.5'/%3E%3Cpath d='M10.5 10.5L14 14' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.product-viewer__stage--zoomable:hover::after {
+  opacity: 1;
+}
+
+.product-viewer__main {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-viewer__thumbs {
+  display: flex;
+  width: 420px;
+  height: 90px;
+  gap: var(--space-3);
+}
+
+.product-viewer__thumb {
+  flex: 1;
+  height: 80px;
+  align-self: center;
+  padding: var(--space-1);
+  background: var(--color-surface-alt);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  opacity: 0.7;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.product-viewer__thumb img {
+  width: 100%;
+  height: 100%;
+  /* contain, а не cover — товар должен помещаться в миниатюру целиком, без обрезки краёв */
+  object-fit: contain;
+}
+
+.product-viewer__thumb:hover {
+  opacity: 1;
+}
+
+.product-viewer__thumb--active {
+  opacity: 1;
+  border-color: var(--color-signal-amber-700);
+}
+
+/* ============ Таблица характеристик с прогрессивным раскрытием ============ */
+.spec-table-wrap {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+.spec-table th,
+.spec-table td {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.spec-table th {
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+}
+
+.spec-table td:first-child {
+  color: var(--color-text-muted);
+}
+
+.spec-table td:last-child {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Узкие экраны: значение в моноширинном шрифте не помещается в сжатую вторую
+   колонку — переключаем строку на вертикальную пару параметр/значение. */
+@media (max-width: 640px) {
+  .spec-table thead {
+    display: none;
+  }
+
+  .spec-table tr {
+    display: block;
+    padding: var(--space-3) var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .spec-table td {
+    display: block;
+    padding: var(--space-1) 0;
+    border-bottom: none;
+  }
+
+  .spec-table td:last-child {
+    white-space: normal;
+    margin-top: var(--space-1);
+  }
+}
+
+.spec-table__row--extra[hidden] {
+  display: none;
+}
+
+.spec-table__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-signal-amber-700);
+  background: var(--color-surface-alt);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.spec-table__toggle:hover {
+  background: var(--color-surface-alt-2);
+}
+
+.spec-table__toggle svg {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.spec-table__toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+/* ============ Popup заявки + overlay ============ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: rgba(20, 23, 26, 0.6);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-standard), visibility var(--duration-base);
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-popup);
+  width: min(420px, calc(100vw - 2 * var(--space-5)));
+  max-height: calc(100vh - 2 * var(--space-6));
+  overflow-y: auto;
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  transform: translate(-50%, -48%) scale(0.96);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform var(--duration-base) var(--ease-standard),
+    opacity var(--duration-base) var(--ease-standard),
+    visibility var(--duration-base);
+}
+
+.popup.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.popup__close:hover {
+  background: var(--color-surface-alt);
+}
+
+.popup__image {
+  width: 200px;
+  margin: 0 auto var(--space-3);
+  border-radius: var(--radius-md);
+}
+
+.popup__title {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-2);
+}
+
+.popup__text {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.popup__text--strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.popup__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.popup__phone,
+.popup__mail {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  color: var(--color-ink-700);
+}
+
+.popup__ok {
+  width: 100%;
+}
+
+/* ============ Лайтбокс галереи товара ============ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-popup);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-standard), visibility var(--duration-base);
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(1040px, 92vw);
+  height: min(700px, 85vh);
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(20, 23, 26, 0.55);
+  color: var(--color-text-on-dark);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.lightbox__close:hover {
+  background: rgba(20, 23, 26, 0.8);
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(20, 23, 26, 0.55);
+  color: var(--color-text-on-dark);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.lightbox__nav:hover {
+  background: rgba(20, 23, 26, 0.8);
+}
+
+.lightbox__nav--prev {
+  left: var(--space-4);
+}
+
+.lightbox__nav--next {
+  right: var(--space-4);
+}
+
+/* display:flex выше перебивает нативный [hidden]{display:none} — без этого
+   правила стрелки/миниатюры остаются видимыми при одном фото в галерее
+   (см. lightbox.js), как и .product-viewer__nav[hidden] чуть выше по файлу. */
+.lightbox__nav[hidden],
+.lightbox__thumbs[hidden] {
+  display: none;
+}
+
+.lightbox__thumbs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  max-width: min(1040px, 92vw);
+  overflow-x: auto;
+}
+
+.lightbox__thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 1.5px solid rgba(242, 243, 245, 0.3);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  opacity: 0.6;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.lightbox__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lightbox__thumb:hover {
+  opacity: 0.9;
+}
+
+.lightbox__thumb--active {
+  opacity: 1;
+  border-color: var(--color-signal-amber-400);
+}
+
+@media (max-width: 640px) {
+  .lightbox {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .lightbox__nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .lightbox__close {
+    top: var(--space-3);
+    right: var(--space-3);
+  }
+}

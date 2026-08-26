@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>БПВВ-1 (BP-220-02A) — аналог BP/TEL-220-02A | ПП ДЗВА</title>
+  <meta
+    name="description"
+    content="БПВВ-1 (BP-220-02A) — блок питания для БУВВ-1 при работе с вакуумными выключателями ВВ/TEL-6(10), прямой pin-to-pin аналог BP/TEL-220-02A. Интеграция без изменения проектной документации, производство в России."
+  />
+
+  <meta property="og:type" content="product" />
+  <meta property="og:site_name" content="ПП ДЗВА" />
+  <meta property="og:title" content="БПВВ-1 (BP-220-02A) — аналог BP/TEL-220-02A | ПП ДЗВА" />
+  <meta
+    property="og:description"
+    content="Прямой pin-to-pin аналог BP/TEL-220-02A. Интеграция без изменения проектной документации, производство в России."
+  />
+  <meta property="og:image" content="https://ppdzva.ru/img/products/bpvv/bpvv1.jpg" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "БПВВ-1 (BP-220-02A)",
+      "mpn": "BP-220-02A",
+      "description": "Блок питания для БУВВ-1 при работе с вакуумными выключателями ВВ/TEL-6(10), прямой pin-to-pin аналог BP/TEL-220-02A. Интеграция без изменения проектной документации.",
+      "image": "https://ppdzva.ru/img/products/bpvv/bpvv1.jpg",
+      "url": "https://ppdzva.ru/products/bpvv.html",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Производственное Предприятие ДЗВА",
+        "alternateName": "ПП ДЗВА"
+      },
+      "isSimilarTo": {
+        "@type": "Product",
+        "name": "BP/TEL-220-02A",
+        "alternateName": "BP TEL 220 02A",
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "Таврида Электрик"
+        }
+      }
+    }
+  </script>
+
+  <link rel="icon" href="../img/icons/favicon.ico" />
+  <link rel="stylesheet" href="../css/fonts.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/product.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Перейти к основному содержимому</a>
+  <!-- Затемнение и попап заявки — общие на все страницы, поведение см. js/components/popup.js -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <button class="popup__close" type="button" data-popup-close aria-label="Закрыть">&times;</button>
+    <img src="../img/icons/fz152-cat.webp" alt="" class="popup__image" />
+    <h2 id="popup-title" class="popup__title">Мы не собираем персональные данные</h2>
+    <p class="popup__text">
+      Мы честно пытались прочитать ФЗ-152, но уснули на второй странице. Чтобы не злить Роскомнадзор и крепко спать,
+      мы просто не собираем ваши данные.
+    </p>
+    <p class="popup__text popup__text--strong">Напишите или позвоните нам</p>
+    <div class="popup__contacts">
+      <a href="tel:+79119688528" class="popup__phone">+7 (911) 968-85-28</a>
+      <a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="popup__mail">MANAGER@PPDZVA.RU</a>
+    </div>
+    <button class="btn btn--outline popup__ok" type="button" data-popup-close>Хорошо</button>
+  </div>
+
+  <!-- Лайтбокс галереи товара — список слайдов строится в js/components/lightbox.js
+       из миниатюр [data-gallery-thumb] ниже, здесь только каркас. -->
+  <div class="overlay" id="lightbox-overlay"></div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения товара">
+    <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрыть">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Предыдущее изображение">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__stage">
+      <img src="" alt="" class="lightbox__image" data-lightbox-image />
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Следующее изображение">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__thumbs" data-lightbox-thumbs></div>
+  </div>
+
+  <!-- Общая шапка — переносится без изменений на все страницы (products/*.html, analogs.html) -->
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a href="../index.html" class="site-header__logo">
+        <img src="../img/icons/logo-dzva.webp" alt="ПП ДЗВА" class="site-header__logo-img" />
+      </a>
+      <nav class="site-nav">
+        <button class="site-nav__burger" type="button" aria-expanded="false" aria-controls="site-nav-list" aria-label="Открыть меню">
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="../index.html#hero" class="site-nav__link">Главная</a></li>
+          <li><a href="../index.html#about" class="site-nav__link">О компании</a></li>
+          <li><a href="../index.html#products" class="site-nav__link site-nav__link--active">Продукция</a></li>
+          <li><a href="../analogs.html" class="site-nav__link">Аналоги</a></li>
+          <li><a href="../index.html#advantages" class="site-nav__link">Преимущества</a></li>
+          <li><a href="../index.html#contacts" class="site-nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <button class="btn btn--gold site-header__cta" type="button" data-popup-open>Оставить заявку</button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="container">
+      <p class="breadcrumbs">
+        <a href="../index.html" class="breadcrumbs__link">Главная</a>
+        <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+        <a href="../index.html#products" class="breadcrumbs__link">Продукция</a>
+        <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+        <span class="breadcrumbs__current">БПВВ-1</span>
+      </p>
+    </div>
+
+    <!-- ============ ВИЗУАЛ + ОПИСАНИЕ ============ -->
+    <section class="product-hero">
+      <div class="container product-hero__inner">
+        <div class="product-hero__visual" data-gallery>
+          <div class="product-viewer__stage" role="button" tabindex="0" aria-label="Открыть увеличенное изображение">
+            <button type="button" class="product-viewer__nav product-viewer__nav--prev" data-gallery-prev aria-label="Предыдущее фото">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <img
+              src="../img/products/bpvv/bpvv1.jpg"
+              alt="БПВВ-1 (BP-220-02A) — вид сверху"
+              class="product-viewer__main"
+              data-gallery-main
+            />
+            <button type="button" class="product-viewer__nav product-viewer__nav--next" data-gallery-next aria-label="Следующее фото">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="product-viewer__thumbs" data-gallery-thumbs>
+            <button
+              type="button"
+              class="product-viewer__thumb product-viewer__thumb--active"
+              data-gallery-thumb
+              data-full="../img/products/bpvv/bpvv1.jpg"
+              data-alt="БПВВ-1 (BP-220-02A) — вид сверху"
+            >
+              <img src="../img/products/bpvv/bpvv1.jpg" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/bpvv/bpvv2.jpg"
+              data-alt="БПВВ-1 (BP-220-02A) — вид сверху, крупный план"
+            >
+              <img src="../img/products/bpvv/bpvv2.jpg" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/bpvv/bpvv3.jpg"
+              data-alt="БПВВ-1 (BP-220-02A) — фронтальный вид"
+            >
+              <img src="../img/products/bpvv/bpvv3.jpg" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/bpvv/bpvv4.jpg"
+              data-alt="БПВВ-1 (BP-220-02A) — вид под углом"
+            >
+              <img src="../img/products/bpvv/bpvv4.jpg" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/bpvv/bpvv5.jpg"
+              data-alt="БПВВ-1 (BP-220-02A) — вид сбоку"
+            >
+              <img src="../img/products/bpvv/bpvv5.jpg" alt="" loading="lazy" />
+            </button>
+          </div>
+        </div>
+
+        <div class="product-hero__info">
+          <div class="product-hero__heading">
+            <p class="section-eyebrow">
+              <span class="section-eyebrow-mark" aria-hidden="true"></span>
+              Готовая продукция
+            </p>
+            <h1 class="product-hero__title">БПВВ-1 <span class="product-hero__code">(BP-220-02A)</span></h1>
+          </div>
+
+          <div class="product-hero__replaces">
+            <span class="badge badge--analog">Аналог BP/TEL-220-02A</span>
+            <p class="product-hero__replaces-text">
+              Прямая pin-to-pin замена блока питания BP/TEL-220-02A — интеграция без изменения проектной
+              документации и повторных согласований.
+            </p>
+          </div>
+
+          <p class="product-hero__desc">
+            Блок питания БПВВ-1 (BP-220-02A) обеспечивает электропитанием блок управления БУВВ-1 (BU-220-05A) при
+            работе с вакуумными выключателями серии <span class="nowrap">ВВ/TEL-6(10)</span>. Применяется в шкафах
+            КРУ, КРУН и камерах КСО сети (6–10) кВ совместно с вакуумными выключателями ВВ/TEL-6(10).
+          </p>
+
+          <div class="product-hero__actions">
+            <button class="btn btn--gold" type="button" data-popup-open>Отправить заявку</button>
+            <a href="../content/RE_BPVV.pdf" class="btn btn--outline" target="_blank" rel="noopener">Скачать документацию</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- По данным Wordstat («таврида электрик bp tel 220 02a», «bp tel 220 02a схема
+           принципиальная [ремонт]») люди ищут ремонт оригинала и его схему — бренда
+           производителя оригинала на странице раньше не было. Принципиальная схема в РЭ
+           не публикуется (см. content/RE_BPVV.pdf, Приложение 1 — только внешний вид
+           панели), реально есть только схема подключения (Приложение 2) — не обещаем то,
+           чего нет в документации. -->
+      <div class="container">
+        <p class="product-hero__desc product-hero__desc--more">
+          Оригинальный блок питания BP/TEL-220-02A снят с производства —
+          принципиальная схема на него в открытом доступе не публикуется, что усложняет самостоятельный ремонт.
+          БПВВ-1 устанавливается вместо него без переделки существующей схемы подключения и проектной документации;
+          руководство по эксплуатации со схемой подключения БПВВ-1 доступно для скачивания выше.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ ПРЕИМУЩЕСТВА ============ -->
+    <section class="advantages" id="advantages">
+      <div class="container">
+        <div class="advantages__intro">
+          <p class="section-eyebrow">
+            <span class="section-eyebrow-mark" aria-hidden="true"></span>
+            Преимущества
+          </p>
+          <h2 class="advantages__title">Почему БПВВ-1</h2>
+        </div>
+        <div class="advantages__grid">
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M10 12.5V5a2 2 0 1 1 4 0v7.5a3.5 3.5 0 1 1-4 0Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 8v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M17 5.5l2 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Уменьшенный нагрев</h3>
+            <p class="advantage-card__text">
+              Нагрев блока сокращён на 15&nbsp;°C по сравнению с предыдущим поколением — увеличивает срок службы и
+              повышает надёжность работы.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 13h3.5l2-5.5 4 11 2-5.5h5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Стабильное напряжение</h3>
+            <p class="advantage-card__text">
+              Выходное напряжение 230&nbsp;±&nbsp;5&nbsp;В — стабильная работа блока управления БУВВ-1 независимо от
+              просадок в питающей сети.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M6.5 9.5c-1.5 0-2.5 1.1-2.5 2.5s1 2.5 2.5 2.5c2 0 3-1.7 4-3.3 1 1.6 2 3.3 4 3.3 1.5 0 2.5-1.1 2.5-2.5s-1-2.5-2.5-2.5c-2 0-3 1.7-4 3.3-1-1.6-2-3.3-4-3.3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Неограниченное время работы</h3>
+            <p class="advantage-card__text">
+              От вспомогательного источника питания время работы не ограничено — бесперебойная работа системы даже
+              при длительном отсутствии основного питания.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 15a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M12 15l4.5-5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="12" cy="15" r="1.2" fill="currentColor" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Широкий диапазон напряжения</h3>
+            <p class="advantage-card__text">
+              Напряжение от вспомогательного источника питания — 11–30&nbsp;В: гибкость при подборе резервного
+              источника на объекте.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12a8 8 0 0 1 14-5m2-2v5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 12a8 8 0 0 1-14 5m-2 2v-5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Непрерывность</h3>
+            <p class="advantage-card__text">
+              При частом включении/отключении БП не требуется делать паузу между циклами — ускоряет работу
+              оборудования на объекте.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 2v4M15 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M7 6h10v4a5 5 0 0 1-10 0V6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 15v4M9 22h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Pin-to-pin совместимость</h3>
+            <p class="advantage-card__text">
+              Прямая замена блока питания BP/TEL-220-02A — интеграция без изменения проектной документации и
+              повторных согласований.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ХАРАКТЕРИСТИКИ ============ -->
+    <section class="product-specs" id="specs">
+      <div class="container">
+        <p class="section-eyebrow">
+          <span class="section-eyebrow-mark" aria-hidden="true"></span>
+          Характеристики
+        </p>
+        <h2 class="product-specs__title">Технические характеристики</h2>
+
+        <div class="spec-table-wrap" data-spec-table>
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="spec-table__row">
+                <td>Номинальное напряжение БП, постоянное</td>
+                <td>= 110 / 220 В</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Номинальное напряжение БП, переменное</td>
+                <td>~ 100 / 127 / 220 В</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Выходное напряжение БП, постоянное</td>
+                <td>= 230 ± 5 В</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Диапазон напряжений питания от вспомогательного источника, постоянное</td>
+                <td>= 11–30 В</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Ток короткого замыкания выхода (при разряженной конденсаторной батарее), не более</td>
+                <td>0,5 А</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Время установления выходного напряжения при питании от сети 220 В, не более</td>
+                <td>4 с</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Масса блока, не более</td>
+                <td>2 кг</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Габариты блока</td>
+                <td>200 × 120 × 60 мм</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Диапазон допустимых напряжений питания БП, постоянное</td>
+                <td>= 75–300 В</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Диапазон допустимых напряжений питания БП, переменное</td>
+                <td>~ 75–260 В</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Напряжение отключения БП с последующим восстановлением работы, амплитудное значение, не менее</td>
+                <td>440 В</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Мощность, потребляемая БП по цепи питания при нагрузке на БУВВ-1, в режиме установления выходного напряжения, не более</td>
+                <td>120 ВА</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Мощность, потребляемая БП по цепи питания при нагрузке на БУВВ-1, в установившемся режиме, не более</td>
+                <td>10 ВА</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Мощность, потребляемая БП от вспомогательного источника при нагрузке на БУВВ-1, в режиме установления выходного напряжения, не более</td>
+                <td>25 ВА</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Мощность, потребляемая БП от вспомогательного источника при нагрузке на БУВВ-1, в установившемся режиме, не более</td>
+                <td>8 ВА</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Допустимое сопротивление нагрузки БП при питании от сети 220 В, не менее</td>
+                <td>3 кОм</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Допустимое сопротивление нагрузки БП при питании от вспомогательного источника, не менее</td>
+                <td>15 кОм</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Время установления выходного напряжения при питании от вспомогательного источника, не более</td>
+                <td>50 с</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Периодичность включения вакуумного выключателя ВВ/TEL при совместной работе БП с блоком управления БУВВ-1, менее</td>
+                <td>2,5 с</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Уровень срабатывания реле сигнализации превышения выходного напряжения</td>
+                <td>= 265 ± 15 В</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Уровень срабатывания реле сигнализации принижения выходного напряжения</td>
+                <td>= 205 ± 10 В</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Задержка срабатывания реле сигнализации при превышении уровня выходного напряжения, не более</td>
+                <td>10 мс</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Задержка срабатывания реле сигнализации при принижении уровня выходного напряжения, не менее</td>
+                <td>5 с</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Максимальный коммутируемый контактами реле сигнализации постоянный ток при напряжении 250 В и t = 1 мс, не более</td>
+                <td>0,12 А</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Максимальный коммутируемый контактами реле сигнализации переменный ток при напряжении 250 В и cos φ = 0,3, не более</td>
+                <td>2 А</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="spec-table__toggle" type="button" data-spec-toggle aria-expanded="false" data-label-collapse="Свернуть характеристики">
+            <span data-spec-toggle-label>Показать все характеристики (25)</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Общий футер — переносится без изменений на все страницы -->
+  <footer class="site-footer" id="contacts">
+    <div class="container site-footer__grid">
+      <nav class="site-footer__nav">
+        <p class="site-footer__heading">Навигация</p>
+        <ul class="site-footer__nav-list">
+          <li><a href="../index.html#hero" class="site-footer__link">Главная</a></li>
+          <li><a href="../index.html#about" class="site-footer__link">О компании</a></li>
+          <li><a href="../index.html#products" class="site-footer__link">Продукция</a></li>
+          <li><a href="../analogs.html" class="site-footer__link">Аналоги</a></li>
+          <li><a href="../index.html#advantages" class="site-footer__link">Преимущества</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contacts">
+        <p class="site-footer__heading">Контактная информация</p>
+        <p class="site-footer__legal">Производственное Предприятие&nbsp;ДЗВА</p>
+        <a href="tel:+79119688528" class="site-footer__phone">+7 (911) 968-85-28</a>
+        <a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="site-footer__mail">MANAGER@PPDZVA.RU</a>
+        <div class="site-footer__icons">
+          <a href="tel:+79119688528" aria-label="Позвонить"><img src="../img/icons/phone.svg" alt="" /></a>
+          <a href="tg://resolve?domain=Ligilement" aria-label="Telegram"><img src="../img/icons/telegram.svg" alt="" /></a>
+          <a href="https://wa.me/79119688528" aria-label="WhatsApp"><img src="../img/icons/whatsapp.svg" alt="" /></a>
+        </div>
+      </div>
+      <div class="site-footer__cta">
+        <button class="btn btn--gold" type="button" data-popup-open>Оставить заявку</button>
+      </div>
+      <div class="site-footer__bottom">© 2026 Производственное Предприятие&nbsp;ДЗВА. Все права защищены.</div>
+    </div>
+  </footer>
+
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/111879487" style="position: absolute; left: -9999px" alt="" /></div>
+  </noscript>
+
+  <script src="../js/components/burger-menu.js"></script>
+  <script src="../js/components/focus-trap.js"></script>
+  <script src="../js/components/popup.js"></script>
+  <script src="../js/components/product-search.js"></script>
+  <script src="../js/components/gallery.js"></script>
+  <script src="../js/components/lightbox.js"></script>
+  <script src="../js/components/spec-table.js"></script>
+  <script src="../js/components/nav-active.js"></script>
+  <script src="../js/analytics.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

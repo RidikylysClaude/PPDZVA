@@ -30,11 +30,3 @@ $(function () {
 	});
   });
 
-//Сharacteristics display or hidden
-
-$('.bpvv-feature-link').click(function(event) {
-	$('.bpvv-feature-title-imgRight').toggleClass('hidden');
-	$('.bpvv-feature-title-imgDown').toggleClass('hidden');
-	$('.iksweb').toggleClass('hidden');
-	return false;
-});

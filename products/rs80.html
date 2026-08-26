@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>РС-80/Д — аналог РС80М2М | ПП ДЗВА</title>
+  <meta
+    name="description"
+    content="РС-80/Д — двухфазное статическое реле максимального тока для релейной защиты и противоаварийной автоматики, функциональный аналог снятого с производства РС80М2М. Функция дешунтирования — опционально. Производство в России."
+  />
+
+  <meta property="og:type" content="product" />
+  <meta property="og:site_name" content="ПП ДЗВА" />
+  <meta property="og:title" content="РС-80/Д — аналог РС80М2М | ПП ДЗВА" />
+  <meta
+    property="og:description"
+    content="Функциональный аналог снятого с производства реле РС80М2М. Дешунтирование — опционально, под заказ. Производство в России."
+  />
+  <meta property="og:image" content="https://ppdzva.ru/img/products/rs80/rs80-1.jpg" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "РС-80/Д",
+      "mpn": "РС-80/Д",
+      "description": "Двухфазное статическое реле максимального тока для релейной защиты и противоаварийной автоматики, функциональный аналог снятого с производства РС80М2М. Функция дешунтирования — опционально.",
+      "image": "https://ppdzva.ru/img/products/rs80/rs80-1.jpg",
+      "url": "https://ppdzva.ru/products/rs80.html",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Производственное Предприятие ДЗВА",
+        "alternateName": "ПП ДЗВА"
+      },
+      "isSimilarTo": [
+        { "@type": "Product", "name": "РС80М2М" },
+        { "@type": "Product", "name": "РС80М2М-8" },
+        { "@type": "Product", "name": "РС80М2М-14И" },
+        { "@type": "Product", "name": "РС80М2М-19" },
+        { "@type": "Product", "name": "РС80М2М-31" },
+        { "@type": "Product", "name": "РС80М2М-31С" }
+      ]
+    }
+  </script>
+
+  <link rel="icon" href="../img/icons/favicon.ico" />
+  <link rel="stylesheet" href="../css/fonts.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/product.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Перейти к основному содержимому</a>
+  <!-- Затемнение и попап заявки — общие на все страницы, поведение см. js/components/popup.js -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <button class="popup__close" type="button" data-popup-close aria-label="Закрыть">&times;</button>
+    <img src="../img/icons/fz152-cat.webp" alt="" class="popup__image" />
+    <h2 id="popup-title" class="popup__title">Мы не собираем персональные данные</h2>
+    <p class="popup__text">
+      Мы честно пытались прочитать ФЗ-152, но уснули на второй странице. Чтобы не злить Роскомнадзор и крепко спать,
+      мы просто не собираем ваши данные.
+    </p>
+    <p class="popup__text popup__text--strong">Напишите или позвоните нам</p>
+    <div class="popup__contacts">
+      <a href="tel:+79119688528" class="popup__phone">+7 (911) 968-85-28</a>
+      <a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="popup__mail">MANAGER@PPDZVA.RU</a>
+    </div>
+    <button class="btn btn--outline popup__ok" type="button" data-popup-close>Хорошо</button>
+  </div>
+
+  <!-- Лайтбокс галереи товара — список слайдов строится в js/components/lightbox.js
+       из миниатюр [data-gallery-thumb] ниже, здесь только каркас. -->
+  <div class="overlay" id="lightbox-overlay"></div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения товара">
+    <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрыть">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Предыдущее изображение">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__stage">
+      <img src="" alt="" class="lightbox__image" data-lightbox-image />
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Следующее изображение">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__thumbs" data-lightbox-thumbs></div>
+  </div>
+
+  <!-- Общая шапка — переносится без изменений на все страницы (products/*.html, analogs.html) -->
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a href="../index.html" class="site-header__logo">
+        <img src="../img/icons/logo-dzva.webp" alt="ПП ДЗВА" class="site-header__logo-img" />
+      </a>
+      <nav class="site-nav">
+        <button class="site-nav__burger" type="button" aria-expanded="false" aria-controls="site-nav-list" aria-label="Открыть меню">
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="../index.html#hero" class="site-nav__link">Главная</a></li>
+          <li><a href="../index.html#about" class="site-nav__link">О компании</a></li>
+          <li><a href="../index.html#products" class="site-nav__link site-nav__link--active">Продукция</a></li>
+          <li><a href="../analogs.html" class="site-nav__link">Аналоги</a></li>
+          <li><a href="../index.html#advantages" class="site-nav__link">Преимущества</a></li>
+          <li><a href="../index.html#contacts" class="site-nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <button class="btn btn--gold site-header__cta" type="button" data-popup-open>Оставить заявку</button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="container">
+      <p class="breadcrumbs">
+        <a href="../index.html" class="breadcrumbs__link">Главная</a>
+        <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+        <a href="../index.html#products" class="breadcrumbs__link">Продукция</a>
+        <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+        <span class="breadcrumbs__current">РС-80/Д</span>
+      </p>
+    </div>
+
+    <!-- ============ ВИЗУАЛ + ОПИСАНИЕ ============ -->
+    <section class="product-hero">
+      <div class="container product-hero__inner">
+        <div class="product-hero__visual" data-gallery>
+          <div class="product-viewer__stage" role="button" tabindex="0" aria-label="Открыть увеличенное изображение">
+            <button type="button" class="product-viewer__nav product-viewer__nav--prev" data-gallery-prev aria-label="Предыдущее фото">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <img
+              src="../img/products/rs80/rs80-1.jpg"
+              alt="РС-80/Д — вид сверху"
+              class="product-viewer__main"
+              data-gallery-main
+            />
+            <button type="button" class="product-viewer__nav product-viewer__nav--next" data-gallery-next aria-label="Следующее фото">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="product-viewer__thumbs" data-gallery-thumbs>
+            <button
+              type="button"
+              class="product-viewer__thumb product-viewer__thumb--active"
+              data-gallery-thumb
+              data-full="../img/products/rs80/rs80-1.jpg"
+              data-alt="РС-80/Д — вид сверху"
+            >
+              <img src="../img/products/rs80/rs80-1.jpg" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/rs80/rs80-2.jpg"
+              data-alt="РС-80/Д — фронтальный вид, панель уставок"
+            >
+              <img src="../img/products/rs80/rs80-2.jpg" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/rs80/rs80-3.jpg"
+              data-alt="РС-80/Д — боковая панель, выходные клеммы"
+            >
+              <img src="../img/products/rs80/rs80-3.jpg" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/rs80/rs80-4.jpg"
+              data-alt="РС-80/Д — схема подключения выходных цепей"
+            >
+              <img src="../img/products/rs80/rs80-4.jpg" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/rs80/rs80-5.jpg"
+              data-alt="РС-80/Д — входные клеммы и схема подключения"
+            >
+              <img src="../img/products/rs80/rs80-5.jpg" alt="" loading="lazy" />
+            </button>
+          </div>
+        </div>
+
+        <div class="product-hero__info">
+          <div class="product-hero__heading">
+            <p class="section-eyebrow">
+              <span class="section-eyebrow-mark" aria-hidden="true"></span>
+              Готовая продукция
+            </p>
+            <h1 class="product-hero__title">РС-80/Д</h1>
+          </div>
+
+          <div class="product-hero__replaces">
+            <span class="badge badge--analog">Аналог РС80М2М</span>
+            <p class="product-hero__replaces-text">
+              Функциональная замена реле максимального тока РС80М2М, снятого с производства, — интеграция в
+              существующие схемы защиты без изменения проектной документации и повторных согласований.
+            </p>
+          </div>
+
+          <p class="product-hero__desc">
+            Двухфазное статическое реле максимального тока РС-80/Д предназначено для схем релейной защиты и
+            противоаварийной автоматики — защита электрических машин, трансформаторов и линий электропередачи
+            при коротких замыканиях и перегрузках. Реле не требует дополнительного источника питания: элементы
+            схемы запитаны от измеряемого тока. Функция дешунтирования электромагнита отключения выключателя
+            поставляется опционально — под заказ, с ней или без.
+          </p>
+
+          <div class="product-hero__actions">
+            <button class="btn btn--gold" type="button" data-popup-open>Отправить заявку</button>
+            <a href="../content/RE_RS-80D.pdf" class="btn btn--outline" target="_blank" rel="noopener">Скачать документацию</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ПРЕИМУЩЕСТВА ============ -->
+    <section class="advantages" id="advantages">
+      <div class="container">
+        <div class="advantages__intro">
+          <p class="section-eyebrow">
+            <span class="section-eyebrow-mark" aria-hidden="true"></span>
+            Преимущества
+          </p>
+          <h2 class="advantages__title">Почему РС-80/Д</h2>
+        </div>
+        <div class="advantages__grid">
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 8h13m0 0l-3-3m3 3l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 16H7m0 0l3 3m-3-3l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Прямой аналог РС80М2М</h3>
+            <p class="advantage-card__text">
+              Функциональная замена реле РС80М2М, снятого с производства, — интеграция в существующие схемы
+              защиты без пересогласования проекта.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Без источника питания</h3>
+            <p class="advantage-card__text">
+              Статическое реле питается от измеряемого тока — не нужен отдельный блок питания и его монтаж в
+              шкафу защиты.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="8" width="18" height="8" rx="4" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="16" cy="12" r="2.5" fill="currentColor" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Дешунтирование — по заказу</h3>
+            <p class="advantage-card__text">
+              Функция дешунтирования электромагнита отключения выключателя поставляется опционально: заказывайте
+              исполнение с ней или без, под свою схему защиты.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M5 18V10M10 18V6M14 18V13M19 18V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Четыре диапазона уставок тока</h3>
+            <p class="advantage-card__text">
+              Один прибор перекрывает диапазон 1–18,16&nbsp;А по МТЗ — 4 поддиапазона по 128 значений каждый, без
+              подбора реле под конкретный номинал.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 18V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M6 15c3-1 4-7 7-8s4 4 6 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Гибкая характеристика МТЗ</h3>
+            <p class="advantage-card__text">
+              Независимая или одна из двух зависимых характеристик срабатывания выбираются переключателями на
+              передней панели — без перепрошивки и завода на завод.
+            </p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="advantage-card__title">Высокий ресурс</h3>
+            <p class="advantage-card__text">
+              10 000 000 циклов механической износоустойчивости и средний срок службы 15 лет — надёжная работа
+              при интенсивной эксплуатации.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ХАРАКТЕРИСТИКИ ============ -->
+    <section class="product-specs" id="specs">
+      <div class="container">
+        <p class="section-eyebrow">
+          <span class="section-eyebrow-mark" aria-hidden="true"></span>
+          Характеристики
+        </p>
+        <h2 class="product-specs__title">Технические характеристики</h2>
+
+        <div class="spec-table-wrap" data-spec-table>
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="spec-table__row">
+                <td>Диапазон уставок тока срабатывания МТЗ (4 поддиапазона)</td>
+                <td>1–2,27 / 2–4,54 / 4–9,08 / 8–18,16 А</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Диапазон уставок выдержки времени МТЗ, шаг 0,1 с</td>
+                <td>0,3–25,8 с</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Диапазон уставок кратности тока отсечки (ТО), шаг 0,25</td>
+                <td>2–17,75 крат.</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Задержка срабатывания токовой отсечки (ТО), задаётся с передней панели</td>
+                <td>70–100 или 150–200 мс</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Максимальный коммутируемый ток контактов реле</td>
+                <td>8 А</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Класс точности</td>
+                <td>5,0</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Масса, без функции дешунтирования / с функцией</td>
+                <td>1,5 / 2,0 кг</td>
+              </tr>
+              <tr class="spec-table__row">
+                <td>Габариты (Ш × В × Г)</td>
+                <td>240 × 160 × 120 мм</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Номинальная частота переменного тока</td>
+                <td>50 Гц</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Разброс тока срабатывания МТЗ/ТО от среднего значения, не более</td>
+                <td>± 1,5 %</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Погрешность тока срабатывания при −40…+40 °C, не более</td>
+                <td>± 10 %</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Погрешность выдержки времени (независимая характеристика) при −40…+40 °C, не более</td>
+                <td>± 10 %</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Коэффициент возврата, не менее</td>
+                <td>0,85</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Механическая износоустойчивость</td>
+                <td>10 000 000 циклов</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Максимальное коммутируемое напряжение контактов</td>
+                <td>250 В переменного тока</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Максимальная коммутируемая мощность контактов</td>
+                <td>2000 ВА</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Коммутационная износоустойчивость контактов, не менее</td>
+                <td>50 000 срабатываний</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Мощность, потребляемая реле на фазу при минимальной уставке тока, не более</td>
+                <td>1,5 ВА</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Ток перегрузки, выдерживаемый 1 с без повреждений</td>
+                <td>200 А</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Сопротивление изоляции</td>
+                <td>50 МОм</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Испытательное напряжение изоляции входной цепи (относительно выходной и цепи управления), 1 мин</td>
+                <td>2000 В</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Испытательное напряжение изоляции выходной цепи (относительно входной и цепи управления), 1 мин</td>
+                <td>1000 В</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Импульсное испытательное напряжение изоляции, амплитуда</td>
+                <td>4,0 ± 0,5 кВ</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Средняя наработка на отказ</td>
+                <td>20 000 ч</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Средний срок службы</td>
+                <td>15 лет</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Степень защиты (оболочка / зажимы для внешних проводников)</td>
+                <td>IP40 / IP00</td>
+              </tr>
+              <tr class="spec-table__row spec-table__row--extra" hidden>
+                <td>Диапазон рабочих температур</td>
+                <td>от −40 до +40 °C</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="spec-table__toggle" type="button" data-spec-toggle aria-expanded="false" data-label-collapse="Свернуть характеристики">
+            <span data-spec-toggle-label>Показать все характеристики (27)</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Общий футер — переносится без изменений на все страницы -->
+  <footer class="site-footer" id="contacts">
+    <div class="container site-footer__grid">
+      <nav class="site-footer__nav">
+        <p class="site-footer__heading">Навигация</p>
+        <ul class="site-footer__nav-list">
+          <li><a href="../index.html#hero" class="site-footer__link">Главная</a></li>
+          <li><a href="../index.html#about" class="site-footer__link">О компании</a></li>
+          <li><a href="../index.html#products" class="site-footer__link">Продукция</a></li>
+          <li><a href="../analogs.html" class="site-footer__link">Аналоги</a></li>
+          <li><a href="../index.html#advantages" class="site-footer__link">Преимущества</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contacts">
+        <p class="site-footer__heading">Контактная информация</p>
+        <p class="site-footer__legal">Производственное Предприятие&nbsp;ДЗВА</p>
+        <a href="tel:+79119688528" class="site-footer__phone">+7 (911) 968-85-28</a>
+        <a href="mailto:manager@ppdzva.ru?subject=Запрос из сайта" class="site-footer__mail">MANAGER@PPDZVA.RU</a>
+        <div class="site-footer__icons">
+          <a href="tel:+79119688528" aria-label="Позвонить"><img src="../img/icons/phone.svg" alt="" /></a>
+          <a href="tg://resolve?domain=Ligilement" aria-label="Telegram"><img src="../img/icons/telegram.svg" alt="" /></a>
+          <a href="https://wa.me/79119688528" aria-label="WhatsApp"><img src="../img/icons/whatsapp.svg" alt="" /></a>
+        </div>
+      </div>
+      <div class="site-footer__cta">
+        <button class="btn btn--gold" type="button" data-popup-open>Оставить заявку</button>
+      </div>
+      <div class="site-footer__bottom">© 2026 Производственное Предприятие&nbsp;ДЗВА. Все права защищены.</div>
+    </div>
+  </footer>
+
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/111879487" style="position: absolute; left: -9999px" alt="" /></div>
+  </noscript>
+
+  <script src="../js/components/burger-menu.js"></script>
+  <script src="../js/components/focus-trap.js"></script>
+  <script src="../js/components/popup.js"></script>
+  <script src="../js/components/product-search.js"></script>
+  <script src="../js/components/gallery.js"></script>
+  <script src="../js/components/lightbox.js"></script>
+  <script src="../js/components/spec-table.js"></script>
+  <script src="../js/components/nav-active.js"></script>
+  <script src="../js/analytics.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

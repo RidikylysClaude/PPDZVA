@@ -1,0 +1,108 @@
+/*
+  Design tokens — «ПП ДЗВА». Направление «Инженерная консоль»: графитовая база,
+  один сигнальный акцент — amber (как индикаторная лампа на щитке), зелёный — только
+  как статус «подтверждено/совместимо». Взято с реальных панелей БУВВ-1/БПВВ-1
+  (жёлтые предупреждающие таблички, индикаторы «ПИТ.»/«АВАРИЯ», винтовые клеммники).
+*/
+
+:root {
+  /* --- Цвет: графит (фон hero, header, footer) --- */
+  --color-ink-900: #14171a;
+  --color-ink-800: #1c2024;
+  --color-ink-700: #262b30;
+  --color-ink-600: #383f46;
+
+  /* --- Цвет: сигнальный amber — единственный акцент действия/интерактива ---
+     500/400/300 — яркие, только на тёмном фоне (контраст 1.83:1 на белом — не
+     проходит WCAG). 700 — приглушённый, для текста/иконок/фокус-рамок на
+     светлом фоне (5:1 на белом, проверено расчётом контраста). */
+  --color-signal-amber-700: #a35f0a;
+  --color-signal-amber-600: #d9860f;
+  --color-signal-amber-500: #ffb020;
+  --color-signal-amber-400: #ffc857;
+  --color-signal-amber-300: #ffdb8f;
+
+  /* --- Цвет: статус «подтверждено/совместимо» (индикатор «ГОТОВ») ---
+     700 — для текста на светлом фоне (бейджи), 5.17:1 на белом. */
+  --color-signal-green-700: #1a7d46;
+  --color-signal-green-600: #1f9d55;
+  --color-signal-green-500: #2fae66;
+  --color-signal-green-400: #4fd88a;
+
+  /* --- Нейтральные поверхности: сталь, не синева --- */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f2f3f5;
+  --color-surface-alt-2: #e6e8eb;
+  --color-border: #d8dbe0;
+
+  /* --- Текст --- */
+  --color-text: #15181c;
+  --color-text-muted: #5c636b;
+  --color-text-on-dark: #f2f3f5;
+  --color-text-on-dark-muted: #9aa0a8;
+
+  /* --- Статус/предупреждение (красный с реальных табличек «ВНИМАНИЕ») --- */
+  --color-success: var(--color-signal-green-500);
+  --color-warning: #e5533d;
+
+  /* --- Типографика: шрифты ---
+     Unbounded — геометрический дисплейный шрифт с полноценной кириллицей, для
+     заголовков/лейблов. Inter — тело текста. JetBrains Mono — коды моделей,
+     характеристики, цифры (как показания на панели прибора). */
+  --font-heading: "Unbounded", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Consolas", monospace;
+
+  /* --- Типографика: адаптивные размеры через clamp() --- */
+  --fs-h1: clamp(2.1rem, 1.55rem + 2.2vw, 3rem);
+  --fs-h2: clamp(1.4rem, 1.05rem + 1.5vw, 2.25rem);
+  --fs-h3: clamp(1.2rem, 1.02rem + 0.75vw, 1.625rem);
+  --fs-lead: clamp(1.05rem, 0.95rem + 0.4vw, 1.375rem);
+  --fs-body: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
+  --fs-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.9375rem);
+  --fs-eyebrow: clamp(0.8125rem, 0.79rem + 0.2vw, 0.9375rem);
+
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+  --ls-heading: -0.01em;
+  --ls-eyebrow: 0.1em;
+
+  /* --- Отступы: 8px-based шкала --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* --- Контейнер --- */
+  --container-max: 1280px;
+  --container-padding: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+
+  /* --- Радиусы: меньше, чем в SaaS-дефолте — деталь читается как техническая, не «мягкая» --- */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* --- Тени --- */
+  --shadow-sm: 0 1px 2px rgba(10, 12, 14, 0.1);
+  --shadow-md: 0 8px 24px rgba(10, 12, 14, 0.16);
+  --shadow-lg: 0 24px 64px rgba(10, 12, 14, 0.32);
+  --shadow-glow-amber: 0 0 48px rgba(255, 176, 32, 0.35);
+
+  /* --- Переходы --- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 450ms;
+
+  /* --- Z-индексы --- */
+  --z-header: 100;
+  --z-popup: 200;
+  --z-overlay: 190;
+}
