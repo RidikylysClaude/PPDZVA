@@ -3,7 +3,7 @@
      КТРМ (products/ktrm.html) сюда не включён — страница ещё не создана (см. handoff.md). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ppdzva.ru/index.html</loc>
+    <loc>https://ppdzva.ru/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
