@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>ПП ДЗВА — каталог продукции</title>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/tokens.css">
+<style>@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: var(--font-body); color: var(--color-text); background: #fff; font-size: 10pt; line-height: 1.5; }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+
+.page { width: 210mm; height: 296.5mm; overflow: hidden; display: flex; flex-direction: column; break-after: page; position: relative; background: #fff; }
+.page:last-child { break-after: auto; }
+.page > :not(.hero):not(.topbar):not(.strip) { margin-inline: 14mm; }
+
+/* --- общие элементы --- */
+.eyebrow { display: inline-flex; align-items: center; gap: 3mm; font-family: var(--font-heading); font-size: 7.5pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--color-signal-amber-700); margin-bottom: 2.5mm; }
+.eyebrow i { width: 8mm; height: 2px; background: var(--color-signal-amber-700); display: block; }
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; }
+h2 { font-size: 15pt; margin-bottom: 4mm; }
+.code { font-family: var(--font-mono); font-weight: 500; color: var(--color-text-muted); white-space: nowrap; }
+
+.badge { display: inline-flex; align-items: center; padding: .6mm 3mm; border-radius: 999px; font-family: var(--font-mono); font-size: 8pt; font-weight: 500; white-space: nowrap; }
+.badge--analog { background: rgba(47,174,102,.1); color: var(--color-signal-green-700); border: 1px solid rgba(47,174,102,.35); }
+.badge--original { background: rgba(255,176,32,.1); color: var(--color-signal-amber-700); border: 1px solid rgba(255,176,32,.4); }
+
+/* --- шапки/подвал --- */
+.topbar { display: flex; align-items: center; gap: 5mm; height: 15mm; padding-inline: 14mm; background: var(--color-ink-900); border-bottom: 2px solid var(--color-signal-amber-500); flex: none; }
+.topbar img { height: 7mm; width: auto; }
+.topbar__name { color: var(--color-text-on-dark-muted); font-size: 8pt; letter-spacing: .04em; }
+.topbar__page { margin-left: auto; font-family: var(--font-mono); font-size: 8pt; color: var(--color-signal-amber-500); }
+
+.strip { display: flex; align-items: center; gap: 8mm; height: 15mm; padding-inline: 14mm; background: var(--color-ink-900); color: var(--color-text-on-dark); font-size: 9pt; margin-top: auto; flex: none; }
+.strip__lead { font-family: var(--font-heading); font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--color-signal-amber-500); margin-right: auto; }
+.strip a { font-family: var(--font-mono); font-size: 8.5pt; }
+
+/* --- карточка товара --- */
+.product { display: grid; grid-template-columns: 78mm 1fr; gap: 8mm; margin-top: 8mm !important; }
+.visual { border-radius: var(--radius-lg); overflow: hidden; background: var(--color-ink-900); height: 116mm; }
+.visual--photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.product__info { display: flex; flex-direction: column; }
+.product__info h1 { font-size: 21pt; margin-bottom: 4mm; }
+.product__info h1 .code { display: block; font-size: 11pt; margin-top: 1.5mm; }
+.replaces { display: flex; flex-direction: column; align-items: flex-start; gap: 2.5mm; padding: 3.5mm 4mm; border-radius: var(--radius-md); background: var(--color-surface-alt); border-left: 3px solid var(--color-signal-green-500); margin-bottom: 4mm; }
+.replaces:has(.badge--original) { border-left-color: var(--color-signal-amber-500); }
+.replaces:empty { display: none; }
+.rep { font-size: 9pt; color: var(--color-text-muted); }
+.desc p { margin-bottom: 2.5mm; font-size: 9.5pt; }
+.desc p + p { color: var(--color-text-muted); font-size: 9pt; }
+.nowrap { white-space: nowrap; }
+
+.adv { margin-top: 9mm !important; }
+.adv__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.adv__grid--3 { grid-template-columns: 1fr 1fr 1fr; gap: 3.5mm; }
+.acard { display: grid; grid-template-columns: 10mm 1fr; column-gap: 3mm; padding: 3.5mm 4mm; border: 1px solid var(--color-border); border-radius: var(--radius-lg); align-content: start; break-inside: avoid; }
+.acard__icon { grid-row: span 2; width: 10mm; height: 10mm; border-radius: 50%; background: rgba(255,176,32,.14); color: var(--color-signal-amber-700); display: grid; place-items: center; }
+.acard__icon svg { width: 5.5mm; height: 5.5mm; }
+.acard h3 { font-size: 8.7pt; margin-bottom: 1mm; align-self: center; }
+.acard p { font-size: 8.2pt; line-height: 1.42; color: var(--color-text-muted); grid-column: 2; }
+.acard--sm { grid-template-columns: 1fr; padding: 3mm 3.5mm; }
+.acard--sm .acard__icon { grid-row: auto; width: 8mm; height: 8mm; margin-bottom: 2mm; }
+.acard--sm .acard__icon svg { width: 4.6mm; height: 4.6mm; }
+.acard--sm p { grid-column: 1; font-size: 7.8pt; line-height: 1.38; }
+.acard--sm h3 { align-self: start; }
+
+/* --- ЭИС: схема вместо фото --- */
+.visual--eis { padding: 6mm 5mm; color: var(--color-text-on-dark); display: flex; flex-direction: column; }
+.visual__eyebrow { font-family: var(--font-heading); font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--color-signal-amber-500); margin-bottom: 3mm; }
+.eis-chart { width: 100%; height: auto; }
+.c-lab { font-family: var(--font-mono); font-size: 11px; fill: #f2f3f5; }
+.c-lab--amber { fill: #ffb020; font-weight: 700; }
+.c-lab--dim { fill: #9aa0a8; font-size: 9.5px; }
+.visual__cap { font-size: 8.3pt; color: var(--color-text-on-dark-muted); line-height: 1.45; margin-top: 3mm; }
+.visual__colors { margin-top: auto; display: flex; gap: 6mm; font-size: 8.3pt; color: var(--color-text-on-dark); padding-top: 3mm; border-top: 1px solid var(--color-ink-600); }
+.dot { display: inline-block; width: 3mm; height: 3mm; border-radius: 50%; margin-right: 1.8mm; vertical-align: -.5mm; }
+.dot--red { background: #e5333d; box-shadow: 0 0 8px rgba(229,51,61,.7); }
+.dot--warm { background: #ffe8b0; box-shadow: 0 0 8px rgba(255,220,140,.7); }
+
+/* --- обложка --- */
+.hero { background: var(--color-ink-900) url("../img/backgrounds/hero-circuit.jpg") center/cover; position: relative; padding: 10mm 14mm 9mm; flex: none; color: var(--color-text-on-dark); border-bottom: 3px solid var(--color-signal-amber-500); }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(20,23,26,.96) 35%, rgba(20,23,26,.7)); }
+.hero > * { position: relative; }
+.hero__logo { height: 11mm; width: auto; margin-bottom: 4mm; filter: brightness(1.35) saturate(1.1); }
+.hero__company { font-family: var(--font-heading); font-size: 8pt; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--color-signal-amber-500); margin-bottom: 3mm; }
+.hero__title { font-size: 19pt; max-width: 165mm; margin-bottom: 3mm; }
+.hero__lead { font-size: 10.5pt; color: var(--color-text-on-dark-muted); max-width: 150mm; }
+
+.about { display: grid; grid-template-columns: 1fr 58mm; gap: 8mm; margin-top: 6mm !important; align-items: start; }
+.about__text p:not(.eyebrow) { font-size: 9.5pt; }
+.facts { list-style: none; display: grid; gap: 2.5mm; }
+.facts li { font-size: 7.8pt; line-height: 1.35; color: var(--color-text-muted); padding: 2.5mm 3.5mm; background: var(--color-surface-alt); border-radius: var(--radius-md); border-left: 3px solid var(--color-signal-amber-500); }
+.facts b { display: block; font-family: var(--font-heading); font-size: 12pt; color: var(--color-text); }
+
+.whyus { margin-top: 6mm !important; }
+.overview { margin: 6mm 14mm 6mm !important; }
+.overview__list { list-style: none; border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; }
+.overview__list li { display: grid; grid-template-columns: 1fr 44mm 42mm 22mm; align-items: center; gap: 3mm; padding: 2.6mm 5mm; font-size: 9pt; }
+.overview__list li + li { border-top: 1px solid var(--color-border); }
+.overview__list b { font-family: var(--font-heading); font-weight: 600; font-size: 9.5pt; }
+.overview__list b .code { font-size: 8.5pt; margin-left: 1.5mm; }
+.overview__list span { color: var(--color-text-muted); }
+.overview__list em { font-style: normal; justify-self: start; font-family: var(--font-mono); font-size: 8pt; padding: .6mm 3mm; border-radius: 999px; }
+
+.overview__list strong { font-family: var(--font-mono); font-size: 8.5pt; font-weight: 700; justify-self: end; white-space: nowrap; }
+
+/* цена */
+.price { margin-top: auto; display: flex; align-items: baseline; gap: 3mm; padding: 3.5mm 5mm; border-radius: var(--radius-md); background: var(--color-ink-900); border-left: 3px solid var(--color-signal-amber-500); color: var(--color-text-on-dark); }
+.price span { font-family: var(--font-heading); font-size: 7.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--color-text-on-dark-muted); margin-right: auto; }
+.price b { font-family: var(--font-heading); font-size: 17pt; font-weight: 700; color: var(--color-signal-amber-500); white-space: nowrap; }
+.price em { font-style: normal; font-size: 9pt; color: var(--color-text-on-dark-muted); }
+
+/* фото целиком, с полями (БУВВ-1): края фото плавно растворяются в фон */
+.visual--fit { display: grid; place-items: center; padding: 3mm; }
+.visual--fit i { display: none; }
+.visual--fit img { width: 100%; height: 100%; object-fit: contain;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-composite: source-in; mask-composite: intersect; }
+</style>
+</head>
+<body>
+<section class="page page--cover">
+  <div class="hero">
+    <img class="hero__logo" src="../img/icons/logo-dzva.webp" alt="ПП ДЗВА">
+    <p class="hero__company">Производственное Предприятие&nbsp;ДЗВА</p>
+    <h1 class="hero__title">Блоки управления, питания и защиты для энергетики</h1>
+    <p class="hero__lead">Российское производство pin-to-pin аналогов снятого с производства оборудования: замена без изменения проектной документации.</p>
+  </div>
+  <div class="about">
+    <div class="about__text">
+      <p class="eyebrow"><i></i>О компании</p>
+      <p>От экспертов отрасли — для вашей инфраструктуры. 15 лет реализуем сложные энергетические проекты. Накопленный опыт и дефицит качественных решений на рынке побудили нас создать собственную производственную базу: сегодня мы выпускаем блоки защиты и управления, готовые к бесперебойной работе в любых условиях.</p>
+    </div>
+    <ul class="facts">
+      <li><b>2014</b>занимаемся энергетическими проектами</li>
+      <li><b>RU</b>производство и сертификация полностью в России</li>
+      
+    </ul>
+  </div>
+  <div class="whyus">
+    <p class="eyebrow"><i></i>Почему выбирают ПП ДЗВА</p>
+    <div class="adv__grid adv__grid--3"><div class="acard acard--sm"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h13M17 7l-3-3M17 7l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 17H7M7 17l3-3M7 17l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Pin-to-pin аналоги</h3><p>Замена снятого с производства оборудования без изменения проектной документации и повторных согласований.</p></div><div class="acard acard--sm"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M14.5 3.5a4 4 0 0 0-5.4 4.9L3 14.5 5.5 17l6.1-6.1a4 4 0 0 0 4.9-5.4l-2.6 2.6-2-2 2.6-2.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg></div><h3>Исправленные ошибки оригинала</h3><p>Учли конструктивные недостатки оригинальных решений и внесли доработки в схемотехнику и корпус.</p></div><div class="acard acard--sm"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect x="13" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <path d="M17 13v8M13 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg></div><h3>Расширенный функционал</h3><p>Наши блоки получают возможности, которых не было в исходном оборудовании — дополнительная диагностика и защита.</p></div><div class="acard acard--sm"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 8l9-4 9 4-9 4-9-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M3 8v8l9 4 9-4V8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 12v8" stroke="currentColor" stroke-width="1.5" />
+              </svg></div><h3>Быстрая поставка</h3><p>Складские позиции по ключевым моделям — без ожидания производства месяцами.</p></div><div class="acard acard--sm"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 13v-2a8 8 0 0 1 16 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                <path d="M20 19v1a3 3 0 0 1-3 3h-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg></div><h3>Техническая поддержка</h3><p>Инженерное сопровождение на этапе подбора, интеграции и монтажа оборудования.</p></div><div class="acard acard--sm"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="10" r="6" stroke="currentColor" stroke-width="1.5" />
+                <path d="M9.5 10l1.5 1.5 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 15.5L7 21l5-2 5 2-2-5.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg></div><h3>Гарантия и сервис</h3><p>Гарантийное и постгарантийное обслуживание собственными силами, без посредников.</p></div></div>
+  </div>
+  <div class="overview">
+    <p class="eyebrow"><i></i>В этом каталоге</p>
+    <ul class="overview__list"><li><b>БПВВ-1 <span class="code">(BP-220-02A)</span></b><span>Блок питания</span><em class="badge badge--analog">Аналог BP/TEL-220-02A</em><strong>35 000&nbsp;₽</strong></li><li><b>БУВВ-1 <span class="code">(BU-220-05A)</span></b><span>Блок управления</span><em class="badge badge--analog">Аналог BU/TEL-220-05A</em><strong>35 000&nbsp;₽</strong></li><li><b>РС-80/Д </b><span>Реле максимального тока</span><em class="badge badge--analog">Аналог РС80М2М</em><strong>50 000&nbsp;₽</strong></li><li><b>ЭИС-ЛН-220-К(Б) </b><span>Ретрофит-модуль для табло ТСБ</span><em class="badge badge--original">Собственная разработка</em><strong>5 000&nbsp;₽</strong></li></ul>
+  </div>
+  <footer class="strip">
+    <div class="strip__lead">Заказ и наличие</div>
+    <a href="tel:+79119688528">+7 (911) 968-85-28</a>
+    <a href="mailto:manager@ppdzva.ru">manager@ppdzva.ru</a>
+    <a href="https://ppdzva.ru">ppdzva.ru</a>
+  </footer>
+</section>
+<section class="page page--product">
+  <header class="topbar">
+    <img src="../img/icons/logo-dzva.webp" alt="ПП ДЗВА">
+    <span class="topbar__name">Производственное Предприятие ДЗВА</span>
+    <span class="topbar__page">02</span>
+  </header>
+  <div class="product">
+    <div class="product__visual"><div class="visual visual--photo"><img src="../img/products/bpvv/bpvv1.jpg" alt="БПВВ-1 (BP-220-02A)"></div></div>
+    <div class="product__info">
+      <p class="eyebrow"><i></i>Блок питания</p>
+      <h1>БПВВ-1 <span class="code">(BP-220-02A)</span></h1>
+      <div class="replaces"><span class="badge badge--analog">Аналог BP/TEL-220-02A</span><p class="rep">Прямая pin-to-pin замена блока питания BP/TEL-220-02A — интеграция без изменения проектной документации и повторных согласований.</p></div>
+      <div class="desc"><p>Блок питания БПВВ-1 (BP-220-02A) обеспечивает электропитанием блок управления БУВВ-1 (BU-220-05A) при работе с вакуумными выключателями серии <span class="nowrap">ВВ/TEL-6(10)</span>. Применяется в шкафах КРУ, КРУН и камерах КСО сети (6–10) кВ совместно с вакуумными выключателями ВВ/TEL-6(10).</p></div>
+      <div class="price"><span>Цена</span><b>35 000 ₽</b><em>с НДС</em></div>
+    </div>
+  </div>
+  <div class="adv">
+    <p class="eyebrow"><i></i>Преимущества</p>
+    <h2>Почему БПВВ-1</h2>
+    <div class="adv__grid"><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M10 12.5V5a2 2 0 1 1 4 0v7.5a3.5 3.5 0 1 1-4 0Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 8v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M17 5.5l2 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Уменьшенный нагрев</h3><p>Нагрев блока сокращён на 15&nbsp;°C по сравнению с предыдущим поколением — увеличивает срок службы и повышает надёжность работы.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 13h3.5l2-5.5 4 11 2-5.5h5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Стабильное напряжение</h3><p>Выходное напряжение 230&nbsp;±&nbsp;5&nbsp;В — стабильная работа блока управления БУВВ-1 независимо от просадок в питающей сети.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M6.5 9.5c-1.5 0-2.5 1.1-2.5 2.5s1 2.5 2.5 2.5c2 0 3-1.7 4-3.3 1 1.6 2 3.3 4 3.3 1.5 0 2.5-1.1 2.5-2.5s-1-2.5-2.5-2.5c-2 0-3 1.7-4 3.3-1-1.6-2-3.3-4-3.3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg></div><h3>Неограниченное время работы</h3><p>От вспомогательного источника питания время работы не ограничено — бесперебойная работа системы даже при длительном отсутствии основного питания.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 15a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M12 15l4.5-5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="12" cy="15" r="1.2" fill="currentColor" />
+              </svg></div><h3>Широкий диапазон напряжения</h3><p>Напряжение от вспомогательного источника питания — 11–30&nbsp;В: гибкость при подборе резервного источника на объекте.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12a8 8 0 0 1 14-5m2-2v5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 12a8 8 0 0 1-14 5m-2 2v-5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Непрерывность</h3><p>При частом включении/отключении БП не требуется делать паузу между циклами — ускоряет работу оборудования на объекте.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 2v4M15 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M7 6h10v4a5 5 0 0 1-10 0V6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 15v4M9 22h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg></div><h3>Pin-to-pin совместимость</h3><p>Прямая замена блока питания BP/TEL-220-02A — интеграция без изменения проектной документации и повторных согласований.</p></div></div>
+  </div>
+  <footer class="strip">
+    <div class="strip__lead">Заказ и наличие</div>
+    <a href="tel:+79119688528">+7 (911) 968-85-28</a>
+    <a href="mailto:manager@ppdzva.ru">manager@ppdzva.ru</a>
+    <a href="https://ppdzva.ru">ppdzva.ru</a>
+  </footer>
+</section>
+<section class="page page--product">
+  <header class="topbar">
+    <img src="../img/icons/logo-dzva.webp" alt="ПП ДЗВА">
+    <span class="topbar__name">Производственное Предприятие ДЗВА</span>
+    <span class="topbar__page">03</span>
+  </header>
+  <div class="product">
+    <div class="product__visual"><div class="visual visual--photo"><img src="../img/products/buvv/buvv1.jpg" alt="БУВВ-1 (BU-220-05A)"></div></div>
+    <div class="product__info">
+      <p class="eyebrow"><i></i>Блок управления</p>
+      <h1>БУВВ-1 <span class="code">(BU-220-05A)</span></h1>
+      <div class="replaces"><span class="badge badge--analog">Аналог BU/TEL-220-05A</span><p class="rep">Прямая pin-to-pin замена блока управления BU/TEL-220-05A — интеграция без изменения проектной документации и повторных согласований.</p></div>
+      <div class="desc"><p>Блок управления БУВВ-1 (BU-220-05A) предназначен для управления вакуумным выключателем серии <span class="nowrap">ВВ/TEL-6(10)</span> и применяется совместно с блоком питания <a href="bpvv.html" class="inline-link">БПВВ-1 (BP-220-02A)</a>.</p></div>
+      <div class="price"><span>Цена</span><b>35 000 ₽</b><em>с НДС</em></div>
+    </div>
+  </div>
+  <div class="adv">
+    <p class="eyebrow"><i></i>Преимущества</p>
+    <h2>Почему БУВВ-1</h2>
+    <div class="adv__grid"><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h10M17 7h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="14" cy="7" r="2.2" stroke="currentColor" stroke-width="1.5" />
+                <path d="M4 17h3M10 17h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="7" cy="17" r="2.2" stroke="currentColor" stroke-width="1.5" />
+              </svg></div><h3>Адаптивная подстройка под ВВ</h3><p>Блок автоматически подбирает время включения и отключения под соленоид конкретного вакуумного выключателя — точная работа без ручной калибровки на объекте.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="10" cy="10" r="6.5" stroke="currentColor" stroke-width="1.5" />
+                <path d="M7.5 10l1.7 1.7L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14.8 14.8L19.5 19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg></div><h3>Диагностика в реальном времени</h3><p>Отслеживает обрыв цепи, короткое замыкание и перегрев блока — неисправность видна раньше, чем приводит к отказу выключателя.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2.5l7 2.8v6c0 5-3.5 8.3-7 9.7-3.5-1.4-7-4.7-7-9.7v-6l7-2.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M13 7l-4 6h3l-1 5 4-6h-3l1-5Z" fill="currentColor" />
+              </svg></div><h3>Токовая защита соленоида</h3><p>Аппаратная и программная защита по току, потребляемому соленоидом, — двойной контур защищает электромагнит от перегрузки.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12a8 8 0 0 1 14-5m2-2v5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 12a8 8 0 0 1-14 5m-2 2v-5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Быстрый повторный цикл включения</h3><p>Периодичность включения ВВ/TEL при совместной работе с БУВВ-1 — менее 2,5&nbsp;секунды: блок готов к следующей коммутации практически сразу.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 8.5a15 15 0 0 1 18 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M6.5 12a10 10 0 0 1 11 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M9.5 15.5a5 5 0 0 1 5 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="12" cy="19" r="1.2" fill="currentColor" />
+              </svg></div><h3>Wi-Fi веб-интерфейс</h3><p>В каждый БУВВ-1 встроен web-интерфейс с беспроводным доступом по Wi-Fi — состояние, история и журнал событий прямо на объекте, без дополнительного оборудования.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 2v4M15 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M7 6h10v4a5 5 0 0 1-10 0V6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 15v4M9 22h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg></div><h3>Pin-to-pin совместимость</h3><p>Прямая замена блока управления BU/TEL-220-05A — интеграция без изменения проектной документации и повторных согласований.</p></div></div>
+  </div>
+  <footer class="strip">
+    <div class="strip__lead">Заказ и наличие</div>
+    <a href="tel:+79119688528">+7 (911) 968-85-28</a>
+    <a href="mailto:manager@ppdzva.ru">manager@ppdzva.ru</a>
+    <a href="https://ppdzva.ru">ppdzva.ru</a>
+  </footer>
+</section>
+<section class="page page--product">
+  <header class="topbar">
+    <img src="../img/icons/logo-dzva.webp" alt="ПП ДЗВА">
+    <span class="topbar__name">Производственное Предприятие ДЗВА</span>
+    <span class="topbar__page">04</span>
+  </header>
+  <div class="product">
+    <div class="product__visual"><div class="visual visual--photo"><img src="../img/products/rs80/rs80-1.jpg" alt="РС-80/Д "></div></div>
+    <div class="product__info">
+      <p class="eyebrow"><i></i>Реле максимального тока</p>
+      <h1>РС-80/Д </h1>
+      <div class="replaces"><span class="badge badge--analog">Аналог РС80М2М</span><p class="rep">Функциональная замена реле максимального тока РС80М2М, снятого с производства, — интеграция в существующие схемы защиты без изменения проектной документации и повторных согласований.</p></div>
+      <div class="desc"><p>Двухфазное статическое реле максимального тока РС-80/Д предназначено для схем релейной защиты и противоаварийной автоматики — защита электрических машин, трансформаторов и линий электропередачи при коротких замыканиях и перегрузках. Реле не требует дополнительного источника питания: элементы схемы запитаны от измеряемого тока. Функция дешунтирования электромагнита отключения выключателя поставляется опционально — под заказ, с ней или без.</p></div>
+      <div class="price"><span>Цена</span><b>50 000 ₽</b><em>с НДС</em></div>
+    </div>
+  </div>
+  <div class="adv">
+    <p class="eyebrow"><i></i>Преимущества</p>
+    <h2>Почему РС-80/Д</h2>
+    <div class="adv__grid"><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 8h13m0 0l-3-3m3 3l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 16H7m0 0l3 3m-3-3l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Прямой аналог РС80М2М</h3><p>Функциональная замена реле РС80М2М, снятого с производства, — интеграция в существующие схемы защиты без пересогласования проекта.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg></div><h3>Без источника питания</h3><p>Статическое реле питается от измеряемого тока — не нужен отдельный блок питания и его монтаж в шкафу защиты.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="8" width="18" height="8" rx="4" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="16" cy="12" r="2.5" fill="currentColor" />
+              </svg></div><h3>Дешунтирование — по заказу</h3><p>Функция дешунтирования электромагнита отключения выключателя поставляется опционально: заказывайте исполнение с ней или без, под свою схему защиты.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M5 18V10M10 18V6M14 18V13M19 18V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg></div><h3>Четыре диапазона уставок тока</h3><p>Один прибор перекрывает диапазон 1–18,16&nbsp;А по МТЗ — 4 поддиапазона по 128 значений каждый, без подбора реле под конкретный номинал.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 18V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M6 15c3-1 4-7 7-8s4 4 6 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Гибкая характеристика МТЗ</h3><p>Независимая или одна из двух зависимых характеристик срабатывания выбираются переключателями на передней панели.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Высокий ресурс</h3><p>10 000 000 циклов механической износоустойчивости и средний срок службы 15 лет — надёжная работа при интенсивной эксплуатации.</p></div></div>
+  </div>
+  <footer class="strip">
+    <div class="strip__lead">Заказ и наличие</div>
+    <a href="tel:+79119688528">+7 (911) 968-85-28</a>
+    <a href="mailto:manager@ppdzva.ru">manager@ppdzva.ru</a>
+    <a href="https://ppdzva.ru">ppdzva.ru</a>
+  </footer>
+</section>
+<section class="page page--product">
+  <header class="topbar">
+    <img src="../img/icons/logo-dzva.webp" alt="ПП ДЗВА">
+    <span class="topbar__name">Производственное Предприятие ДЗВА</span>
+    <span class="topbar__page">05</span>
+  </header>
+  <div class="product">
+    <div class="product__visual">
+<div class="visual visual--eis">
+  <p class="visual__eyebrow">Принцип работы</p>
+  <svg viewBox="0 0 300 220" class="eis-chart" role="img" aria-label="Ток модуля: бросок до 220 мА в первую секунду, спад до 2–5 мА">
+    <line x1="34" y1="18" x2="34" y2="176" stroke="#9aa0a8" stroke-width="1.2"/>
+    <line x1="34" y1="176" x2="288" y2="176" stroke="#9aa0a8" stroke-width="1.2"/>
+    <path d="M34 176 L34 40 C 70 40, 84 44, 100 96 C 114 140, 130 166, 180 172 C 220 175, 260 175, 288 175" fill="none" stroke="#ffb020" stroke-width="3" stroke-linecap="round"/>
+    <path d="M34 40 L288 40" stroke="#383f46" stroke-width="1" stroke-dasharray="3 4"/>
+    <circle cx="34" cy="40" r="4" fill="#ffb020"/>
+    <text x="44" y="32" class="c-lab c-lab--amber">до 220 мА</text>
+    <text x="198" y="164" class="c-lab">2–5 мА</text>
+    <text x="34" y="196" class="c-lab c-lab--dim">0</text>
+    <text x="96" y="196" class="c-lab c-lab--dim">≈ 1 с — плавный спад</text>
+    <text x="288" y="196" class="c-lab c-lab--dim" text-anchor="end">время</text>
+  </svg>
+  <p class="visual__cap">Клемма XS1 повторяет ток нити накала лампы после включения — импульсные реле (РТД) и приборы контроля цепей сигнализации работают штатно.</p>
+  <div class="visual__colors">
+    <span><i class="dot dot--red"></i>К — красное</span>
+    <span><i class="dot dot--warm"></i>Б — белое тёплое</span>
+  </div>
+</div></div>
+    <div class="product__info">
+      <p class="eyebrow"><i></i>Ретрофит-модуль для табло ТСБ</p>
+      <h1>ЭИС-ЛН-220-К(Б) </h1>
+      <div class="replaces"><span class="badge badge--original">Собственная разработка</span><p class="rep">Ретрофит-модуль для световых табло типа ТСБ — устанавливается взамен штатного патрона снятой с производства лампы накаливания и электрически имитирует её переходный процесс, поэтому существующие импульсные реле и приборы контроля исправности цепей сигнализации продолжают работать штатно, без пересогласования проекта.</p></div>
+      <div class="desc"><p>Предназначен для световой аварийной и предупредительной сигнализации, совместим с табло ТСБ. Выпускается в красном (К) и белом тёплом (Б) исполнении.</p></div>
+      <div class="price"><span>Цена</span><b>5 000 ₽</b><em>с НДС</em></div>
+    </div>
+  </div>
+  <div class="adv">
+    <p class="eyebrow"><i></i>Преимущества</p>
+    <h2>Почему ЭИС-ЛН-220-К(Б)</h2>
+    <div class="adv__grid"><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 8h13m0 0l-3-3m3 3l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 16H7m0 0l3 3m-3-3l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Ретрофит табло ТСБ без переделки корпуса</h3><p>Прямая замена штатного патрона лампы накаливания — те же посадочные отверстия и крепёжное отверстие М4 на задней стенке табло, без модернизации корпуса.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3a5 5 0 0 0-3 9c.6.5 1 1.2 1 2v1h4v-1c0-.8.4-1.5 1-2a5 5 0 0 0-3-9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M10 19h4M11 21h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M4 4l16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg></div><h3>Лампы накаливания сняты с производства</h3><p>Профильные лампы для табло ТСБ больше не выпускаются — ЭИС-ЛН-220-К(Б) закрывает эту проблему без замены самого табло и схемы сигнализации.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12h3l2-7 4 14 2-9 2 2h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Сохраняет переходный процесс лампы</h3><p>Через клемму XS1 — контролируемый бросок тока до 220 мА в первую секунду, плавно спадающий за ~1 сек до 2–5 мА: электрическая имитация тока нити накала после включения.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Совместимость с существующими защитами</h3><p>Импульсные реле (РТД) и приборы контроля исправности цепей сигнализации, рассчитанные на пусковые токи ламп, продолжают штатно работать без переделки релейной схемы.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="7" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="17" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5" />
+                <path d="M9.2 12h5.6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="1.6 1.6" />
+                <path d="M3 12h1.8M19.2 12H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg></div><h3>Два режима подключения</h3><p>Клемма XS1 — имитация лампы накаливания для схем с контролем тока; клемма XS2 — обычный светодиодный индикатор с потреблением до 1 Вт, когда имитация не нужна.</p></div><div class="acard"><div class="acard__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+                <path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div><h3>Ресурс до 50 000 часов</h3><p>Сверхъяркие светодиоды «Пиранья» рассчитаны на 30 000–50 000 часов непрерывной работы — при тех же посадочных размерах, что и заменяемая лампа.</p></div></div>
+  </div>
+  <footer class="strip">
+    <div class="strip__lead">Заказ и наличие</div>
+    <a href="tel:+79119688528">+7 (911) 968-85-28</a>
+    <a href="mailto:manager@ppdzva.ru">manager@ppdzva.ru</a>
+    <a href="https://ppdzva.ru">ppdzva.ru</a>
+  </footer>
+</section>
+</body>
+</html>
