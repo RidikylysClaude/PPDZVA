@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-09-22 12:00">
+  <shop>
+    <name>ПП ДЗВА</name>
+    <company>ПП ДЗВА</company>
+    <url>https://ppdzva.ru</url>
+    <currencies>
+      <currency id="RUB" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Промышленное оборудование</category>
+    </categories>
+    <offers>
+      <offer id="1">
+        <name>БУВВ-1 (BU-220-05A) — блок управления вакуумным выключателем, аналог BU/TEL-220-05A</name>
+        <price>35000</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://ppdzva.ru/img/products/buvv/buvv1.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/buvv/buvv2.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/buvv/buvv3.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/buvv/buvv4.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/buvv/buvv5.jpg</picture>
+        <url>https://ppdzva.ru/products/buvv.html</url>
+        <description>Блок управления БУВВ-1 (BU-220-05A) — прямой pin-to-pin аналог блока управления BU/TEL-220-05A (в запросах также «BU TEL 220 05A»), снятого с производства.
+
+БУВВ-1 управляет вакуумным выключателем серии ВВ/TEL-6(10) и работает совместно с блоком питания БПВВ-1 (BP-220-02A). Устанавливается вместо оригинала без изменения существующей схемы и проектной документации, без повторных согласований.
+
+Возможности: адаптивная подстройка под конкретный выключатель, диагностика в реальном времени, токовая защита соленоида, ускоренный повторный цикл включения, Wi-Fi веб-интерфейс для настройки и мониторинга.
+
+Производство в России. Полное руководство по эксплуатации, характеристики и фотографии — на сайте ppdzva.ru. Цена ориентировочная, уточняйте у менеджера.</description>
+      </offer>
+      <offer id="2">
+        <name>БПВВ-1 (BP-220-02A) — блок питания для управления вакуумным выключателем, аналог BP/TEL-220-02A</name>
+        <price>35000</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://ppdzva.ru/img/products/bpvv/bpvv1.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/bpvv/bpvv2.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/bpvv/bpvv3.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/bpvv/bpvv4.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/bpvv/bpvv5.jpg</picture>
+        <url>https://ppdzva.ru/products/bpvv.html</url>
+        <description>Блок питания БПВВ-1 (BP-220-02A) — прямой pin-to-pin аналог блока питания BP/TEL-220-02A (в запросах также «BP TEL 220 02A»), снятого с производства.
+
+БПВВ-1 обеспечивает электропитанием блок управления БУВВ-1 (BU-220-05A) при работе с вакуумными выключателями серии ВВ/TEL-6(10). Применяется в шкафах управления и релейной защиты ячеек КРУ и КСО.
+
+Особенности: нагрев блока снижен на 15°C относительно предыдущего поколения, стабильное выходное напряжение 230±5 В, работа без пауз между циклами включения/отключения.
+
+Производство в России. Полное руководство по эксплуатации, характеристики и фотографии — на сайте ppdzva.ru. Цена ориентировочная, уточняйте у менеджера.</description>
+      </offer>
+      <offer id="3">
+        <name>РС-80/Д — двухфазное статическое реле максимального тока, аналог РС80М2М</name>
+        <price>50000</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://ppdzva.ru/img/products/rs80/rs80-1.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/rs80/rs80-2.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/rs80/rs80-3.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/rs80/rs80-4.jpg</picture>
+        <picture>https://ppdzva.ru/img/products/rs80/rs80-5.jpg</picture>
+        <url>https://ppdzva.ru/products/rs80.html</url>
+        <description>Двухфазное статическое реле максимального тока РС-80/Д — функциональный аналог реле РС80М2М, снятого с производства.
+
+Для схем релейной защиты и противоаварийной автоматики: защита электрических машин, трансформаторов и линий электропередачи при коротких замыканиях и перегрузках. Не требует дополнительного источника питания — элементы схемы запитаны от измеряемого тока.
+
+Четыре поддиапазона уставок тока срабатывания МТЗ, независимая выдержка времени и токовая отсечка с раздельной настройкой. Функция дешунтирования — опционально, под заказ.
+
+Производство в России. Полное руководство по эксплуатации, характеристики и фотографии — на сайте ppdzva.ru. Цена ориентировочная, уточняйте у менеджера.</description>
+      </offer>
+      <offer id="4">
+        <name>ДИГМАТ — программируемое цифровое реле защиты выключателей, аналог DIGmat S100</name>
+        <price>300000</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://ppdzva.ru/img/products/digmat/digmat1.webp</picture>
+        <url>https://ppdzva.ru/products/digmat.html</url>
+        <description>Программируемое цифровое реле защиты ДИГМАТ — функциональный аналог реле DIGmat S100.
+
+Защищает воздушные автоматические и неавтоматические выключатели от перегрузки и короткого замыкания. Работает как в цепях постоянного тока (по измерительному шунту), так и переменного (по трансформаторам тока).
+
+Уставки настраиваются в меню на лицевой панели. Связь с АСУ ТП по RS-485 (Modbus), Ethernet, CAN. Гальваническая развязка входов 2 кВ, степень защиты лицевой панели IP65.
+
+Производство в России. Полное руководство по эксплуатации, характеристики и фотографии — на сайте ppdzva.ru. Цена ориентировочная, уточняйте у менеджера.</description>
+      </offer>
+      <offer id="5">
+        <name>ЭИС-ЛН-220-К(Б) — электронный имитатор лампы накаливания для световых табло ТСБ</name>
+        <price>5000</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://ppdzva.ru/img/products/eis-ln-220-kb/eis1.webp</picture>
+        <url>https://ppdzva.ru/products/eis-ln-220-kb.html</url>
+        <description>ЭИС-ЛН-220-К(Б) — электронный имитатор снятой с производства лампы накаливания для световых табло типа ТСБ. Собственная разработка.
+
+Устанавливается взамен штатного патрона лампы: те же посадочные отверстия и крепёжное отверстие М4, без модернизации корпуса. Профильные лампы накаливания для табло ТСБ сняты с производства; лампа ЛСО-1 выпускается, но не формирует нужный переходный процесс.
+
+Через клемму XS1 модуль формирует контролируемый бросок тока, имитирующий ток нити накала — существующие импульсные реле продолжают работать штатно. Клемма XS2 — обычный светодиодный индикатор.
+
+Производство в России. Полное руководство по эксплуатации, характеристики и фотографии — на сайте ppdzva.ru. Цена ориентировочная, уточняйте у менеджера.</description>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
