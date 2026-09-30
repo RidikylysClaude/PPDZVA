@@ -1138,3 +1138,21 @@
 .web-ui__shot--photo img {
   object-position: center;
 }
+
+/* Широкая карточка с парой фото (блок «На объекте», «Табло в работе») */
+.web-ui__card--wide {
+  grid-column: 1 / -1;
+}
+
+.web-ui__pair {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+}
+
+@media (max-width: 560px) {
+  .web-ui__pair {
+    grid-template-columns: 1fr;
+  }
+}
