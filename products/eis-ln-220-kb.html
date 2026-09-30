@@ -96,6 +96,15 @@
     <div class="lightbox__thumbs" data-lightbox-thumbs></div>
   </div>
 
+  <!-- Просмотр фото блока «На объекте» в полный размер, см. js/components/webui-gallery.js -->
+  <div class="overlay" id="webui-lightbox-overlay"></div>
+  <div class="lightbox" id="webui-lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото с объекта">
+    <button class="lightbox__close" type="button" data-webui-lightbox-close aria-label="Закрыть">&times;</button>
+    <div class="lightbox__stage">
+      <img src="" alt="" class="lightbox__image" data-webui-lightbox-image />
+    </div>
+  </div>
+
   <!-- Общая шапка — переносится без изменений на все страницы (products/*.html, analogs.html) -->
   <header class="site-header">
     <div class="container site-header__row">
@@ -135,9 +144,7 @@
     <!-- ============ ВИЗУАЛ + ОПИСАНИЕ ============ -->
     <section class="product-hero">
       <div class="container product-hero__inner">
-        <!-- Реального фото пока нет — используется заглушка (zaglushka.jpg, сжата в webp).
-             Галерея собрана по тому же паттерну, что у buvv/bpvv/rs80/digmat: при появлении
-             съёмки достаточно добавить новые data-gallery-thumb кнопки, JS/CSS не менять. -->
+        <!-- Галерея: при добавлении фото достаточно добавить кнопки data-gallery-thumb, JS/CSS не менять. -->
         <div class="product-hero__visual" data-gallery>
           <div class="product-viewer__stage" role="button" tabindex="0" aria-label="Открыть увеличенное изображение">
             <button type="button" class="product-viewer__nav product-viewer__nav--prev" data-gallery-prev aria-label="Предыдущее фото">
@@ -147,7 +154,7 @@
             </button>
             <img
               src="../img/products/eis-ln-220-kb/eis1.webp"
-              alt="ЭИС-ЛН-220-К(Б) — фото скоро будет"
+              alt="ЭИС-ЛН-220-К(Б) — плата модуля, вид сверху"
               class="product-viewer__main"
               data-gallery-main
             />
@@ -163,9 +170,54 @@
               class="product-viewer__thumb product-viewer__thumb--active"
               data-gallery-thumb
               data-full="../img/products/eis-ln-220-kb/eis1.webp"
-              data-alt="ЭИС-ЛН-220-К(Б) — фото скоро будет"
+              data-alt="ЭИС-ЛН-220-К(Б) — плата модуля, вид сверху"
             >
               <img src="../img/products/eis-ln-220-kb/eis1.webp" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/eis-ln-220-kb/eis2.webp"
+              data-alt="ЭИС-ЛН-220-К(Б) — плата модуля, вид спереди сбоку"
+            >
+              <img src="../img/products/eis-ln-220-kb/eis2.webp" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/eis-ln-220-kb/eis3.webp"
+              data-alt="ЭИС-ЛН-220-К(Б) — плата модуля, вид сбоку"
+            >
+              <img src="../img/products/eis-ln-220-kb/eis3.webp" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/eis-ln-220-kb/eis4.webp"
+              data-alt="ЭИС-ЛН-220-К(Б) — плата модуля, вид со стороны клемм"
+            >
+              <img src="../img/products/eis-ln-220-kb/eis4.webp" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/eis-ln-220-kb/eis5.webp"
+              data-alt="ЭИС-ЛН-220-К(Б) — плата модуля, вид со стороны светодиодов"
+            >
+              <img src="../img/products/eis-ln-220-kb/eis5.webp" alt="" loading="lazy" />
+            </button>
+            <button
+              type="button"
+              class="product-viewer__thumb"
+              data-gallery-thumb
+              data-full="../img/products/eis-ln-220-kb/eis6.webp"
+              data-alt="ЭИС-ЛН-220-К(Б) — плата модуля, общий вид"
+            >
+              <img src="../img/products/eis-ln-220-kb/eis6.webp" alt="" loading="lazy" />
             </button>
           </div>
         </div>
@@ -212,7 +264,7 @@
           высокие пусковые и установившиеся токи, характерные для нити накала, — прямая замена лампы на светодиод
           «не видна» этой аппаратуре из-за малого энергопотребления: схема либо не фиксирует включение, либо
           показывает ложный обрыв цепи. Через клемму XS1 ЭИС-ЛН-220-К(Б) в первую секунду формирует контролируемый
-          бросок тока до 220 мА, который затем плавно, за ~1 сек, спадает до 2–5 мА — так же, как ток нити
+          бросок тока 120 мА, который затем плавно, за ~1 сек, спадает до 2–5 мА — так же, как ток нити
           накала после включения. Клемма XS2 переводит устройство в режим обычного светодиодного индикатора, без имитации броска,
           с минимальным энергопотреблением.
         </p>
@@ -265,7 +317,7 @@
             </div>
             <h3 class="advantage-card__title">Сохраняет переходный процесс лампы</h3>
             <p class="advantage-card__text">
-              Через клемму XS1 — контролируемый бросок тока до 220 мА в первую секунду, плавно спадающий за ~1 сек
+              Через клемму XS1 — контролируемый бросок тока 120 мА в первую секунду, плавно спадающий за ~1 сек
               до 2–5 мА: электрическая имитация тока нити накала после включения.
             </p>
           </div>
@@ -314,7 +366,87 @@
       </div>
     </section>
 
-    <!-- ============ ХАРАКТЕРИСТИКИ ============ -->
+        <!-- ============ НА ОБЪЕКТЕ ============ -->
+    <section class="web-ui" id="on-site">
+      <div class="container">
+        <div class="web-ui__intro">
+          <p class="section-eyebrow">
+            <span class="section-eyebrow-mark" aria-hidden="true"></span>
+            На объекте
+          </p>
+          <h2 class="web-ui__title">Как ЭИС выглядит в реальной работе</h2>
+          <p class="web-ui__lead">
+            Фото с действующей подстанции: модули смонтированы в панели вместо штатных патронов и работают в составе
+            табло ТСБ.
+          </p>
+        </div>
+
+        <div class="web-ui__grid web-ui__grid--two">
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot web-ui__shot--photo"
+              data-webui-shot
+              data-full="../img/products/eis-ln-220-kb/onsite-panel.webp"
+              data-alt="Модули ЭИС-ЛН-220-К(Б), смонтированные в панели табло ТСБ на объекте"
+            >
+              <img src="../img/products/eis-ln-220-kb/onsite-panel.webp" alt="Модули ЭИС-ЛН-220-К(Б), смонтированные в панели табло ТСБ на объекте" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">Монтаж в панели</p>
+              <p class="web-ui__card-text">Модули ЭИС в составе панели табло — фото прямо с объекта, часть индикаторов включена</p>
+            </figcaption>
+          </figure>
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot web-ui__shot--photo"
+              data-webui-shot
+              data-full="../img/products/eis-ln-220-kb/onsite-before-after.webp"
+              data-alt="ЭИС-ЛН-220-К(Б) в составе ТСБ: смонтированные модули и места без патронов в подготовке к монтажу"
+            >
+              <img src="../img/products/eis-ln-220-kb/onsite-before-after.webp" alt="ЭИС-ЛН-220-К(Б) в составе ТСБ: смонтированные модули и места без патронов в подготовке к монтажу" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">До и после</p>
+              <p class="web-ui__card-text">Справа — ЭИС в смонтированном состоянии, слева — подготовленные под установку места, где патронов уже нет</p>
+            </figcaption>
+          </figure>
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot web-ui__shot--photo"
+              data-webui-shot
+              data-full="../img/products/eis-ln-220-kb/onsite-tsb-on.webp"
+              data-alt="Включённые индикаторы ЭИС на лицевой панели табло ТСБ"
+            >
+              <img src="../img/products/eis-ln-220-kb/onsite-tsb-on.webp" alt="Включённые индикаторы ЭИС на лицевой панели табло ТСБ" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">ЭИС в составе ТСБ</p>
+              <p class="web-ui__card-text">Включённые индикаторы на лицевой панели табло ТСБ на действующем объекте</p>
+            </figcaption>
+          </figure>
+          <figure class="web-ui__card">
+            <button
+              type="button"
+              class="web-ui__shot web-ui__shot--photo"
+              data-webui-shot
+              data-full="../img/products/eis-ln-220-kb/onsite-tsb-scheme.webp"
+              data-alt="Индикаторы ЭИС на щите управления с мнемосхемой"
+            >
+              <img src="../img/products/eis-ln-220-kb/onsite-tsb-scheme.webp" alt="Индикаторы ЭИС на щите управления с мнемосхемой" loading="lazy" />
+            </button>
+            <figcaption>
+              <p class="web-ui__card-title">Табло в работе</p>
+              <p class="web-ui__card-text">Красные и белые индикаторы ЭИС на щите управления с мнемосхемой</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+<!-- ============ ХАРАКТЕРИСТИКИ ============ -->
     <section class="product-specs" id="specs">
       <div class="container">
         <p class="section-eyebrow">
@@ -345,8 +477,8 @@
                 <td>50 Гц (только в режиме переменного тока)</td>
               </tr>
               <tr class="spec-table__row">
-                <td>Потребляемый пусковой ток (клемма XS1), не менее</td>
-                <td>220 мА</td>
+                <td>Потребляемый пусковой ток (клемма XS1)</td>
+                <td>120 мА</td>
               </tr>
               <tr class="spec-table__row">
                 <td>Потребляемый установившийся ток (через 1 сек)</td>
@@ -453,6 +585,7 @@
   <script src="../js/components/product-search.js"></script>
   <script src="../js/components/gallery.js"></script>
   <script src="../js/components/lightbox.js"></script>
+  <script src="../js/components/webui-gallery.js"></script>
   <script src="../js/components/spec-table.js"></script>
   <script src="../js/components/nav-active.js"></script>
   <script src="../js/analytics.js"></script>

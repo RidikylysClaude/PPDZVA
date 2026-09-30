@@ -1118,3 +1118,23 @@
     right: var(--space-3);
   }
 }
+
+/* Блок «На объекте» (ЭИС): реальные фото с разным соотношением сторон — две колонки
+   на десктопе и кадр 4:3 по центру, чтобы не резать важное у портретных снимков. */
+.web-ui__grid--two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 560px) {
+  .web-ui__grid--two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.web-ui__shot--photo {
+  aspect-ratio: 4 / 3;
+}
+
+.web-ui__shot--photo img {
+  object-position: center;
+}
