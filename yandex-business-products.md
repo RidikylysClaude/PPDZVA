@@ -27,7 +27,7 @@
 | БПВВ-1 | 35 000 ₽ | bpvv1.jpg | /products/bpvv.html |
 | РС-80/Д | 50 000 ₽ | rs80-1.jpg | /products/rs80.html |
 | ДИГМАТ | 300 000 ₽ | digmat-1.jpg | /products/digmat.html |
-| ЭИС-ЛН-220-К(Б) | 5 000 ₽ | eis-sq.jpg | /products/eis-ln-220-kb.html |
+| ЭИС-ЛН-220-К(Б) | 5 500 ₽ | eis-sq.jpg | /products/eis-ln-220-kb.html |
 
 ---
 
@@ -191,7 +191,7 @@
 
 **Категория:** Светосигнальная арматура, компоненты световых табло
 
-**Цена:** 5000
+**Цена:** 5500
 
 **Ссылка:** https://ppdzva.ru/products/eis-ln-220-kb.html?utm_source=yandex-business&utm_medium=catalog
 
