@@ -221,7 +221,7 @@ Flagma `flagma.ru/catalog/new`.
 
 **Наличие:** В наличии
 
-**Цена:** 5000 ₽ · единица «шт» · строка цены — «Цена за 1 шт.»
+**Цена:** 5500 ₽ (с 2026-10-01; было 5000) · единица «шт» · строка цены — «Цена за 1 шт.»
 
 **Главное фото:** images for SEO/catalog-photos-sq/eis-sq.jpg  (ЭИС с вырезанным фоном, квадрат)
 **Доп. фото:** images for SEO/catalog-photos/eis1.jpg, eis2.jpg, eis-onsite-1.jpg, eis-onsite-2.jpg
