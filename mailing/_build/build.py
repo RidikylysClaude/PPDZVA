@@ -33,7 +33,7 @@ PRODUCTS = [
     ("eis-ln-220-kb", None, "Ретрофит-модуль для табло ТСБ"),
 ]
 
-PRICES = {"bpvv": "35 000", "buvv": "35 000", "rs80": "50 000", "eis-ln-220-kb": "5 000"}
+PRICES = {"bpvv": "35 000", "buvv": "35 000", "rs80": "50 000", "eis-ln-220-kb": "5 500"}
 FIT = set()
 data = []
 for slug, photo, kind in PRODUCTS:
@@ -72,13 +72,13 @@ def eis_visual():
     return """
 <div class="visual visual--eis">
   <p class="visual__eyebrow">Принцип работы</p>
-  <svg viewBox="0 0 300 220" class="eis-chart" role="img" aria-label="Ток модуля: бросок до 220 мА в первую секунду, спад до 2–5 мА">
+  <svg viewBox="0 0 300 220" class="eis-chart" role="img" aria-label="Ток модуля: бросок 120 мА в первую секунду, спад до 2–5 мА">
     <line x1="34" y1="18" x2="34" y2="176" stroke="#9aa0a8" stroke-width="1.2"/>
     <line x1="34" y1="176" x2="288" y2="176" stroke="#9aa0a8" stroke-width="1.2"/>
     <path d="M34 176 L34 40 C 70 40, 84 44, 100 96 C 114 140, 130 166, 180 172 C 220 175, 260 175, 288 175" fill="none" stroke="#ffb020" stroke-width="3" stroke-linecap="round"/>
     <path d="M34 40 L288 40" stroke="#383f46" stroke-width="1" stroke-dasharray="3 4"/>
     <circle cx="34" cy="40" r="4" fill="#ffb020"/>
-    <text x="44" y="32" class="c-lab c-lab--amber">до 220 мА</text>
+    <text x="44" y="32" class="c-lab c-lab--amber">120 мА</text>
     <text x="198" y="164" class="c-lab">2–5 мА</text>
     <text x="34" y="196" class="c-lab c-lab--dim">0</text>
     <text x="96" y="196" class="c-lab c-lab--dim">≈ 1 с — плавный спад</text>
